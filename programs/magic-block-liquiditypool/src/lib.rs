@@ -18,9 +18,8 @@ pub use constants::*;
 pub use instructions::*;
 pub use state::*;
 
-use crate::state::{liquidity_provider::LiquidityProvider, pool::Pool};
 
-declare_id!("HmBMkwugty2Govvk31r33dLxfMDJi58Ch8aLqzjaXaAj");
+declare_id!("Bv3XuPsnLX4M5SiudZusE5HuVJVFpZdWuqnGA5PHaTt2");
 
 #[ephemeral]
 #[program]
@@ -88,6 +87,10 @@ pub mod magic_block_liquiditypool {
             },
             ShortAccountMeta {
                 pubkey: ctx.accounts.mint_b.key(),
+                is_writable: false
+            },
+            ShortAccountMeta {
+                pubkey: ctx.accounts.transfer_authority.key(),
                 is_writable: false
             },
             ShortAccountMeta {

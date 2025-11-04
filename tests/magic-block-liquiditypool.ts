@@ -257,11 +257,10 @@ describe("magic-block-liquiditypool", () => {
       liquidityProvider: liquidityProviderAccount,
       pool: poolAccount,
       providerLpTokenAccount: providerLpTokenAccount,
-      providerTokenAAta: providerTokenAccountA,
-      providerTokenBAta: providerTokenAccountB,
       tokenVaultA: tokenVaultAaccount,
       tokenVaultB: tokenVaultBaccount,
       tokenProgram: TOKEN_PROGRAM_ID,
+      systemProgram: SystemProgram.programId,
       programId: program.programId
     }).transaction();
 
@@ -271,13 +270,12 @@ describe("magic-block-liquiditypool", () => {
       [provider.wallet.payer]
     );
 
-    await sleepWithAnimation(10);
+    await sleepWithAnimation(20);
 
     console.log(`Transaction Signature: ${signature}`);
   })
   
 });
-
 
 async function sleepWithAnimation(seconds: number): Promise<void> {
   const totalMs = seconds * 1000;
