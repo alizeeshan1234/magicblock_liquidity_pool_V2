@@ -20,7 +20,7 @@ pub use state::*;
 
 use crate::state::{liquidity_provider::LiquidityProvider, pool::Pool};
 
-declare_id!("EiKhdqshVkzcftMP3icx2ySYtnDBk2zapz6JWnRusagH");
+declare_id!("HmBMkwugty2Govvk31r33dLxfMDJi58Ch8aLqzjaXaAj");
 
 #[ephemeral]
 #[program]

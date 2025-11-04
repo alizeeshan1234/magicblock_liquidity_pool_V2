@@ -6,7 +6,7 @@ resolution = true
 skip-lint = false
 
 [programs.devnet]
-magic_block_liquiditypool = "EiKhdqshVkzcftMP3icx2ySYtnDBk2zapz6JWnRusagH"
+magic_block_liquiditypool = "HmBMkwugty2Govvk31r33dLxfMDJi58Ch8aLqzjaXaAj"
 
 [registry]
 url = "https://api.apr.dev"

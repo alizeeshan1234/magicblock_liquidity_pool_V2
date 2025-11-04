@@ -1,0 +1,7 @@
+/Users/mohammedzeeshan/Desktop/magicblock_liquidity_pool/magicblock_liquidity_pool/target/debug/deps/solana_sysvar_id-e92dc35d1bb80666.d: /Users/mohammedzeeshan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/solana-sysvar-id-2.2.1/src/lib.rs
+
+/Users/mohammedzeeshan/Desktop/magicblock_liquidity_pool/magicblock_liquidity_pool/target/debug/deps/libsolana_sysvar_id-e92dc35d1bb80666.rlib: /Users/mohammedzeeshan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/solana-sysvar-id-2.2.1/src/lib.rs
+
+/Users/mohammedzeeshan/Desktop/magicblock_liquidity_pool/magicblock_liquidity_pool/target/debug/deps/libsolana_sysvar_id-e92dc35d1bb80666.rmeta: /Users/mohammedzeeshan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/solana-sysvar-id-2.2.1/src/lib.rs
+
+/Users/mohammedzeeshan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/solana-sysvar-id-2.2.1/src/lib.rs:
