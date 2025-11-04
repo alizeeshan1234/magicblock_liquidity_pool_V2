@@ -19,7 +19,7 @@ pub use instructions::*;
 pub use state::*;
 
 
-declare_id!("Bv3XuPsnLX4M5SiudZusE5HuVJVFpZdWuqnGA5PHaTt2");
+declare_id!("53ZWSoYgVT48uk5h7txNrjFfijQhamJRgz4C9oGyfaYQ");
 
 #[ephemeral]
 #[program]
@@ -119,11 +119,11 @@ pub mod magic_block_liquiditypool {
             },
             ShortAccountMeta {
                 pubkey: ctx.accounts.pool.key(),
-                is_writable: true
+                is_writable: false
             },
             ShortAccountMeta {
                 pubkey: ctx.accounts.liquidity_provider.key(),
-                is_writable: true
+                is_writable: false
             },
             ShortAccountMeta {
                 pubkey: ctx.accounts.token_program.key(),
@@ -176,7 +176,6 @@ pub struct CommitAndAddLiquidity<'info> {
     pub transfer_authority: AccountInfo<'info>,
 
     #[account(
-        mut,
         mint::authority = transfer_authority,
         mint::freeze_authority = transfer_authority,
         mint::decimals = 6,
@@ -186,34 +185,43 @@ pub struct CommitAndAddLiquidity<'info> {
     pub lp_mint: Account<'info, Mint>,
 
     /// CHECK: Will be committed - writable set in handler
+    #[account(mut)]
     pub liquidity_provider: UncheckedAccount<'info>,
 
     /// CHECK: Will be committed - writable set in handler
+    #[account(mut)]
     pub pool: UncheckedAccount<'info>,
 
     #[account(
-        mut,
-        associated_token::mint = mint_a,
+        associated_token::mint = lp_mint,
         associated_token::authority = provider
     )]
     pub provider_lp_token_account: Account<'info, TokenAccount>,
 
     #[account(
-        mut,
         associated_token::mint = mint_a,
         associated_token::authority = provider
     )]
     pub provider_token_a_ata: Account<'info, TokenAccount>,
 
     #[account(
-        mut,
         associated_token::mint = mint_b,
         associated_token::authority = provider
     )]
     pub provider_token_b_ata: Account<'info, TokenAccount>,
     
-    pub token_vault_a: Account<'info, TokenAccount>,
-    pub token_vault_b: Account<'info, TokenAccount>,
+    #[account(
+        seeds = [b"token_account_a", mint_a.key().as_ref()],
+        bump,
+    )]
+    pub token_vault_a: UncheckedAccount<'info>,
+
+    #[account(
+        seeds = [b"token_account_b", mint_b.key().as_ref()],
+        bump,
+    )]
+    pub token_vault_b: UncheckedAccount<'info>,
+
     pub token_program: Program<'info, Token>,
     pub system_program: Program<'info, System>,
 

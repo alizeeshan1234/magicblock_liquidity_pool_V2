@@ -1,5 +1,5 @@
 {
-  "address": "Bv3XuPsnLX4M5SiudZusE5HuVJVFpZdWuqnGA5PHaTt2",
+  "address": "53ZWSoYgVT48uk5h7txNrjFfijQhamJRgz4C9oGyfaYQ",
   "metadata": {
     "name": "magic_block_liquiditypool",
     "version": "0.1.0",
@@ -182,7 +182,6 @@
         },
         {
           "name": "lp_mint",
-          "writable": true,
           "pda": {
             "seeds": [
               {
@@ -207,14 +206,15 @@
           }
         },
         {
-          "name": "liquidity_provider"
+          "name": "liquidity_provider",
+          "writable": true
         },
         {
-          "name": "pool"
+          "name": "pool",
+          "writable": true
         },
         {
           "name": "provider_lp_token_account",
-          "writable": true,
           "pda": {
             "seeds": [
               {
@@ -260,7 +260,7 @@
               },
               {
                 "kind": "account",
-                "path": "mint_a"
+                "path": "lp_mint"
               }
             ],
             "program": {
@@ -304,7 +304,6 @@
         },
         {
           "name": "provider_token_a_ata",
-          "writable": true,
           "pda": {
             "seeds": [
               {
@@ -394,7 +393,6 @@
         },
         {
           "name": "provider_token_b_ata",
-          "writable": true,
           "pda": {
             "seeds": [
               {
@@ -483,10 +481,66 @@
           }
         },
         {
-          "name": "token_vault_a"
+          "name": "token_vault_a",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  116,
+                  111,
+                  107,
+                  101,
+                  110,
+                  95,
+                  97,
+                  99,
+                  99,
+                  111,
+                  117,
+                  110,
+                  116,
+                  95,
+                  97
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "mint_a"
+              }
+            ]
+          }
         },
         {
-          "name": "token_vault_b"
+          "name": "token_vault_b",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  116,
+                  111,
+                  107,
+                  101,
+                  110,
+                  95,
+                  97,
+                  99,
+                  99,
+                  111,
+                  117,
+                  110,
+                  116,
+                  95,
+                  98
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "mint_b"
+              }
+            ]
+          }
         },
         {
           "name": "token_program",
@@ -562,38 +616,38 @@
             "program": {
               "kind": "const",
               "value": [
-                162,
-                43,
-                132,
-                25,
-                44,
-                233,
-                222,
-                202,
-                102,
-                173,
-                23,
-                70,
-                251,
-                125,
-                212,
-                227,
+                60,
+                22,
+                170,
                 118,
-                222,
-                114,
-                175,
-                207,
-                11,
-                0,
-                108,
-                166,
-                214,
-                226,
-                216,
-                185,
-                50,
-                53,
-                159
+                6,
+                133,
+                135,
+                35,
+                141,
+                4,
+                209,
+                26,
+                231,
+                96,
+                199,
+                240,
+                76,
+                116,
+                18,
+                170,
+                220,
+                17,
+                61,
+                163,
+                177,
+                121,
+                134,
+                70,
+                19,
+                194,
+                163,
+                17
               ]
             }
           }
@@ -719,7 +773,7 @@
         },
         {
           "name": "owner_program",
-          "address": "Bv3XuPsnLX4M5SiudZusE5HuVJVFpZdWuqnGA5PHaTt2"
+          "address": "53ZWSoYgVT48uk5h7txNrjFfijQhamJRgz4C9oGyfaYQ"
         },
         {
           "name": "delegation_program",
@@ -783,38 +837,38 @@
             "program": {
               "kind": "const",
               "value": [
-                162,
-                43,
-                132,
-                25,
-                44,
-                233,
-                222,
-                202,
-                102,
-                173,
-                23,
-                70,
-                251,
-                125,
-                212,
-                227,
+                60,
+                22,
+                170,
                 118,
-                222,
-                114,
-                175,
-                207,
-                11,
-                0,
-                108,
-                166,
-                214,
-                226,
-                216,
-                185,
-                50,
-                53,
-                159
+                6,
+                133,
+                135,
+                35,
+                141,
+                4,
+                209,
+                26,
+                231,
+                96,
+                199,
+                240,
+                76,
+                116,
+                18,
+                170,
+                220,
+                17,
+                61,
+                163,
+                177,
+                121,
+                134,
+                70,
+                19,
+                194,
+                163,
+                17
               ]
             }
           }
@@ -914,7 +968,7 @@
         },
         {
           "name": "owner_program",
-          "address": "Bv3XuPsnLX4M5SiudZusE5HuVJVFpZdWuqnGA5PHaTt2"
+          "address": "53ZWSoYgVT48uk5h7txNrjFfijQhamJRgz4C9oGyfaYQ"
         },
         {
           "name": "delegation_program",

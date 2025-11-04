@@ -7,6 +7,7 @@ import { sendMagicTransaction, getClosestValidator } from "magic-router-sdk";
 import { web3 } from "@coral-xyz/anchor";
 import { SYSTEM_PROGRAM_ID } from "@coral-xyz/anchor/dist/cjs/native/system";
 import {MAGIC_CONTEXT_ID, MAGIC_PROGRAM_ID} from "@magicblock-labs/ephemeral-rollups-sdk";
+import { Connection, clusterApiUrl } from "@solana/web3.js";
 
 const METADATA_PROGRAM_ID = new PublicKey("metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s");
 
@@ -257,6 +258,8 @@ describe("magic-block-liquiditypool", () => {
       liquidityProvider: liquidityProviderAccount,
       pool: poolAccount,
       providerLpTokenAccount: providerLpTokenAccount,
+      providerTokenAAta: providerTokenAccountA,
+      providerTokenBAta: providerTokenAccountB,
       tokenVaultA: tokenVaultAaccount,
       tokenVaultB: tokenVaultBaccount,
       tokenProgram: TOKEN_PROGRAM_ID,
@@ -273,6 +276,10 @@ describe("magic-block-liquiditypool", () => {
     await sleepWithAnimation(20);
 
     console.log(`Transaction Signature: ${signature}`);
+
+    const connection = new Connection(process.env.ROUTER_ENDPOINT || "https://devnet-router.magicblock.app", "confirmed");
+    const tx2 = await connection.getTransaction(signature, { commitment: "confirmed" });
+    console.log(tx2.meta.logMessages); 
   })
   
 });
