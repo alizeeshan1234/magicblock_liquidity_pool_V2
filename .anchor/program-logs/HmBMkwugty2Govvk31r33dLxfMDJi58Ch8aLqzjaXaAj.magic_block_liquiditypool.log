@@ -1,6 +1,6 @@
 Streaming transaction logs mentioning HmBMkwugty2Govvk31r33dLxfMDJi58Ch8aLqzjaXaAj. Confirmed commitment
-Transaction executed in slot 419240306:
-  Signature: 4RYkHCiMBebFYDRbGk2GM1Cq73v28X7bDMsCMEnkEGkpp4EsjXXuCyBiCnQxdXKwDGPvqtTQ3eC76XVpCjyr5Kfw
+Transaction executed in slot 419249139:
+  Signature: dP7odWDHDF8ChNLxEHkarUtEivSDcy1BT8AinuTGZ8axGHhCoNuNgZparXNms3RpEz8LfrphZhw9uJ48HC5wbF2
   Status: Ok
   Log Messages:
     Program HmBMkwugty2Govvk31r33dLxfMDJi58Ch8aLqzjaXaAj invoke [1]
@@ -8,8 +8,17 @@ Transaction executed in slot 419240306:
     Program log: Greetings from: HmBMkwugty2Govvk31r33dLxfMDJi58Ch8aLqzjaXaAj
     Program HmBMkwugty2Govvk31r33dLxfMDJi58Ch8aLqzjaXaAj consumed 2963 of 200000 compute units
     Program HmBMkwugty2Govvk31r33dLxfMDJi58Ch8aLqzjaXaAj success
-Transaction executed in slot 419240309:
-  Signature: iahJzKaft33uahVjcbZmWRynCygDTK1xbD2eaJ47ipw5XqnX8aWZTTWvfkCG5nJSjSw7TcrsfMYvPK9Qktnj3FG
+Transaction executed in slot 419249140:
+  Signature: dP7odWDHDF8ChNLxEHkarUtEivSDcy1BT8AinuTGZ8axGHhCoNuNgZparXNms3RpEz8LfrphZhw9uJ48HC5wbF2
+  Status: Ok
+  Log Messages:
+    Program HmBMkwugty2Govvk31r33dLxfMDJi58Ch8aLqzjaXaAj invoke [1]
+    Program log: Instruction: Initialize
+    Program log: Greetings from: HmBMkwugty2Govvk31r33dLxfMDJi58Ch8aLqzjaXaAj
+    Program HmBMkwugty2Govvk31r33dLxfMDJi58Ch8aLqzjaXaAj consumed 2963 of 200000 compute units
+    Program HmBMkwugty2Govvk31r33dLxfMDJi58Ch8aLqzjaXaAj success
+Transaction executed in slot 419249142:
+  Signature: 5Ri3jSFXBnjVZjBY1bi5XhChASuAodDdigZDXXjweRbZPpac8Av45F5UCmnaPubT9CwiSdc4PAtzbn4yYMWf8Joa
   Status: Error processing Instruction 0: custom program error: 0x0
   Log Messages:
     Program HmBMkwugty2Govvk31r33dLxfMDJi58Ch8aLqzjaXaAj invoke [1]
@@ -19,61 +28,8 @@ Transaction executed in slot 419240309:
     Program 11111111111111111111111111111111 failed: custom program error: 0x0
     Program HmBMkwugty2Govvk31r33dLxfMDJi58Ch8aLqzjaXaAj consumed 10946 of 200000 compute units
     Program HmBMkwugty2Govvk31r33dLxfMDJi58Ch8aLqzjaXaAj failed: custom program error: 0x0
-Transaction executed in slot 419240317:
-  Signature: 2aBEhSoHP75oyGBCcvHHnHA9TMi76JQ2mJyZpmSsvEPaa64M6PJQkX9fEYks5oQpzdh4e9pBmgzYV5N6kicZPbPx
-  Status: Ok
-  Log Messages:
-    Program HmBMkwugty2Govvk31r33dLxfMDJi58Ch8aLqzjaXaAj invoke [1]
-    Program log: Instruction: ProcessDelegatePool
-    Program 11111111111111111111111111111111 invoke [2]
-    Program 11111111111111111111111111111111 success
-    Program 11111111111111111111111111111111 invoke [2]
-    Program 11111111111111111111111111111111 success
-    Program DELeGGvXpWV2fqJUhqcF5ZSYMS4JTLjteaAMARRSaeSh invoke [2]
-    Program 11111111111111111111111111111111 invoke [3]
-    Program 11111111111111111111111111111111 success
-    Program 11111111111111111111111111111111 invoke [3]
-    Program 11111111111111111111111111111111 success
-    Program DELeGGvXpWV2fqJUhqcF5ZSYMS4JTLjteaAMARRSaeSh consumed 15942 of 172443 compute units
-    Program DELeGGvXpWV2fqJUhqcF5ZSYMS4JTLjteaAMARRSaeSh success
-    Program log: Pool account delegated successfully!
-    Program HmBMkwugty2Govvk31r33dLxfMDJi58Ch8aLqzjaXaAj consumed 45576 of 200000 compute units
-    Program HmBMkwugty2Govvk31r33dLxfMDJi58Ch8aLqzjaXaAj success
-Transaction executed in slot 419240346:
-  Signature: 4Y1saK9bBsyxGJqJM7yar8SfPfhYfivwku2Fckvub1ukEuQnvRJ3mcPT9g7uehNLcghoucHzCAC21DdWLLtCceCA
-  Status: Ok
-  Log Messages:
-    Program HmBMkwugty2Govvk31r33dLxfMDJi58Ch8aLqzjaXaAj invoke [1]
-    Program log: Instruction: ProcessInitializeLiquidityProvider
-    Program 11111111111111111111111111111111 invoke [2]
-    Program 11111111111111111111111111111111 success
-    Program log: Initializing Liquidity Provider...
-    Program log: Initialized Liquidity Provider Succesfully!
-    Program log: Liquidity Provider Info: Account { account: LiquidityProvider { provider: 3oLMD8mcD1PGmi9p9Y7qQX3661nyoPBcnPo54n7CWjsi, total_liquidity_provided: 0, total_lp_tokens: 0, liquidity_pools_info: [LiquidityPoolInfo { pool: 11111111111111111111111111111111, token_mint: 11111111111111111111111111111111, liquidity_amount: 0, lp_tokens: 0 }, LiquidityPoolInfo { pool: 11111111111111111111111111111111, token_mint: 11111111111111111111111111111111, liquidity_amount: 0, lp_tokens: 0 }, LiquidityPoolInfo { pool: 11111111111111111111111111111111, token_mint: 11111111111111111111111111111111, liquidity_amount: 0, lp_tokens: 0 }, LiquidityPoolInfo { pool: 11111111111111111111111111111111, token_mint: 11111111111111111111111111111111, liquidity_amount: 0, lp_tokens: 0 }, LiquidityPoolInfo { pool: 11111111111111111111111111111111, token_mint: 11111111111111111111111111111111, liquidity_amount: 0, lp_tokens: 0 }, LiquidityPoolInfo { pool: 11111111111111111111111111111111, token_mint: 11111111111111111111111111111111, liquidity_amount: 0, lp_tokens: 0 }, LiquidityPoolInfo { pool: 11111111111111111111111111111111, token_mint: 11111111111111111111111111111111, liquidity_amount: 0, lp_tokens: 0 }, LiquidityPoolInfo { pool: 11111111111111111111111111111111, token_mint: 11111111111111111111111111111111, liquidity_amount: 0, lp_tokens: 0 }, LiquidityPoolInfo { pool: 11111111111111111111111111111111, token_mint: 11111111111111111111111111111111, liquidity_amount: 0, lp_tokens: 0 }, LiquidityPoolInfo { pool: 11111111111111111111111111111111, token_mint: 11111111111111111111111111111111, liquidity_amount: 0, lp_tokens: 0 }], latest_liquidity_provided_on: 0, bump: 255 }, info: AccountInfo { key: 5vEhPi9F7FMzgM1axXvXCxrXMXLLVCVXQqCr84FssQ66, owner: HmBMkwugty2Govvk31r33dLxfMDJi58Ch8aLqzjaXaAj, is_signer: false, is_writable: true, executable: false, rent_epoch: 18446744073709551615, lamports: 6911280, data.len: 865, data: 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000, .. } }
-    Program HmBMkwugty2Govvk31r33dLxfMDJi58Ch8aLqzjaXaAj consumed 98736 of 200000 compute units
-    Program HmBMkwugty2Govvk31r33dLxfMDJi58Ch8aLqzjaXaAj success
-Transaction executed in slot 419240357:
-  Signature: 5Ko58KRWnujowgvzmxgDCF9ji26CqpT3pfszSwbQGoXPfLNfN3cH3SyfZftLsTZa9S1j4Cp1Nm4kFUk9ddtUSpNs
-  Status: Ok
-  Log Messages:
-    Program HmBMkwugty2Govvk31r33dLxfMDJi58Ch8aLqzjaXaAj invoke [1]
-    Program log: Instruction: ProcessDelegateLiquidityProvider
-    Program 11111111111111111111111111111111 invoke [2]
-    Program 11111111111111111111111111111111 success
-    Program 11111111111111111111111111111111 invoke [2]
-    Program 11111111111111111111111111111111 success
-    Program DELeGGvXpWV2fqJUhqcF5ZSYMS4JTLjteaAMARRSaeSh invoke [2]
-    Program 11111111111111111111111111111111 invoke [3]
-    Program 11111111111111111111111111111111 success
-    Program 11111111111111111111111111111111 invoke [3]
-    Program 11111111111111111111111111111111 success
-    Program DELeGGvXpWV2fqJUhqcF5ZSYMS4JTLjteaAMARRSaeSh consumed 17442 of 170490 compute units
-    Program DELeGGvXpWV2fqJUhqcF5ZSYMS4JTLjteaAMARRSaeSh success
-    Program log: Liquidity Provider account delegated successfully!
-    Program HmBMkwugty2Govvk31r33dLxfMDJi58Ch8aLqzjaXaAj consumed 50139 of 200000 compute units
-    Program HmBMkwugty2Govvk31r33dLxfMDJi58Ch8aLqzjaXaAj success
-Transaction executed in slot 419240403:
-  Signature: rBHTXXTw9BvFht7WHQNhaxtS97aJh9nR4UqH79aoHbTJNPSk7csXg9uhMHbtrewEaxXtXcVgGvBmjP4g9GZVDh8
+Transaction executed in slot 419249220:
+  Signature: 2wRxLEmk9DmTymkkHyrPR36zSa6j8uSoNdqvQfGmjPnAkAQWUJ3vZ7trHLQL6H3jtwsP7rW1RDqtr3hHge6u1eMj
   Status: Error processing Instruction 0: custom program error: 0xbc4
   Log Messages:
     Program HmBMkwugty2Govvk31r33dLxfMDJi58Ch8aLqzjaXaAj invoke [1]
