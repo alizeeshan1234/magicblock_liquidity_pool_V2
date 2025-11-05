@@ -247,11 +247,14 @@ describe("magic-block-liquiditypool", () => {
 
   it("Add Liquidity OnChain", async () => {
 
-    const tx = await program.methods.processDepositAddLiquidityOnChain(
-      new anchor.BN(100),     // amount_a
-      new anchor.BN(100),     // amount_b
-      new anchor.BN(100),     // min_lp_tokens
-    ).accountsPartial({
+    let depositLiquidityParams = {
+      amountA: new anchor.BN(100),
+      amountB: new anchor.BN(100),
+      minLpTokens: new anchor.BN(100),
+      pool: poolAccount,
+    }
+
+    const tx = await program.methods.processDepositAddLiquidityOnChain(depositLiquidityParams).accountsPartial({
       provider: provider.wallet.publicKey,
       mintA: mintA,
       mintB: mintB,

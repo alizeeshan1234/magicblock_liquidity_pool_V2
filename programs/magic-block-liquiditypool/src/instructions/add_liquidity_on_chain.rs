@@ -90,22 +90,26 @@ pub struct DepositLiquidityOnchain<'info> {
     pub system_program: Program<'info, System>,
 }
 
+#[derive(Clone, AnchorDeserialize, AnchorSerialize)]
+pub struct DepositLiquidityParams {
+    pub amount_a: u64,
+    pub amount_b: u64,
+    pub min_lp_tokens: u64,
+    pub pool: Pubkey,
+}
 
-pub fn deposit_liquidity_on_chain(ctx: Context<DepositLiquidityOnchain>, amount_a: u64,
-    amount_b: u64,
-    min_lp_tokens: u64
-) -> Result<()> {
+pub fn deposit_liquidity_on_chain(ctx: Context<DepositLiquidityOnchain>, params: DepositLiquidityParams) -> Result<()> {
 
-    require!(amount_a > 0, ErrorCode::InvalidAmount);
-    require!(amount_b > 0, ErrorCode::InvalidAmount);
+    require!(params.amount_a > 0, ErrorCode::InvalidAmount);
+    require!(params.amount_b > 0, ErrorCode::InvalidAmount);
 
     require!(
-        ctx.accounts.provider_token_a_ata.amount >= amount_a,
+        ctx.accounts.provider_token_a_ata.amount >= params.amount_a,
         ErrorCode::InsufficientBalance
     );
 
     require!(
-        ctx.accounts.provider_token_b_ata.amount >= amount_b,
+        ctx.accounts.provider_token_b_ata.amount >= params.amount_b,
         ErrorCode::InsufficientBalance
     );
 
@@ -118,9 +122,9 @@ pub fn deposit_liquidity_on_chain(ctx: Context<DepositLiquidityOnchain>, amount_
     let cpi_program = ctx.accounts.token_program.to_account_info();
 
     let cpi_ctx_a = CpiContext::new(cpi_program.clone(), cpi_accounts_token_a);
-    anchor_spl::token::transfer(cpi_ctx_a, amount_a)?;
+    anchor_spl::token::transfer(cpi_ctx_a, params.amount_a)?;
 
-    msg!("Transferred {} of Token A to Vault", amount_a);
+    msg!("Transferred {} of Token A to Vault", params.amount_a);
 
     let cpi_accounts_token_b = Transfer {
         from: ctx.accounts.provider_token_b_ata.to_account_info(),
@@ -129,30 +133,30 @@ pub fn deposit_liquidity_on_chain(ctx: Context<DepositLiquidityOnchain>, amount_
     };
 
     let cpi_ctx_b = CpiContext::new(cpi_program, cpi_accounts_token_b);
-    anchor_spl::token::transfer(cpi_ctx_b, amount_b)?;
+    anchor_spl::token::transfer(cpi_ctx_b, params.amount_b)?;
 
-    msg!("Transferred {} of Token B to Vault", amount_b);
+    msg!("Transferred {} of Token B to Vault", params.amount_b);
 
     let lp_tokens_to_mint = if ctx.accounts.lp_mint.supply == 0 {
-        let product = (amount_a as u128)
-            .checked_mul(amount_b as u128)
+        let product = (params.amount_a as u128)
+            .checked_mul(params.amount_b as u128)
             .ok_or(ErrorCode::MathOverflow)?;
         
         let sqrt = (product as f64).sqrt() as u64;
         sqrt
     } else {
-        let vault_a_balance = ctx.accounts.token_vault_a.amount - amount_a;
-        let vault_b_balance = ctx.accounts.token_vault_b.amount - amount_b;
+        let vault_a_balance = ctx.accounts.token_vault_a.amount - params.amount_a;
+        let vault_b_balance = ctx.accounts.token_vault_b.amount - params.amount_b;
         
         require!(vault_a_balance > 0 && vault_b_balance > 0, ErrorCode::InvalidPoolState);
 
-        let lp_from_a = (amount_a as u128)
+        let lp_from_a = (params.amount_a as u128)
             .checked_mul(ctx.accounts.lp_mint.supply as u128)
             .ok_or(ErrorCode::MathOverflow)?
             .checked_div(vault_a_balance as u128)
             .ok_or(ErrorCode::MathOverflow)? as u64;
 
-        let lp_from_b = (amount_b as u128)
+        let lp_from_b = (params.amount_b as u128)
             .checked_mul(ctx.accounts.lp_mint.supply as u128)
             .ok_or(ErrorCode::MathOverflow)?
             .checked_div(vault_b_balance as u128)
@@ -161,13 +165,13 @@ pub fn deposit_liquidity_on_chain(ctx: Context<DepositLiquidityOnchain>, amount_
         std::cmp::min(lp_from_a, lp_from_b)
     };
 
-    require!(lp_tokens_to_mint >= min_lp_tokens, ErrorCode::SlippageExceeded);
+    require!(lp_tokens_to_mint >= params.min_lp_tokens, ErrorCode::SlippageExceeded);
 
     let deposit_recept = &mut ctx.accounts.deposit_recept;
-    deposit_recept.pool = Pubkey::default();
+    deposit_recept.pool = params.pool;
     deposit_recept.liquidity_provider = ctx.accounts.provider.key();
-    deposit_recept.amount_a = amount_a;
-    deposit_recept.amount_b = amount_b;
+    deposit_recept.amount_a = params.amount_a;
+    deposit_recept.amount_b = params.amount_b;
     deposit_recept.lp_tokens_minted = lp_tokens_to_mint;
     msg!("Deposit Recept created successfully!");
 

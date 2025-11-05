@@ -19,7 +19,7 @@ pub use instructions::*;
 pub use state::*;
 
 
-declare_id!("6k3vr9R4VexfTwF1BMBNEujEqtZbV9caYv9mGS51GFf9");
+declare_id!("2w81ke6gFt2ETcfGkTjivFV3r566F92uGC4UBd9judcd");
 
 // #[ephemeral]
 #[program]
@@ -48,11 +48,9 @@ pub mod magic_block_liquiditypool {
 
     pub fn process_deposit_add_liquidity_on_chain(
         ctx: Context<DepositLiquidityOnchain>, 
-        amount_a: u64,
-        amount_b: u64,
-        min_lp_tokens: u64,
+        params: DepositLiquidityParams
     ) -> Result<()> {
-        instructions::add_liquidity_on_chain::deposit_liquidity_on_chain(ctx, amount_a, amount_b, min_lp_tokens)
+        instructions::add_liquidity_on_chain::deposit_liquidity_on_chain(ctx, params)
     }
 
     pub fn process_delegate_add_liquidity_receipt(ctx: Context<DelegateDepositReceipt>, commit_frequency: u32, validator_key: Pubkey) -> Result<()> {
