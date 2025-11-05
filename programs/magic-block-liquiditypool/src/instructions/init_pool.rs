@@ -56,7 +56,7 @@ pub struct InitializeLiquidityPool<'info> {
     pub pool: Account<'info, Pool>,
 
     #[account(
-        init_if_needed,
+        init,
         payer = admin,
         seeds = [b"token_account_a", mint_a.key().as_ref()],
         bump,
@@ -66,7 +66,7 @@ pub struct InitializeLiquidityPool<'info> {
     pub token_vault_a: Account<'info, TokenAccount>,
 
     #[account(
-        init_if_needed,
+        init,
         payer = admin,
         seeds = [b"token_account_b", mint_b.key().as_ref()],
         bump,

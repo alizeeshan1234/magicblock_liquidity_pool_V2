@@ -1,5 +1,5 @@
 {
-  "address": "UfCSQPV6JBAkJxfHS3HWdcN149DYZ6RPTST4LtuzGQY",
+  "address": "EDdzeoiqJnnWTKYYSz3PgcspM4EDLee9PUYPMqjMnxPz",
   "metadata": {
     "name": "magic_block_liquiditypool",
     "version": "0.1.0",
@@ -616,38 +616,38 @@
             "program": {
               "kind": "const",
               "value": [
-                7,
-                21,
-                223,
-                30,
-                214,
-                124,
-                250,
-                104,
-                23,
-                99,
-                39,
-                54,
-                66,
-                24,
-                78,
+                196,
+                100,
+                186,
+                159,
+                142,
                 33,
-                47,
-                178,
-                143,
-                108,
-                40,
-                180,
-                133,
-                163,
-                109,
-                169,
-                93,
-                133,
-                248,
-                239,
+                36,
+                7,
+                214,
+                73,
+                49,
+                24,
+                42,
+                39,
+                235,
+                42,
+                246,
+                46,
                 165,
-                185
+                22,
+                100,
+                183,
+                47,
+                36,
+                127,
+                193,
+                59,
+                226,
+                140,
+                135,
+                88,
+                121
               ]
             }
           }
@@ -773,7 +773,7 @@
         },
         {
           "name": "owner_program",
-          "address": "UfCSQPV6JBAkJxfHS3HWdcN149DYZ6RPTST4LtuzGQY"
+          "address": "EDdzeoiqJnnWTKYYSz3PgcspM4EDLee9PUYPMqjMnxPz"
         },
         {
           "name": "delegation_program",
@@ -837,38 +837,38 @@
             "program": {
               "kind": "const",
               "value": [
-                7,
-                21,
-                223,
-                30,
-                214,
-                124,
-                250,
-                104,
-                23,
-                99,
-                39,
-                54,
-                66,
-                24,
-                78,
+                196,
+                100,
+                186,
+                159,
+                142,
                 33,
-                47,
-                178,
-                143,
-                108,
-                40,
-                180,
-                133,
-                163,
-                109,
-                169,
-                93,
-                133,
-                248,
-                239,
+                36,
+                7,
+                214,
+                73,
+                49,
+                24,
+                42,
+                39,
+                235,
+                42,
+                246,
+                46,
                 165,
-                185
+                22,
+                100,
+                183,
+                47,
+                36,
+                127,
+                193,
+                59,
+                226,
+                140,
+                135,
+                88,
+                121
               ]
             }
           }
@@ -968,7 +968,7 @@
         },
         {
           "name": "owner_program",
-          "address": "UfCSQPV6JBAkJxfHS3HWdcN149DYZ6RPTST4LtuzGQY"
+          "address": "EDdzeoiqJnnWTKYYSz3PgcspM4EDLee9PUYPMqjMnxPz"
         },
         {
           "name": "delegation_program",
@@ -1457,6 +1457,18 @@
     {
       "code": 6006,
       "name": "MaxPoolsReached"
+    },
+    {
+      "code": 6007,
+      "name": "InsufficientTokenBalance"
+    },
+    {
+      "code": 6008,
+      "name": "InvalidAmount"
+    },
+    {
+      "code": 6009,
+      "name": "InsufficientFunds"
     }
   ],
   "types": [

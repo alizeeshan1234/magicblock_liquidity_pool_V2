@@ -2,7 +2,7 @@ import * as anchor from "@coral-xyz/anchor";
 import { Program } from "@coral-xyz/anchor";
 import { MagicBlockLiquiditypool } from "../target/types/magic_block_liquiditypool";
 import { Keypair, PublicKey, SystemProgram } from "@solana/web3.js";
-import { Account, createMint, getOrCreateAssociatedTokenAccount, TOKEN_PROGRAM_ID } from "@solana/spl-token";
+import { Account, createMint, getOrCreateAssociatedTokenAccount, mintTo, TOKEN_PROGRAM_ID, approve } from "@solana/spl-token";
 import { sendMagicTransaction, getClosestValidator } from "magic-router-sdk";
 import { web3 } from "@coral-xyz/anchor";
 import { SYSTEM_PROGRAM_ID } from "@coral-xyz/anchor/dist/cjs/native/system";
@@ -10,6 +10,9 @@ import {MAGIC_CONTEXT_ID, MAGIC_PROGRAM_ID} from "@magicblock-labs/ephemeral-rol
 import { Connection, clusterApiUrl } from "@solana/web3.js";
 
 const METADATA_PROGRAM_ID = new PublicKey("metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s");
+const DELEGATION_PROGRAM_ID = new PublicKey("DELeGGvXpWV2fqJUhqcF5ZSYMS4JTLjteaAMARRSaeSh");
+
+
 
 describe("magic-block-liquiditypool", () => {
   let provider = anchor.AnchorProvider.env();
@@ -128,16 +131,26 @@ describe("magic-block-liquiditypool", () => {
       provider.wallet.publicKey,
     );
 
-    let providerLpTokenAccountAddress = await getOrCreateAssociatedTokenAccount(
-      provider.connection,
-      provider.wallet.payer,
-      lpMint,
-      provider.wallet.publicKey,
-    );
-
     providerTokenAccountA = providerTokenAccountAaddress.address;
     providerTokenAccountB = providerTokenAccountBaddress.address;
-    providerLpTokenAccount = providerLpTokenAccountAddress.address;
+
+    await mintTo(
+      provider.connection,
+      provider.wallet.payer,
+      mintA,
+      providerTokenAccountA,
+      provider.wallet.publicKey,
+      1000000
+    );
+
+    await mintTo(
+      provider.connection,
+      provider.wallet.payer,
+      mintB,
+      providerTokenAccountB,
+      provider.wallet.publicKey,
+      1000000
+    );
   })
 
   it("Is initialized!", async () => {
@@ -163,6 +176,14 @@ describe("magic-block-liquiditypool", () => {
     }).signers([provider.wallet.payer]).rpc();
 
     console.log(`Transaction Signature: ${tx}`);
+
+    let providerLpTokenAccountAddress = await getOrCreateAssociatedTokenAccount(
+      provider.connection,
+      provider.wallet.payer,
+      lpMint,
+      provider.wallet.publicKey,
+    );
+    providerLpTokenAccount = providerLpTokenAccountAddress.address;
   });
 
   it("Delegate Pool", async () => {
@@ -249,6 +270,34 @@ describe("magic-block-liquiditypool", () => {
       minLpTokens: new anchor.BN(50),
     };
 
+    // const [delegationRecord] = PublicKey.findProgramAddressSync(
+    //   [Buffer.from("delegation"), poolAccount.toBuffer()],
+    //   DELEGATION_PROGRAM_ID
+    // );
+
+    // const [escrowAuth] = PublicKey.findProgramAddressSync(
+    //   [Buffer.from("escrow"), Buffer.from("authority"), delegationRecord.toBuffer()],
+    //   DELEGATION_PROGRAM_ID
+    // );
+
+    // await approve(
+    //   provider.connection,
+    //   provider.wallet.payer,
+    //   providerTokenAccountA,
+    //   escrowAuth, // Use derived escrow_auth
+    //   provider.wallet.publicKey,
+    //   commitAndAddLiquidityParams.amountA.toNumber()
+    // );
+
+    // await approve(
+    //   provider.connection,
+    //   provider.wallet.payer,
+    //   providerTokenAccountB,
+    //   escrowAuth,
+    //   provider.wallet.publicKey,
+    //   commitAndAddLiquidityParams.amountB.toNumber()
+    // );
+
     const tx = await program.methods.processCommitAndAddLiquidity(commitAndAddLiquidityParams).accountsPartial({
       provider: provider.wallet.publicKey,
       mintA: mintA,
@@ -273,9 +322,11 @@ describe("magic-block-liquiditypool", () => {
       [provider.wallet.payer]
     );
 
-    await sleepWithAnimation(30);
+    await sleepWithAnimation(10);
 
     console.log(`Transaction Signature: ${signature}`);
+    console.log(`Vault A Account: ${tokenVaultAaccount.toBase58()}`);
+    console.log(`Vault B Account: ${tokenVaultBaccount.toBase58()}`);
 
     const connection = new Connection(process.env.ROUTER_ENDPOINT || "https://devnet-router.magicblock.app", "confirmed");
     const tx2 = await connection.getTransaction(signature, { commitment: "confirmed" });

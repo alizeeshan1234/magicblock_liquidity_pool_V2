@@ -5,7 +5,7 @@
  * IDL can be found at `target/idl/magic_block_liquiditypool.json`.
  */
 export type MagicBlockLiquiditypool = {
-  "address": "UfCSQPV6JBAkJxfHS3HWdcN149DYZ6RPTST4LtuzGQY",
+  "address": "EDdzeoiqJnnWTKYYSz3PgcspM4EDLee9PUYPMqjMnxPz",
   "metadata": {
     "name": "magicBlockLiquiditypool",
     "version": "0.1.0",
@@ -622,38 +622,38 @@ export type MagicBlockLiquiditypool = {
             "program": {
               "kind": "const",
               "value": [
-                7,
-                21,
-                223,
-                30,
-                214,
-                124,
-                250,
-                104,
-                23,
-                99,
-                39,
-                54,
-                66,
-                24,
-                78,
+                196,
+                100,
+                186,
+                159,
+                142,
                 33,
-                47,
-                178,
-                143,
-                108,
-                40,
-                180,
-                133,
-                163,
-                109,
-                169,
-                93,
-                133,
-                248,
-                239,
+                36,
+                7,
+                214,
+                73,
+                49,
+                24,
+                42,
+                39,
+                235,
+                42,
+                246,
+                46,
                 165,
-                185
+                22,
+                100,
+                183,
+                47,
+                36,
+                127,
+                193,
+                59,
+                226,
+                140,
+                135,
+                88,
+                121
               ]
             }
           }
@@ -779,7 +779,7 @@ export type MagicBlockLiquiditypool = {
         },
         {
           "name": "ownerProgram",
-          "address": "UfCSQPV6JBAkJxfHS3HWdcN149DYZ6RPTST4LtuzGQY"
+          "address": "EDdzeoiqJnnWTKYYSz3PgcspM4EDLee9PUYPMqjMnxPz"
         },
         {
           "name": "delegationProgram",
@@ -843,38 +843,38 @@ export type MagicBlockLiquiditypool = {
             "program": {
               "kind": "const",
               "value": [
-                7,
-                21,
-                223,
-                30,
-                214,
-                124,
-                250,
-                104,
-                23,
-                99,
-                39,
-                54,
-                66,
-                24,
-                78,
+                196,
+                100,
+                186,
+                159,
+                142,
                 33,
-                47,
-                178,
-                143,
-                108,
-                40,
-                180,
-                133,
-                163,
-                109,
-                169,
-                93,
-                133,
-                248,
-                239,
+                36,
+                7,
+                214,
+                73,
+                49,
+                24,
+                42,
+                39,
+                235,
+                42,
+                246,
+                46,
                 165,
-                185
+                22,
+                100,
+                183,
+                47,
+                36,
+                127,
+                193,
+                59,
+                226,
+                140,
+                135,
+                88,
+                121
               ]
             }
           }
@@ -974,7 +974,7 @@ export type MagicBlockLiquiditypool = {
         },
         {
           "name": "ownerProgram",
-          "address": "UfCSQPV6JBAkJxfHS3HWdcN149DYZ6RPTST4LtuzGQY"
+          "address": "EDdzeoiqJnnWTKYYSz3PgcspM4EDLee9PUYPMqjMnxPz"
         },
         {
           "name": "delegationProgram",
@@ -1463,6 +1463,18 @@ export type MagicBlockLiquiditypool = {
     {
       "code": 6006,
       "name": "maxPoolsReached"
+    },
+    {
+      "code": 6007,
+      "name": "insufficientTokenBalance"
+    },
+    {
+      "code": 6008,
+      "name": "invalidAmount"
+    },
+    {
+      "code": 6009,
+      "name": "insufficientFunds"
     }
   ],
   "types": [

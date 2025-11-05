@@ -10,4 +10,7 @@ pub enum ErrorCode {
     InsufficientReserves,
     SlippageExceeded,
     MaxPoolsReached,
+    InsufficientTokenBalance,
+    InvalidAmount,
+    InsufficientFunds,
 }

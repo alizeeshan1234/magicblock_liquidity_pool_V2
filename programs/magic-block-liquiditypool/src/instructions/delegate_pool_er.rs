@@ -17,7 +17,7 @@ use crate::state::pool::Pool;
 pub struct DelegatePool<'info> {
     #[account(mut)]
     pub payer: Signer<'info>,
-
+ 
     #[account(
         mut,
         del,
