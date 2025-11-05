@@ -100,4 +100,3 @@ pub fn deposit_liquidity(ctx: Context<DepositLiquidityOnChain>, params: CommitAn
     msg!("Hello World!");
     Ok(())
 }
-

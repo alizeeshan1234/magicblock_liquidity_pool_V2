@@ -19,7 +19,7 @@ pub use instructions::*;
 pub use state::*;
 
 
-declare_id!("4j5vokUHTaCttmyuMWrGWPtq6BG8zCjGGgzqAAwLjdyv");
+declare_id!("UfCSQPV6JBAkJxfHS3HWdcN149DYZ6RPTST4LtuzGQY");
 
 #[ephemeral]
 #[program]
