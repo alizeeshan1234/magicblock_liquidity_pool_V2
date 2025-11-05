@@ -5,7 +5,7 @@
  * IDL can be found at `target/idl/magic_block_liquiditypool.json`.
  */
 export type MagicBlockLiquiditypool = {
-  "address": "EDdzeoiqJnnWTKYYSz3PgcspM4EDLee9PUYPMqjMnxPz",
+  "address": "6k3vr9R4VexfTwF1BMBNEujEqtZbV9caYv9mGS51GFf9",
   "metadata": {
     "name": "magicBlockLiquiditypool",
     "version": "0.1.0",
@@ -133,16 +133,16 @@ export type MagicBlockLiquiditypool = {
       ]
     },
     {
-      "name": "processCommitAndAddLiquidity",
+      "name": "processDelegateAddLiquidityReceipt",
       "discriminator": [
-        245,
-        213,
-        24,
-        23,
-        1,
-        199,
-        40,
-        9
+        197,
+        223,
+        198,
+        132,
+        134,
+        168,
+        29,
+        37
       ],
       "accounts": [
         {
@@ -151,432 +151,188 @@ export type MagicBlockLiquiditypool = {
           "signer": true
         },
         {
-          "name": "mintA"
-        },
-        {
-          "name": "mintB"
-        },
-        {
-          "name": "transferAuthority",
+          "name": "bufferDepositRecept",
+          "writable": true,
           "pda": {
             "seeds": [
               {
                 "kind": "const",
                 "value": [
-                  116,
-                  114,
-                  97,
-                  110,
-                  115,
+                  98,
+                  117,
+                  102,
                   102,
                   101,
-                  114,
-                  95,
-                  97,
-                  117,
-                  116,
-                  104,
-                  111,
-                  114,
-                  105,
-                  116,
-                  121
+                  114
                 ]
+              },
+              {
+                "kind": "account",
+                "path": "depositRecept"
               }
-            ]
+            ],
+            "program": {
+              "kind": "const",
+              "value": [
+                85,
+                81,
+                184,
+                119,
+                186,
+                247,
+                193,
+                176,
+                209,
+                164,
+                15,
+                202,
+                18,
+                101,
+                8,
+                242,
+                147,
+                130,
+                236,
+                211,
+                105,
+                228,
+                125,
+                175,
+                186,
+                253,
+                73,
+                254,
+                130,
+                16,
+                49,
+                52
+              ]
+            }
           }
         },
         {
-          "name": "lpMint",
+          "name": "delegationRecordDepositRecept",
+          "writable": true,
           "pda": {
             "seeds": [
               {
                 "kind": "const",
                 "value": [
+                  100,
+                  101,
                   108,
-                  112,
-                  95,
-                  116,
-                  111,
-                  107,
                   101,
-                  110,
-                  95,
-                  109,
-                  105,
-                  110,
-                  116
-                ]
-              }
-            ]
-          }
-        },
-        {
-          "name": "liquidityProvider",
-          "writable": true
-        },
-        {
-          "name": "pool",
-          "writable": true
-        },
-        {
-          "name": "providerLpTokenAccount",
-          "pda": {
-            "seeds": [
-              {
-                "kind": "account",
-                "path": "provider"
-              },
-              {
-                "kind": "const",
-                "value": [
-                  6,
-                  221,
-                  246,
-                  225,
-                  215,
-                  101,
-                  161,
-                  147,
-                  217,
-                  203,
-                  225,
-                  70,
-                  206,
-                  235,
-                  121,
-                  172,
-                  28,
-                  180,
-                  133,
-                  237,
-                  95,
-                  91,
-                  55,
-                  145,
-                  58,
-                  140,
-                  245,
-                  133,
-                  126,
-                  255,
-                  0,
-                  169
-                ]
-              },
-              {
-                "kind": "account",
-                "path": "lpMint"
-              }
-            ],
-            "program": {
-              "kind": "const",
-              "value": [
-                140,
-                151,
-                37,
-                143,
-                78,
-                36,
-                137,
-                241,
-                187,
-                61,
-                16,
-                41,
-                20,
-                142,
-                13,
-                131,
-                11,
-                90,
-                19,
-                153,
-                218,
-                255,
-                16,
-                132,
-                4,
-                142,
-                123,
-                216,
-                219,
-                233,
-                248,
-                89
-              ]
-            }
-          }
-        },
-        {
-          "name": "providerTokenAAta",
-          "pda": {
-            "seeds": [
-              {
-                "kind": "account",
-                "path": "provider"
-              },
-              {
-                "kind": "const",
-                "value": [
-                  6,
-                  221,
-                  246,
-                  225,
-                  215,
-                  101,
-                  161,
-                  147,
-                  217,
-                  203,
-                  225,
-                  70,
-                  206,
-                  235,
-                  121,
-                  172,
-                  28,
-                  180,
-                  133,
-                  237,
-                  95,
-                  91,
-                  55,
-                  145,
-                  58,
-                  140,
-                  245,
-                  133,
-                  126,
-                  255,
-                  0,
-                  169
-                ]
-              },
-              {
-                "kind": "account",
-                "path": "mintA"
-              }
-            ],
-            "program": {
-              "kind": "const",
-              "value": [
-                140,
-                151,
-                37,
-                143,
-                78,
-                36,
-                137,
-                241,
-                187,
-                61,
-                16,
-                41,
-                20,
-                142,
-                13,
-                131,
-                11,
-                90,
-                19,
-                153,
-                218,
-                255,
-                16,
-                132,
-                4,
-                142,
-                123,
-                216,
-                219,
-                233,
-                248,
-                89
-              ]
-            }
-          }
-        },
-        {
-          "name": "providerTokenBAta",
-          "pda": {
-            "seeds": [
-              {
-                "kind": "account",
-                "path": "provider"
-              },
-              {
-                "kind": "const",
-                "value": [
-                  6,
-                  221,
-                  246,
-                  225,
-                  215,
-                  101,
-                  161,
-                  147,
-                  217,
-                  203,
-                  225,
-                  70,
-                  206,
-                  235,
-                  121,
-                  172,
-                  28,
-                  180,
-                  133,
-                  237,
-                  95,
-                  91,
-                  55,
-                  145,
-                  58,
-                  140,
-                  245,
-                  133,
-                  126,
-                  255,
-                  0,
-                  169
-                ]
-              },
-              {
-                "kind": "account",
-                "path": "mintB"
-              }
-            ],
-            "program": {
-              "kind": "const",
-              "value": [
-                140,
-                151,
-                37,
-                143,
-                78,
-                36,
-                137,
-                241,
-                187,
-                61,
-                16,
-                41,
-                20,
-                142,
-                13,
-                131,
-                11,
-                90,
-                19,
-                153,
-                218,
-                255,
-                16,
-                132,
-                4,
-                142,
-                123,
-                216,
-                219,
-                233,
-                248,
-                89
-              ]
-            }
-          }
-        },
-        {
-          "name": "tokenVaultA",
-          "pda": {
-            "seeds": [
-              {
-                "kind": "const",
-                "value": [
-                  116,
-                  111,
-                  107,
-                  101,
-                  110,
-                  95,
+                  103,
                   97,
-                  99,
-                  99,
-                  111,
-                  117,
-                  110,
                   116,
-                  95,
+                  105,
+                  111,
+                  110
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "depositRecept"
+              }
+            ],
+            "program": {
+              "kind": "account",
+              "path": "delegationProgram"
+            }
+          }
+        },
+        {
+          "name": "delegationMetadataDepositRecept",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  100,
+                  101,
+                  108,
+                  101,
+                  103,
+                  97,
+                  116,
+                  105,
+                  111,
+                  110,
+                  45,
+                  109,
+                  101,
+                  116,
+                  97,
+                  100,
+                  97,
+                  116,
                   97
                 ]
               },
               {
                 "kind": "account",
-                "path": "mintA"
+                "path": "depositRecept"
               }
-            ]
+            ],
+            "program": {
+              "kind": "account",
+              "path": "delegationProgram"
+            }
           }
         },
         {
-          "name": "tokenVaultB",
+          "name": "depositRecept",
+          "writable": true,
           "pda": {
             "seeds": [
               {
                 "kind": "const",
                 "value": [
-                  116,
-                  111,
-                  107,
+                  100,
                   101,
-                  110,
-                  95,
-                  97,
-                  99,
-                  99,
+                  112,
                   111,
-                  117,
-                  110,
+                  115,
+                  105,
                   116,
                   95,
-                  98
+                  114,
+                  101,
+                  99,
+                  101,
+                  112,
+                  116
                 ]
               },
               {
                 "kind": "account",
-                "path": "mintB"
+                "path": "provider"
               }
             ]
           }
         },
         {
-          "name": "tokenProgram",
-          "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+          "name": "ownerProgram",
+          "address": "6k3vr9R4VexfTwF1BMBNEujEqtZbV9caYv9mGS51GFf9"
+        },
+        {
+          "name": "delegationProgram",
+          "address": "DELeGGvXpWV2fqJUhqcF5ZSYMS4JTLjteaAMARRSaeSh"
         },
         {
           "name": "systemProgram",
           "address": "11111111111111111111111111111111"
-        },
-        {
-          "name": "programId"
-        },
-        {
-          "name": "magicProgram",
-          "address": "Magic11111111111111111111111111111111111111"
-        },
-        {
-          "name": "magicContext",
-          "writable": true,
-          "address": "MagicContext1111111111111111111111111111111"
         }
       ],
       "args": [
         {
-          "name": "params",
-          "type": {
-            "defined": {
-              "name": "commitAndAddLiquidityParams"
-            }
-          }
+          "name": "commitFrequency",
+          "type": "u32"
+        },
+        {
+          "name": "validatorKey",
+          "type": "pubkey"
         }
       ]
     },
@@ -622,38 +378,38 @@ export type MagicBlockLiquiditypool = {
             "program": {
               "kind": "const",
               "value": [
-                196,
-                100,
+                85,
+                81,
+                184,
+                119,
                 186,
-                159,
-                142,
-                33,
-                36,
-                7,
-                214,
-                73,
-                49,
-                24,
-                42,
-                39,
-                235,
-                42,
-                246,
-                46,
-                165,
-                22,
-                100,
-                183,
-                47,
-                36,
-                127,
+                247,
                 193,
-                59,
-                226,
-                140,
-                135,
-                88,
-                121
+                176,
+                209,
+                164,
+                15,
+                202,
+                18,
+                101,
+                8,
+                242,
+                147,
+                130,
+                236,
+                211,
+                105,
+                228,
+                125,
+                175,
+                186,
+                253,
+                73,
+                254,
+                130,
+                16,
+                49,
+                52
               ]
             }
           }
@@ -779,7 +535,7 @@ export type MagicBlockLiquiditypool = {
         },
         {
           "name": "ownerProgram",
-          "address": "EDdzeoiqJnnWTKYYSz3PgcspM4EDLee9PUYPMqjMnxPz"
+          "address": "6k3vr9R4VexfTwF1BMBNEujEqtZbV9caYv9mGS51GFf9"
         },
         {
           "name": "delegationProgram",
@@ -843,38 +599,38 @@ export type MagicBlockLiquiditypool = {
             "program": {
               "kind": "const",
               "value": [
-                196,
-                100,
+                85,
+                81,
+                184,
+                119,
                 186,
-                159,
-                142,
-                33,
-                36,
-                7,
-                214,
-                73,
-                49,
-                24,
-                42,
-                39,
-                235,
-                42,
-                246,
-                46,
-                165,
-                22,
-                100,
-                183,
-                47,
-                36,
-                127,
+                247,
                 193,
-                59,
-                226,
-                140,
-                135,
-                88,
-                121
+                176,
+                209,
+                164,
+                15,
+                202,
+                18,
+                101,
+                8,
+                242,
+                147,
+                130,
+                236,
+                211,
+                105,
+                228,
+                125,
+                175,
+                186,
+                253,
+                73,
+                254,
+                130,
+                16,
+                49,
+                52
               ]
             }
           }
@@ -974,7 +730,7 @@ export type MagicBlockLiquiditypool = {
         },
         {
           "name": "ownerProgram",
-          "address": "EDdzeoiqJnnWTKYYSz3PgcspM4EDLee9PUYPMqjMnxPz"
+          "address": "6k3vr9R4VexfTwF1BMBNEujEqtZbV9caYv9mGS51GFf9"
         },
         {
           "name": "delegationProgram",
@@ -997,20 +753,22 @@ export type MagicBlockLiquiditypool = {
       ]
     },
     {
-      "name": "processDepositLiquidityOnChain",
+      "name": "processDepositAddLiquidityOnChain",
       "discriminator": [
-        110,
-        150,
-        28,
-        162,
-        136,
-        123,
-        1,
-        28
+        222,
+        190,
+        199,
+        237,
+        235,
+        164,
+        126,
+        175
       ],
       "accounts": [
         {
-          "name": "provider"
+          "name": "provider",
+          "writable": true,
+          "signer": true
         },
         {
           "name": "mintA"
@@ -1019,58 +777,447 @@ export type MagicBlockLiquiditypool = {
           "name": "mintB"
         },
         {
-          "name": "transferAuthority"
+          "name": "transferAuthority",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  116,
+                  114,
+                  97,
+                  110,
+                  115,
+                  102,
+                  101,
+                  114,
+                  95,
+                  97,
+                  117,
+                  116,
+                  104,
+                  111,
+                  114,
+                  105,
+                  116,
+                  121
+                ]
+              }
+            ]
+          }
         },
         {
-          "name": "lpMint"
+          "name": "lpMint",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  108,
+                  112,
+                  95,
+                  116,
+                  111,
+                  107,
+                  101,
+                  110,
+                  95,
+                  109,
+                  105,
+                  110,
+                  116
+                ]
+              }
+            ]
+          }
         },
         {
           "name": "tokenVaultA",
-          "writable": true
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  116,
+                  111,
+                  107,
+                  101,
+                  110,
+                  95,
+                  97,
+                  99,
+                  99,
+                  111,
+                  117,
+                  110,
+                  116,
+                  95,
+                  97
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "mintA"
+              }
+            ]
+          }
         },
         {
           "name": "tokenVaultB",
-          "writable": true
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  116,
+                  111,
+                  107,
+                  101,
+                  110,
+                  95,
+                  97,
+                  99,
+                  99,
+                  111,
+                  117,
+                  110,
+                  116,
+                  95,
+                  98
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "mintB"
+              }
+            ]
+          }
         },
         {
           "name": "providerTokenAAta",
-          "writable": true
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "account",
+                "path": "provider"
+              },
+              {
+                "kind": "const",
+                "value": [
+                  6,
+                  221,
+                  246,
+                  225,
+                  215,
+                  101,
+                  161,
+                  147,
+                  217,
+                  203,
+                  225,
+                  70,
+                  206,
+                  235,
+                  121,
+                  172,
+                  28,
+                  180,
+                  133,
+                  237,
+                  95,
+                  91,
+                  55,
+                  145,
+                  58,
+                  140,
+                  245,
+                  133,
+                  126,
+                  255,
+                  0,
+                  169
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "mintA"
+              }
+            ],
+            "program": {
+              "kind": "const",
+              "value": [
+                140,
+                151,
+                37,
+                143,
+                78,
+                36,
+                137,
+                241,
+                187,
+                61,
+                16,
+                41,
+                20,
+                142,
+                13,
+                131,
+                11,
+                90,
+                19,
+                153,
+                218,
+                255,
+                16,
+                132,
+                4,
+                142,
+                123,
+                216,
+                219,
+                233,
+                248,
+                89
+              ]
+            }
+          }
         },
         {
           "name": "providerTokenBAta",
-          "writable": true
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "account",
+                "path": "provider"
+              },
+              {
+                "kind": "const",
+                "value": [
+                  6,
+                  221,
+                  246,
+                  225,
+                  215,
+                  101,
+                  161,
+                  147,
+                  217,
+                  203,
+                  225,
+                  70,
+                  206,
+                  235,
+                  121,
+                  172,
+                  28,
+                  180,
+                  133,
+                  237,
+                  95,
+                  91,
+                  55,
+                  145,
+                  58,
+                  140,
+                  245,
+                  133,
+                  126,
+                  255,
+                  0,
+                  169
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "mintB"
+              }
+            ],
+            "program": {
+              "kind": "const",
+              "value": [
+                140,
+                151,
+                37,
+                143,
+                78,
+                36,
+                137,
+                241,
+                187,
+                61,
+                16,
+                41,
+                20,
+                142,
+                13,
+                131,
+                11,
+                90,
+                19,
+                153,
+                218,
+                255,
+                16,
+                132,
+                4,
+                142,
+                123,
+                216,
+                219,
+                233,
+                248,
+                89
+              ]
+            }
+          }
         },
         {
           "name": "providerTokenLpAta",
-          "writable": true
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "account",
+                "path": "provider"
+              },
+              {
+                "kind": "const",
+                "value": [
+                  6,
+                  221,
+                  246,
+                  225,
+                  215,
+                  101,
+                  161,
+                  147,
+                  217,
+                  203,
+                  225,
+                  70,
+                  206,
+                  235,
+                  121,
+                  172,
+                  28,
+                  180,
+                  133,
+                  237,
+                  95,
+                  91,
+                  55,
+                  145,
+                  58,
+                  140,
+                  245,
+                  133,
+                  126,
+                  255,
+                  0,
+                  169
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "lpMint"
+              }
+            ],
+            "program": {
+              "kind": "const",
+              "value": [
+                140,
+                151,
+                37,
+                143,
+                78,
+                36,
+                137,
+                241,
+                187,
+                61,
+                16,
+                41,
+                20,
+                142,
+                13,
+                131,
+                11,
+                90,
+                19,
+                153,
+                218,
+                255,
+                16,
+                132,
+                4,
+                142,
+                123,
+                216,
+                219,
+                233,
+                248,
+                89
+              ]
+            }
+          }
         },
         {
-          "name": "pool"
+          "name": "depositRecept",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  100,
+                  101,
+                  112,
+                  111,
+                  115,
+                  105,
+                  116,
+                  95,
+                  114,
+                  101,
+                  99,
+                  101,
+                  112,
+                  116
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "provider"
+              }
+            ]
+          }
         },
         {
-          "name": "liquidityProvider"
+          "name": "tokenProgram",
+          "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
         },
         {
-          "name": "tokenProgram"
-        },
-        {
-          "name": "systemProgram"
-        },
-        {
-          "name": "escrow"
-        },
-        {
-          "name": "escrowAuth"
+          "name": "systemProgram",
+          "address": "11111111111111111111111111111111"
         }
       ],
       "args": [
         {
-          "name": "params",
-          "type": {
-            "defined": {
-              "name": "commitAndAddLiquidityParams"
-            }
-          }
+          "name": "amountA",
+          "type": "u64"
+        },
+        {
+          "name": "amountB",
+          "type": "u64"
+        },
+        {
+          "name": "minLpTokens",
+          "type": "u64"
         }
       ]
     },
@@ -1367,46 +1514,22 @@ export type MagicBlockLiquiditypool = {
           }
         }
       ]
-    },
-    {
-      "name": "processUndelegation",
-      "discriminator": [
-        196,
-        28,
-        41,
-        206,
-        48,
-        37,
-        51,
-        167
-      ],
-      "accounts": [
-        {
-          "name": "baseAccount",
-          "writable": true
-        },
-        {
-          "name": "buffer"
-        },
-        {
-          "name": "payer",
-          "writable": true
-        },
-        {
-          "name": "systemProgram"
-        }
-      ],
-      "args": [
-        {
-          "name": "accountSeeds",
-          "type": {
-            "vec": "bytes"
-          }
-        }
-      ]
     }
   ],
   "accounts": [
+    {
+      "name": "depositRecept",
+      "discriminator": [
+        24,
+        194,
+        116,
+        102,
+        198,
+        255,
+        233,
+        191
+      ]
+    },
     {
       "name": "liquidityProvider",
       "discriminator": [
@@ -1475,6 +1598,14 @@ export type MagicBlockLiquiditypool = {
     {
       "code": 6009,
       "name": "insufficientFunds"
+    },
+    {
+      "code": 6010,
+      "name": "insufficientBalance"
+    },
+    {
+      "code": 6011,
+      "name": "invalidPoolState"
     }
   ],
   "types": [
@@ -1547,12 +1678,16 @@ export type MagicBlockLiquiditypool = {
       }
     },
     {
-      "name": "commitAndAddLiquidityParams",
+      "name": "depositRecept",
       "type": {
         "kind": "struct",
         "fields": [
           {
-            "name": "user",
+            "name": "pool",
+            "type": "pubkey"
+          },
+          {
+            "name": "liquidityProvider",
             "type": "pubkey"
           },
           {
@@ -1564,7 +1699,7 @@ export type MagicBlockLiquiditypool = {
             "type": "u64"
           },
           {
-            "name": "minLpTokens",
+            "name": "lpTokensMinted",
             "type": "u64"
           }
         ]

@@ -15,212 +15,212 @@ use crate::pool::Pool;
 use crate::error::ErrorCode;
 
 #[derive(Accounts)]
-pub struct DepositLiquidityOnChain<'info> {
+pub struct DepositLiquidityOnchain<'info> {
+    #[account(mut)]
+    pub provider: Signer<'info>,
 
-    pub provider: AccountInfo<'info>,
+    pub mint_a: Account<'info, Mint>,
+    pub mint_b: Account<'info, Mint>,
 
-    pub mint_a: AccountInfo<'info>,
-
-    pub mint_b: AccountInfo<'info>,
-
-    // #[account(
-    //     seeds = [b"transfer_authority"],
-    //     bump,
-    // )]
+    #[account(
+        seeds = [b"transfer_authority"],
+        bump,
+    )]
     pub transfer_authority: AccountInfo<'info>,
 
-    // #[account(
-    //     mut,
-    //     mint::authority = transfer_authority,
-    //     mint::freeze_authority = transfer_authority,
-    //     mint::decimals = 6,
-    //     seeds = [b"lp_token_mint"],
-    //     bump
-    // )]
-    pub lp_mint: AccountInfo<'info>,
+    #[account(
+        mut,
+        mint::authority = transfer_authority,
+        mint::freeze_authority = transfer_authority,
+        mint::decimals = 6,
+        seeds = [b"lp_token_mint"],
+        bump
+    )]
+    pub lp_mint: Account<'info, Mint>,
 
     #[account(
         mut,
-        // seeds = [b"token_account_a", mint_a.key().as_ref()],
-        // bump,
-        // token::mint = mint_a,
-        // token::authority = transfer_authority
+        seeds = [b"token_account_a", mint_a.key().as_ref()],
+        bump,
+        token::mint = mint_a,
+        token::authority = transfer_authority
     )]
-    pub token_vault_a: AccountInfo<'info>,
+    pub token_vault_a: Account<'info, TokenAccount>,
 
     #[account(
         mut,
-        // seeds = [b"token_account_b", mint_b.key().as_ref()],
-        // bump,
-        // token::mint = mint_b,
-        // token::authority = transfer_authority
+        seeds = [b"token_account_b", mint_b.key().as_ref()],
+        bump,
+        token::mint = mint_b,
+        token::authority = transfer_authority
     )]
-    pub token_vault_b: AccountInfo<'info>,
+    pub token_vault_b: Account<'info, TokenAccount>,
 
     #[account(
         mut,
-        // associated_token::mint = mint_a,
-        // associated_token::authority = provider
+        associated_token::mint = mint_a,
+        associated_token::authority = provider
     )]
-    pub provider_token_a_ata: AccountInfo<'info>,
+    pub provider_token_a_ata: Account<'info, TokenAccount>,
 
     #[account(
         mut,
-        // associated_token::mint = mint_b,
-        // associated_token::authority = provider
+        associated_token::mint = mint_b,
+        associated_token::authority = provider
     )]
-    pub provider_token_b_ata: AccountInfo<'info>,
+    pub provider_token_b_ata: Account<'info, TokenAccount>,
 
     #[account(
         mut,
-        // associated_token::mint = lp_mint,
-        // associated_token::authority = provider
+        associated_token::mint = lp_mint,
+        associated_token::authority = provider
     )]
-    pub provider_token_lp_ata: AccountInfo<'info>,
+    pub provider_token_lp_ata: Account<'info, TokenAccount>,
 
-    pub pool: UncheckedAccount<'info>,
+    #[account(
+        init,
+        payer = provider,
+        space = 8 + DepositRecept::INIT_SPACE,
+        seeds = [b"deposit_recept", provider.key().as_ref()],
+        bump
+    )]
+    pub deposit_recept: Account<'info, DepositRecept>,
 
-    pub liquidity_provider: UncheckedAccount<'info>,
-
-    pub token_program: AccountInfo<'info>,
-
-    pub system_program: AccountInfo<'info>,
-
-    /// CHECK: injected - will be moved to end
-    pub escrow: AccountInfo<'info>,
-    /// CHECK: injected - will be moved to end
-    pub escrow_auth: AccountInfo<'info>,
-
+    pub token_program: Program<'info, Token>,
+    pub system_program: Program<'info, System>,
 }
 
-#[derive(AnchorSerialize, AnchorDeserialize, Clone)]
-pub struct CommitAndAddLiquidityParams {
-    pub user: Pubkey,
-    pub amount_a: u64,
-    pub amount_b: u64,
-    pub min_lp_tokens: u64,
-}
 
-pub fn deposit_liquidity(ctx: Context<DepositLiquidityOnChain>, params: CommitAndAddLiquidityParams) -> Result<()> {
+pub fn deposit_liquidity_on_chain(ctx: Context<DepositLiquidityOnchain>, amount_a: u64,
+    amount_b: u64,
+    min_lp_tokens: u64
+) -> Result<()> {
 
-    let provider_token_a_data = ctx.accounts.provider_token_a_ata.try_borrow_data()?;
-    let provider_token_a_account = TokenAccount::try_deserialize(&mut &provider_token_a_data[..])?;
-    drop(provider_token_a_data);
+    require!(amount_a > 0, ErrorCode::InvalidAmount);
+    require!(amount_b > 0, ErrorCode::InvalidAmount);
 
-    let provider_token_b_data = ctx.accounts.provider_token_b_ata.try_borrow_data()?;
-    let provider_token_b_account = TokenAccount::try_deserialize(&mut &provider_token_b_data[..])?;
-    drop(provider_token_b_data);
+    require!(
+        ctx.accounts.provider_token_a_ata.amount >= amount_a,
+        ErrorCode::InsufficientBalance
+    );
 
-    msg!("Provider Token A Balance: {}", provider_token_a_account.amount);
-    msg!("Provider Token B Balance: {}", provider_token_b_account.amount);
+    require!(
+        ctx.accounts.provider_token_b_ata.amount >= amount_b,
+        ErrorCode::InsufficientBalance
+    );
 
-    let vault_a_data = ctx.accounts.token_vault_a.try_borrow_data()?;
-    let vault_a_account = TokenAccount::try_deserialize(&mut &vault_a_data[..])?;
-    drop(vault_a_data);
-    
-    let vault_b_data = ctx.accounts.token_vault_b.try_borrow_data()?;
-    let vault_b_account = TokenAccount::try_deserialize(&mut &vault_b_data[..])?;
-    drop(vault_b_data);
-
-    msg!("Token Vault A Balance: {}", vault_a_account.amount);
-    msg!("Token Vault B Balance: {}", vault_b_account.amount);
-
-    msg!("Vault A: {}", ctx.accounts.token_vault_a.key());
-    msg!("Vault B: {}", ctx.accounts.token_vault_b.key());
-
-    if params.amount_a == 0 || params.amount_b == 0 {
-        return Err(ErrorCode::InvalidAmount.into());
-    }
-
-    if provider_token_a_account.amount < params.amount_a {
-        return Err(ErrorCode::InsufficientFunds.into());
-    }
-
-    if provider_token_b_account.amount < params.amount_b {
-        return Err(ErrorCode::InsufficientFunds.into());
-    }
-
-    let mut pool_data = ctx.accounts.pool.try_borrow_mut_data()?;
-    let mut pool = Pool::try_deserialize(&mut &pool_data[..])?;
-
-    let reserve_a = pool.reserve_a;
-    let reserve_b = pool.reserve_b;
-    let total_lp_supply = pool.total_lp_supply;
-
-    let lp_tokens_to_mint = if total_lp_supply == 0 {
-        let product = (params.amount_a as u128)
-            .checked_mul(params.amount_b as u128)
-            .ok_or(ErrorCode::MathOverflow)?;
-        (product as f64).sqrt() as u64
-    } else {
-        require!(reserve_a > 0 && reserve_b > 0, ErrorCode::InvalidAmount);
-        
-        let share_a = (params.amount_a as u128)
-            .checked_mul(total_lp_supply as u128)
-            .ok_or(ErrorCode::MathOverflow)?
-            .checked_div(reserve_a as u128)
-            .ok_or(ErrorCode::MathOverflow)? as u64;
-            
-        let share_b = (params.amount_b as u128)
-            .checked_mul(total_lp_supply as u128)
-            .ok_or(ErrorCode::MathOverflow)?
-            .checked_div(reserve_b as u128)
-            .ok_or(ErrorCode::MathOverflow)? as u64;
-        
-        std::cmp::min(share_a, share_b)
+    let cpi_accounts_token_a = Transfer {
+        from: ctx.accounts.provider_token_a_ata.to_account_info(),
+        to: ctx.accounts.token_vault_a.to_account_info(),
+        authority: ctx.accounts.provider.to_account_info(),
     };
 
-    msg!("Lp Tokens to Mint: {}", lp_tokens_to_mint);
+    let cpi_program = ctx.accounts.token_program.to_account_info();
 
-    if lp_tokens_to_mint < params.min_lp_tokens {
-        return Err(ErrorCode::SlippageExceeded.into());
-    }
+    let cpi_ctx_a = CpiContext::new(cpi_program.clone(), cpi_accounts_token_a);
+    anchor_spl::token::transfer(cpi_ctx_a, amount_a)?;
 
-    msg!("Performing on-chain token transfers...");
+    msg!("Transferred {} of Token A to Vault", amount_a);
 
-    // Transfer Token A - CHANGE THIS
-    // let transfer_a_ix = spl_token::instruction::transfer(
-    //     &spl_token::ID,
-    //     &ctx.accounts.provider_token_a_ata.key(),
-    //     &ctx.accounts.token_vault_a.key(),
-    //     &ctx.accounts.escrow_auth.key(), // ← Use escrow_auth
-    //     &[],
-    //     params.amount_a,
-    // )?;
+    let cpi_accounts_token_b = Transfer {
+        from: ctx.accounts.provider_token_b_ata.to_account_info(),
+        to: ctx.accounts.token_vault_b.to_account_info(),
+        authority: ctx.accounts.provider.to_account_info(),
+    };
 
-    // invoke(
-    //     &transfer_a_ix,
-    //     &[
-    //         ctx.accounts.provider_token_a_ata.clone(),
-    //         ctx.accounts.token_vault_a.clone(),
-    //         ctx.accounts.escrow_auth.clone(), // ← Use escrow_auth
-    //         ctx.accounts.token_program.clone(),
-    //     ],
-    // )?; 
+    let cpi_ctx_b = CpiContext::new(cpi_program, cpi_accounts_token_b);
+    anchor_spl::token::transfer(cpi_ctx_b, amount_b)?;
 
-    // // Transfer Token B - CHANGE THIS
-    // let transfer_b_ix = spl_token::instruction::transfer(
-    //     &spl_token::ID,
-    //     &ctx.accounts.provider_token_b_ata.key(),
-    //     &ctx.accounts.token_vault_b.key(),
-    //     &ctx.accounts.escrow_auth.key(), // ← Use escrow_auth
-    //     &[],
-    //     params.amount_b,
-    // )?;
+    msg!("Transferred {} of Token B to Vault", amount_b);
 
-    // invoke(
-    //     &transfer_b_ix,
-    //     &[
-    //         ctx.accounts.provider_token_b_ata.clone(),
-    //         ctx.accounts.token_vault_b.clone(),
-    //         ctx.accounts.escrow_auth.clone(), // ← Use escrow_auth
-    //         ctx.accounts.token_program.clone(),
-    //     ],
-    // )?;
-    msg!("Transferred {} Token A and {} Token B", params.amount_a, params.amount_b);
+    let lp_tokens_to_mint = if ctx.accounts.lp_mint.supply == 0 {
+        let product = (amount_a as u128)
+            .checked_mul(amount_b as u128)
+            .ok_or(ErrorCode::MathOverflow)?;
+        
+        let sqrt = (product as f64).sqrt() as u64;
+        sqrt
+    } else {
+        let vault_a_balance = ctx.accounts.token_vault_a.amount - amount_a;
+        let vault_b_balance = ctx.accounts.token_vault_b.amount - amount_b;
+        
+        require!(vault_a_balance > 0 && vault_b_balance > 0, ErrorCode::InvalidPoolState);
+
+        let lp_from_a = (amount_a as u128)
+            .checked_mul(ctx.accounts.lp_mint.supply as u128)
+            .ok_or(ErrorCode::MathOverflow)?
+            .checked_div(vault_a_balance as u128)
+            .ok_or(ErrorCode::MathOverflow)? as u64;
+
+        let lp_from_b = (amount_b as u128)
+            .checked_mul(ctx.accounts.lp_mint.supply as u128)
+            .ok_or(ErrorCode::MathOverflow)?
+            .checked_div(vault_b_balance as u128)
+            .ok_or(ErrorCode::MathOverflow)? as u64;
+
+        std::cmp::min(lp_from_a, lp_from_b)
+    };
+
+    require!(lp_tokens_to_mint >= min_lp_tokens, ErrorCode::SlippageExceeded);
+
+    let deposit_recept = &mut ctx.accounts.deposit_recept;
+    deposit_recept.pool = Pubkey::default();
+    deposit_recept.liquidity_provider = ctx.accounts.provider.key();
+    deposit_recept.amount_a = amount_a;
+    deposit_recept.amount_b = amount_b;
+    deposit_recept.lp_tokens_minted = lp_tokens_to_mint;
+    msg!("Deposit Recept created successfully!");
+
+    Ok(())
+}
 
 
-    msg!("Hello World!");
+#[account]
+#[derive(Debug, InitSpace)]
+pub struct DepositRecept {
+    pub pool: Pubkey,
+    pub liquidity_provider: Pubkey,
+    pub amount_a: u64,
+    pub amount_b: u64,
+    pub lp_tokens_minted: u64,
+}
+
+#[delegate]
+#[derive(Accounts)]
+pub struct DelegateDepositReceipt<'info> {
+    #[account(mut)]
+    pub provider: Signer<'info>,
+
+    #[account(
+        mut,
+        del,  // Now we can delegate the existing account
+        seeds = [b"deposit_recept", provider.key().as_ref()],
+        bump
+    )]
+    pub deposit_recept: Account<'info, DepositRecept>,
+}
+
+pub fn delegate_deposit_receipt(
+    ctx: Context<DelegateDepositReceipt>,
+    commit_frequency: u32,
+    validator_key: Pubkey,
+) -> Result<()> {
+    let delegate_config = DelegateConfig {
+        commit_frequency_ms: commit_frequency,
+        validator: Some(validator_key),
+    };
+
+    let provider = ctx.accounts.provider.key();
+    let seeds = &[b"deposit_recept", provider.as_ref()];
+
+    ctx.accounts.delegate_deposit_recept(
+        &ctx.accounts.provider,
+        seeds,
+        delegate_config,
+    )?;
+
+    msg!("Deposit receipt delegated successfully!");
+    msg!("Receipt : {:?}", ctx.accounts.deposit_recept);
 
     Ok(())
 }

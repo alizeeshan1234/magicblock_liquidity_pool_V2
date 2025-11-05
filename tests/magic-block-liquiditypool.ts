@@ -54,6 +54,8 @@ describe("magic-block-liquiditypool", () => {
   let providerTokenAccountB: PublicKey;
   let providerLpTokenAccount: PublicKey;
 
+  let depositReceptAccount: PublicKey;
+
   console.log(provider.wallet.publicKey);
 
   before(async () => {
@@ -151,6 +153,11 @@ describe("magic-block-liquiditypool", () => {
       provider.wallet.publicKey,
       1000000
     );
+
+    [depositReceptAccount] = PublicKey.findProgramAddressSync(
+      [Buffer.from("deposit_recept"), provider.wallet.publicKey.toBuffer()],
+      program.programId
+    );
   })
 
   it("Is initialized!", async () => {
@@ -238,6 +245,51 @@ describe("magic-block-liquiditypool", () => {
     console.log(`Delegated Signature: ${signature}`);
   });
 
+  it("Add Liquidity OnChain", async () => {
+
+    const tx = await program.methods.processDepositAddLiquidityOnChain(
+      new anchor.BN(100),     // amount_a
+      new anchor.BN(100),     // amount_b
+      new anchor.BN(100),     // min_lp_tokens
+    ).accountsPartial({
+      provider: provider.wallet.publicKey,
+      mintA: mintA,
+      mintB: mintB,
+      transferAuthority: transferAuthorityAccount,
+      lpMint: lpMint,
+      tokenVaultA: tokenVaultAaccount,
+      tokenVaultB: tokenVaultBaccount,
+      providerTokenAAta: providerTokenAccountA,
+      providerTokenBAta: providerTokenAccountB,
+      providerTokenLpAta: providerLpTokenAccount,
+      depositRecept: depositReceptAccount,
+      tokenProgram: TOKEN_PROGRAM_ID,
+      systemProgram: SystemProgram.programId,
+    }).signers([provider.wallet.payer]).rpc();
+
+    console.log(`Liquidity Provided OnChain: ${tx}`);
+  });
+
+  it("Delegate Add Liquidity Recept", async () => {
+    let validatorKey = await getClosestValidator(routerConnection);
+    let commitFrequency = 30000;
+
+    const tx = await program.methods.processDelegateAddLiquidityReceipt(commitFrequency, validatorKey).accountsPartial({
+      provider: provider.wallet.publicKey,
+      depositRecept: depositReceptAccount,
+    }).transaction();
+
+    const signature = await sendMagicTransaction(
+      routerConnection,
+      tx,
+      [provider.wallet.payer]
+    );
+
+    await sleepWithAnimation(10);
+
+    console.log(`Transaction Signature: ${signature}`);
+  })
+
   it("Add Liquidity ER", async () => {
     const addLiquidityParams = {
       user: provider.wallet.publicKey,
@@ -262,76 +314,6 @@ describe("magic-block-liquiditypool", () => {
     console.log(`Liquidity Provided on ER: ${signature}`);
   });
 
-  it("Commit and Add Liquidity", async () => {
-    let commitAndAddLiquidityParams = {
-      user: provider.wallet.publicKey,
-      amountA: new anchor.BN(50),
-      amountB: new anchor.BN(50),
-      minLpTokens: new anchor.BN(50),
-    };
-
-    // const [delegationRecord] = PublicKey.findProgramAddressSync(
-    //   [Buffer.from("delegation"), poolAccount.toBuffer()],
-    //   DELEGATION_PROGRAM_ID
-    // );
-
-    // const [escrowAuth] = PublicKey.findProgramAddressSync(
-    //   [Buffer.from("escrow"), Buffer.from("authority"), delegationRecord.toBuffer()],
-    //   DELEGATION_PROGRAM_ID
-    // );
-
-    // await approve(
-    //   provider.connection,
-    //   provider.wallet.payer,
-    //   providerTokenAccountA,
-    //   escrowAuth, // Use derived escrow_auth
-    //   provider.wallet.publicKey,
-    //   commitAndAddLiquidityParams.amountA.toNumber()
-    // );
-
-    // await approve(
-    //   provider.connection,
-    //   provider.wallet.payer,
-    //   providerTokenAccountB,
-    //   escrowAuth,
-    //   provider.wallet.publicKey,
-    //   commitAndAddLiquidityParams.amountB.toNumber()
-    // );
-
-    const tx = await program.methods.processCommitAndAddLiquidity(commitAndAddLiquidityParams).accountsPartial({
-      provider: provider.wallet.publicKey,
-      mintA: mintA,
-      mintB: mintB,
-      transferAuthority: transferAuthorityAccount,
-      lpMint: lpMint,
-      liquidityProvider: liquidityProviderAccount,
-      pool: poolAccount,
-      providerLpTokenAccount: providerLpTokenAccount,
-      providerTokenAAta: providerTokenAccountA,
-      providerTokenBAta: providerTokenAccountB,
-      tokenVaultA: tokenVaultAaccount,
-      tokenVaultB: tokenVaultBaccount,
-      tokenProgram: TOKEN_PROGRAM_ID,
-      systemProgram: SystemProgram.programId,
-      programId: program.programId
-    }).transaction();
-
-    let signature = await sendMagicTransaction(
-      routerConnection,
-      tx,
-      [provider.wallet.payer]
-    );
-
-    await sleepWithAnimation(10);
-
-    console.log(`Transaction Signature: ${signature}`);
-    console.log(`Vault A Account: ${tokenVaultAaccount.toBase58()}`);
-    console.log(`Vault B Account: ${tokenVaultBaccount.toBase58()}`);
-
-    const connection = new Connection(process.env.ROUTER_ENDPOINT || "https://devnet-router.magicblock.app", "confirmed");
-    const tx2 = await connection.getTransaction(signature, { commitment: "confirmed" });
-    console.log(tx2.meta.logMessages); 
-  })
   
 });
 
