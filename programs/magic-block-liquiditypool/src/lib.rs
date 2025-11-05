@@ -19,7 +19,7 @@ pub use instructions::*;
 pub use state::*;
 
 
-declare_id!("53ZWSoYgVT48uk5h7txNrjFfijQhamJRgz4C9oGyfaYQ");
+declare_id!("4j5vokUHTaCttmyuMWrGWPtq6BG8zCjGGgzqAAwLjdyv");
 
 #[ephemeral]
 #[program]
@@ -79,7 +79,7 @@ pub mod magic_block_liquiditypool {
         let accounts = vec![
             ShortAccountMeta {
                 pubkey: ctx.accounts.provider.key(),
-                is_writable: true
+                is_writable: false,
             },
             ShortAccountMeta {
                 pubkey: ctx.accounts.mint_a.key(),
@@ -95,11 +95,11 @@ pub mod magic_block_liquiditypool {
             },
             ShortAccountMeta {
                 pubkey: ctx.accounts.lp_mint.key(),
-                is_writable: true
+                is_writable: false,
             },
             ShortAccountMeta {
                 pubkey: ctx.accounts.token_vault_a.key(),
-                is_writable: true
+                is_writable: true,
             },
             ShortAccountMeta {
                 pubkey: ctx.accounts.token_vault_b.key(),

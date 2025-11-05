@@ -273,7 +273,7 @@ describe("magic-block-liquiditypool", () => {
       [provider.wallet.payer]
     );
 
-    await sleepWithAnimation(20);
+    await sleepWithAnimation(30);
 
     console.log(`Transaction Signature: ${signature}`);
 
