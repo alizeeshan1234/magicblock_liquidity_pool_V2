@@ -20,7 +20,7 @@ pub use state::*;
 use state::{pool::Pool, liquidity_provider::LiquidityProvider};
 
 
-declare_id!("6aaiUUVLjJaiqcdTRNcJy5Ekb8XQu3AY2nfB3q2KhvzH");
+declare_id!("8jgWaVWkrQzwHwrW3KCpqG6eheADK8LCD7yEEwo5A7P6");
 
 #[program]
 pub mod magic_block_liquiditypool {
@@ -83,7 +83,7 @@ pub mod magic_block_liquiditypool {
         let accounts = vec![
             ShortAccountMeta {
                 pubkey: ctx.accounts.provider.key(),
-                is_writable: true
+                is_writable: true,
             },
             ShortAccountMeta {
                 pubkey: ctx.accounts.transfer_authority.key(),
@@ -91,11 +91,11 @@ pub mod magic_block_liquiditypool {
             },
             ShortAccountMeta {
                 pubkey: ctx.accounts.lp_mint.key(),
-                is_writable: true
+                is_writable: true,
             },
             ShortAccountMeta {
                 pubkey: ctx.accounts.provider_lp_ata.key(),
-                is_writable: true
+                is_writable: true,
             },
             ShortAccountMeta {
                 pubkey: ctx.accounts.token_program.key(),
@@ -137,17 +137,13 @@ pub struct CommitAndMintLpTokens<'info> {
     #[account(mut)]
     pub provider: Signer<'info>,
 
-    #[account(
-        mut,
-        seeds = [b"pool", pool.name.as_bytes()],
-        bump = pool.bump
-    )]
-    pub pool: Account<'info, Pool>,
+    #[account(mut)]
+    pub pool: UncheckedAccount<'info>,
 
     #[account(
         mut,
         seeds = [b"liquidity_provider_account_info", provider.key().as_ref()],
-        bump = liquidity_provider.bump
+        bump,
     )]
     pub liquidity_provider: Account<'info, LiquidityProvider>,
 
@@ -165,13 +161,11 @@ pub struct CommitAndMintLpTokens<'info> {
     pub transfer_authority: UncheckedAccount<'info>,
 
     #[account(
-        mut,
         seeds = [b"lp_token_mint"],
         bump,
     )]
     pub lp_mint: UncheckedAccount<'info>,
 
-    #[account(mut)]
     pub provider_lp_ata: UncheckedAccount<'info>,
 
     pub token_program: UncheckedAccount<'info>,

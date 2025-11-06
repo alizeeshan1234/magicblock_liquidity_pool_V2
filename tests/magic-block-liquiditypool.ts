@@ -56,6 +56,16 @@ describe("magic-block-liquiditypool", () => {
 
   console.log(provider.wallet.publicKey);
 
+  const [escrowPda] = PublicKey.findProgramAddressSync(
+    [Buffer.from("escrow"), provider.wallet.publicKey.toBuffer()],
+    MAGIC_PROGRAM_ID  // Use Magic Program ID, not your program ID
+  );
+
+  const [escrowAuthPda] = PublicKey.findProgramAddressSync(
+    [Buffer.from("escrow_auth"), provider.wallet.publicKey.toBuffer()],
+    MAGIC_PROGRAM_ID
+  );
+
   before(async () => {
     [transferAuthorityAccount] = PublicKey.findProgramAddressSync(
       [Buffer.from("transfer_authority")],
@@ -320,17 +330,28 @@ describe("magic-block-liquiditypool", () => {
     console.log(`Liquidity Provided on ER: ${signature}`);
   });
 
+  it("Process Mint LP Tokens", async () => {
+    let lpTokenToMint = new anchor.BN(50);
+    const tx = await program.methods.processMintLpTokens(lpTokenToMint).accountsPartial({
+      provider: provider.wallet.publicKey,
+      transferAuthority: transferAuthorityAccount,
+      lpMint: lpMint,
+      providerLpAta: providerLpTokenAccount,
+      tokenProgram: TOKEN_PROGRAM_ID,
+      escrow: escrowPda,
+      escrowAuth: escrowAuthPda,
+    }).signers([provider.wallet.payer]).rpc();
+
+    console.log(`Processed Mint LP Tokens: ${tx}`);
+  })
+
   it("Commit and Mint LP Tokens", async () => {
     const depositReceptData = await program.account.depositRecept.fetch(depositReceptAccount);
     console.log("LP Tokens to mint:", depositReceptData.lpTokensMinted.toString());
 
-    const tx = await program.methods.processCommitAndMintLpTokens().accountsPartial({
+    const tx = await program.methods.processCommitAndMintLpTokens().accounts({
       provider: provider.wallet.publicKey,
       pool: poolAccount,
-      liquidityProvider: liquidityProviderAccount,
-      depositRecept: depositReceptAccount,
-      transferAuthority: transferAuthorityAccount,
-      lpMint: lpMint,
       providerLpAta: providerLpTokenAccount,
       tokenProgram: TOKEN_PROGRAM_ID,
       magicContext: MAGIC_CONTEXT_ID,

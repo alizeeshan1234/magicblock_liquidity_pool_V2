@@ -1,5 +1,5 @@
 {
-  "address": "6aaiUUVLjJaiqcdTRNcJy5Ekb8XQu3AY2nfB3q2KhvzH",
+  "address": "8jgWaVWkrQzwHwrW3KCpqG6eheADK8LCD7yEEwo5A7P6",
   "metadata": {
     "name": "magic_block_liquiditypool",
     "version": "0.1.0",
@@ -146,25 +146,7 @@
         },
         {
           "name": "pool",
-          "writable": true,
-          "pda": {
-            "seeds": [
-              {
-                "kind": "const",
-                "value": [
-                  112,
-                  111,
-                  111,
-                  108
-                ]
-              },
-              {
-                "kind": "account",
-                "path": "pool.name",
-                "account": "Pool"
-              }
-            ]
-          }
+          "writable": true
         },
         {
           "name": "liquidity_provider",
@@ -277,7 +259,6 @@
         },
         {
           "name": "lp_mint",
-          "writable": true,
           "pda": {
             "seeds": [
               {
@@ -302,8 +283,7 @@
           }
         },
         {
-          "name": "provider_lp_ata",
-          "writable": true
+          "name": "provider_lp_ata"
         },
         {
           "name": "token_program"
@@ -359,38 +339,38 @@
             "program": {
               "kind": "const",
               "value": [
-                82,
-                228,
-                185,
-                27,
-                116,
-                131,
-                21,
-                224,
-                145,
-                158,
-                233,
-                162,
-                50,
-                128,
-                238,
-                171,
-                38,
-                109,
-                48,
-                247,
-                82,
-                179,
-                3,
-                156,
-                168,
-                119,
-                149,
-                107,
-                138,
+                114,
                 240,
-                47,
-                110
+                224,
+                99,
+                76,
+                55,
+                190,
+                181,
+                220,
+                81,
+                134,
+                94,
+                243,
+                65,
+                197,
+                96,
+                120,
+                246,
+                177,
+                15,
+                249,
+                72,
+                104,
+                148,
+                109,
+                16,
+                98,
+                73,
+                192,
+                230,
+                21,
+                65
               ]
             }
           }
@@ -499,7 +479,7 @@
         },
         {
           "name": "owner_program",
-          "address": "6aaiUUVLjJaiqcdTRNcJy5Ekb8XQu3AY2nfB3q2KhvzH"
+          "address": "8jgWaVWkrQzwHwrW3KCpqG6eheADK8LCD7yEEwo5A7P6"
         },
         {
           "name": "delegation_program",
@@ -563,38 +543,38 @@
             "program": {
               "kind": "const",
               "value": [
-                82,
-                228,
-                185,
-                27,
-                116,
-                131,
-                21,
-                224,
-                145,
-                158,
-                233,
-                162,
-                50,
-                128,
-                238,
-                171,
-                38,
-                109,
-                48,
-                247,
-                82,
-                179,
-                3,
-                156,
-                168,
-                119,
-                149,
-                107,
-                138,
+                114,
                 240,
-                47,
-                110
+                224,
+                99,
+                76,
+                55,
+                190,
+                181,
+                220,
+                81,
+                134,
+                94,
+                243,
+                65,
+                197,
+                96,
+                120,
+                246,
+                177,
+                15,
+                249,
+                72,
+                104,
+                148,
+                109,
+                16,
+                98,
+                73,
+                192,
+                230,
+                21,
+                65
               ]
             }
           }
@@ -720,7 +700,7 @@
         },
         {
           "name": "owner_program",
-          "address": "6aaiUUVLjJaiqcdTRNcJy5Ekb8XQu3AY2nfB3q2KhvzH"
+          "address": "8jgWaVWkrQzwHwrW3KCpqG6eheADK8LCD7yEEwo5A7P6"
         },
         {
           "name": "delegation_program",
@@ -784,38 +764,38 @@
             "program": {
               "kind": "const",
               "value": [
-                82,
-                228,
-                185,
-                27,
-                116,
-                131,
-                21,
-                224,
-                145,
-                158,
-                233,
-                162,
-                50,
-                128,
-                238,
-                171,
-                38,
-                109,
-                48,
-                247,
-                82,
-                179,
-                3,
-                156,
-                168,
-                119,
-                149,
-                107,
-                138,
+                114,
                 240,
-                47,
-                110
+                224,
+                99,
+                76,
+                55,
+                190,
+                181,
+                220,
+                81,
+                134,
+                94,
+                243,
+                65,
+                197,
+                96,
+                120,
+                246,
+                177,
+                15,
+                249,
+                72,
+                104,
+                148,
+                109,
+                16,
+                98,
+                73,
+                192,
+                230,
+                21,
+                65
               ]
             }
           }
@@ -915,7 +895,7 @@
         },
         {
           "name": "owner_program",
-          "address": "6aaiUUVLjJaiqcdTRNcJy5Ekb8XQu3AY2nfB3q2KhvzH"
+          "address": "8jgWaVWkrQzwHwrW3KCpqG6eheADK8LCD7yEEwo5A7P6"
         },
         {
           "name": "delegation_program",
