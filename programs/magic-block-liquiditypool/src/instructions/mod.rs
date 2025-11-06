@@ -18,3 +18,6 @@ pub use add_liquidity_er::*;
 
 pub mod add_liquidity_on_chain;
 pub use add_liquidity_on_chain::*;
+
+pub mod mint_lp_tokens;
+pub use mint_lp_tokens::*;

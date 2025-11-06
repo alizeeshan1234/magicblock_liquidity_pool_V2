@@ -18,10 +18,11 @@ pub use constants::*;
 pub use instructions::*;
 pub use state::*;
 
+use state::{pool::Pool, liquidity_provider::LiquidityProvider};
 
-declare_id!("2w81ke6gFt2ETcfGkTjivFV3r566F92uGC4UBd9judcd");
 
-// #[ephemeral]
+declare_id!("8YA9mDpcX8kTrGdcZbFyRnJ2uTLsEn6qTpD8FQmMcBm4");
+
 #[program]
 pub mod magic_block_liquiditypool {
     use super::*;
@@ -61,5 +62,69 @@ pub mod magic_block_liquiditypool {
         instructions::add_liquidity_er::add_liquidity_er(ctx, params)
     }
 
+    pub fn process_mint_lp_tokens(ctx: Context<MintLpTokens>, mint_amount: u64) -> Result<()> {
+        instructions::mint_lp_tokens::mint_lp_tokens(ctx, mint_amount)
+    }
+
+    pub fn process_commit_and_mint_lp_tokens(ctx: Context<CommitAndMintLpTokens>) -> Result<()> {
+
+        let deposit_recept = &ctx.accounts.deposit_recept;
+        let pool = &mut ctx.accounts.pool;
+        let liquidity_provider = &mut ctx.accounts.liquidity_provider;
+
+        let instruction_data = anchor_lang::InstructionData::data(
+            &crate::
+        );
+
+        Ok(())
+    }
+
 }
 
+#[commit]
+#[derive(Accounts)]
+pub struct CommitAndMintLpTokens<'info> {
+    #[account(mut)]
+    pub provider: Signer<'info>,
+
+    #[account(
+        mut,
+        seeds = [b"pool", pool.name.as_bytes()],
+        bump = pool.bump
+    )]
+    pub pool: Account<'info, Pool>,
+
+    #[account(
+        mut,
+        seeds = [b"liquidity_provider_account_info", provider.key().as_ref()],
+        bump = liquidity_provider.bump
+    )]
+    pub liquidity_provider: Account<'info, LiquidityProvider>,
+
+    #[account(
+        mut,
+        seeds = [b"deposit_recept", provider.key().as_ref()],
+        bump,
+        close = provider
+    )]
+    pub deposit_recept: Account<'info, DepositRecept>,
+
+    #[account(
+        seeds = [b"transfer_authority"],
+        bump
+    )]
+    pub transfer_authority: UncheckedAccount<'info>,
+
+    #[account(
+        seeds = [b"lp_token_mint"],
+        bump = pool.lp_mint_bump
+    )]
+    pub lp_mint: UncheckedAccount<'info>,
+
+    pub provider_lp_ata: UncheckedAccount<'info>,
+
+    pub token_program: UncheckedAccount<'info>,
+
+    /// CHECK: Program ID for magic action
+    pub program_id: AccountInfo<'info>,
+}
