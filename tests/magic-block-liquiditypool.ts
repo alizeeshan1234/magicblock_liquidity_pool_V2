@@ -12,8 +12,6 @@ import { Connection, clusterApiUrl } from "@solana/web3.js";
 const METADATA_PROGRAM_ID = new PublicKey("metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s");
 const DELEGATION_PROGRAM_ID = new PublicKey("DELeGGvXpWV2fqJUhqcF5ZSYMS4JTLjteaAMARRSaeSh");
 
-
-
 describe("magic-block-liquiditypool", () => {
   let provider = anchor.AnchorProvider.env();
   anchor.setProvider(provider);
@@ -158,6 +156,9 @@ describe("magic-block-liquiditypool", () => {
       [Buffer.from("deposit_recept"), provider.wallet.publicKey.toBuffer()],
       program.programId
     );
+
+    console.log(`Liquiidty Pool: ${poolAccount}`);
+    console.log(`Liquidity Provider: ${liquidityProviderAccount}`)
   })
 
   it("Is initialized!", async () => {
@@ -212,6 +213,8 @@ describe("magic-block-liquiditypool", () => {
 
     console.log(`Delegated Pool Account!`);
     console.log(`Delegated Signature: ${signature}`);
+    console.log(`Lp Mint: ${lpMint}`);
+    console.log(`Provider Lp token account: ${providerLpTokenAccount}`);
   });
 
   it("Initialize Liquidity Provider", async () => {
@@ -317,6 +320,33 @@ describe("magic-block-liquiditypool", () => {
     console.log(`Liquidity Provided on ER: ${signature}`);
   });
 
+  it("Commit and Mint LP Tokens", async () => {
+    const depositReceptData = await program.account.depositRecept.fetch(depositReceptAccount);
+    console.log("LP Tokens to mint:", depositReceptData.lpTokensMinted.toString());
+
+    const tx = await program.methods.processCommitAndMintLpTokens().accountsPartial({
+      provider: provider.wallet.publicKey,
+      pool: poolAccount,
+      liquidityProvider: liquidityProviderAccount,
+      depositRecept: depositReceptAccount,
+      transferAuthority: transferAuthorityAccount,
+      lpMint: lpMint,
+      providerLpAta: providerLpTokenAccount,
+      tokenProgram: TOKEN_PROGRAM_ID,
+      magicContext: MAGIC_CONTEXT_ID,
+      magicProgram: MAGIC_PROGRAM_ID,
+    }).transaction();
+
+    const signature = await sendMagicTransaction(
+      routerConnection,
+      tx,
+      [provider.wallet.payer]
+    );
+
+    await sleepWithAnimation(10);
+    console.log(`Committed and Minted LP Tokens!`);
+    console.log(`Transaction Signature: ${signature}`);
+  })
   
 });
 

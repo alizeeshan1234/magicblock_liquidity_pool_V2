@@ -5,7 +5,7 @@
  * IDL can be found at `target/idl/magic_block_liquiditypool.json`.
  */
 export type MagicBlockLiquiditypool = {
-  "address": "8YA9mDpcX8kTrGdcZbFyRnJ2uTLsEn6qTpD8FQmMcBm4",
+  "address": "6aaiUUVLjJaiqcdTRNcJy5Ekb8XQu3AY2nfB3q2KhvzH",
   "metadata": {
     "name": "magicBlockLiquiditypool",
     "version": "0.1.0",
@@ -133,6 +133,197 @@ export type MagicBlockLiquiditypool = {
       ]
     },
     {
+      "name": "processCommitAndMintLpTokens",
+      "discriminator": [
+        243,
+        29,
+        143,
+        51,
+        114,
+        197,
+        126,
+        104
+      ],
+      "accounts": [
+        {
+          "name": "provider",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "pool",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  112,
+                  111,
+                  111,
+                  108
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "pool.name",
+                "account": "pool"
+              }
+            ]
+          }
+        },
+        {
+          "name": "liquidityProvider",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  108,
+                  105,
+                  113,
+                  117,
+                  105,
+                  100,
+                  105,
+                  116,
+                  121,
+                  95,
+                  112,
+                  114,
+                  111,
+                  118,
+                  105,
+                  100,
+                  101,
+                  114,
+                  95,
+                  97,
+                  99,
+                  99,
+                  111,
+                  117,
+                  110,
+                  116,
+                  95,
+                  105,
+                  110,
+                  102,
+                  111
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "provider"
+              }
+            ]
+          }
+        },
+        {
+          "name": "depositRecept",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  100,
+                  101,
+                  112,
+                  111,
+                  115,
+                  105,
+                  116,
+                  95,
+                  114,
+                  101,
+                  99,
+                  101,
+                  112,
+                  116
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "provider"
+              }
+            ]
+          }
+        },
+        {
+          "name": "transferAuthority",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  116,
+                  114,
+                  97,
+                  110,
+                  115,
+                  102,
+                  101,
+                  114,
+                  95,
+                  97,
+                  117,
+                  116,
+                  104,
+                  111,
+                  114,
+                  105,
+                  116,
+                  121
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "lpMint",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  108,
+                  112,
+                  95,
+                  116,
+                  111,
+                  107,
+                  101,
+                  110,
+                  95,
+                  109,
+                  105,
+                  110,
+                  116
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "providerLpAta",
+          "writable": true
+        },
+        {
+          "name": "tokenProgram"
+        },
+        {
+          "name": "magicContext"
+        },
+        {
+          "name": "magicProgram"
+        }
+      ],
+      "args": []
+    },
+    {
       "name": "processDelegateAddLiquidityReceipt",
       "discriminator": [
         197,
@@ -174,38 +365,38 @@ export type MagicBlockLiquiditypool = {
             "program": {
               "kind": "const",
               "value": [
-                111,
-                253,
-                41,
-                37,
-                0,
-                232,
-                43,
-                91,
-                144,
-                218,
-                140,
-                70,
-                169,
-                139,
-                53,
-                83,
-                34,
+                82,
+                228,
+                185,
+                27,
+                116,
                 131,
-                197,
-                178,
-                252,
-                47,
-                247,
-                24,
-                153,
-                52,
-                83,
-                39,
+                21,
+                224,
+                145,
+                158,
+                233,
+                162,
+                50,
+                128,
+                238,
                 171,
+                38,
+                109,
+                48,
+                247,
+                82,
+                179,
+                3,
                 156,
+                168,
+                119,
+                149,
                 107,
-                91
+                138,
+                240,
+                47,
+                110
               ]
             }
           }
@@ -314,7 +505,7 @@ export type MagicBlockLiquiditypool = {
         },
         {
           "name": "ownerProgram",
-          "address": "8YA9mDpcX8kTrGdcZbFyRnJ2uTLsEn6qTpD8FQmMcBm4"
+          "address": "6aaiUUVLjJaiqcdTRNcJy5Ekb8XQu3AY2nfB3q2KhvzH"
         },
         {
           "name": "delegationProgram",
@@ -378,38 +569,38 @@ export type MagicBlockLiquiditypool = {
             "program": {
               "kind": "const",
               "value": [
-                111,
-                253,
-                41,
-                37,
-                0,
-                232,
-                43,
-                91,
-                144,
-                218,
-                140,
-                70,
-                169,
-                139,
-                53,
-                83,
-                34,
+                82,
+                228,
+                185,
+                27,
+                116,
                 131,
-                197,
-                178,
-                252,
-                47,
-                247,
-                24,
-                153,
-                52,
-                83,
-                39,
+                21,
+                224,
+                145,
+                158,
+                233,
+                162,
+                50,
+                128,
+                238,
                 171,
+                38,
+                109,
+                48,
+                247,
+                82,
+                179,
+                3,
                 156,
+                168,
+                119,
+                149,
                 107,
-                91
+                138,
+                240,
+                47,
+                110
               ]
             }
           }
@@ -535,7 +726,7 @@ export type MagicBlockLiquiditypool = {
         },
         {
           "name": "ownerProgram",
-          "address": "8YA9mDpcX8kTrGdcZbFyRnJ2uTLsEn6qTpD8FQmMcBm4"
+          "address": "6aaiUUVLjJaiqcdTRNcJy5Ekb8XQu3AY2nfB3q2KhvzH"
         },
         {
           "name": "delegationProgram",
@@ -599,38 +790,38 @@ export type MagicBlockLiquiditypool = {
             "program": {
               "kind": "const",
               "value": [
-                111,
-                253,
-                41,
-                37,
-                0,
-                232,
-                43,
-                91,
-                144,
-                218,
-                140,
-                70,
-                169,
-                139,
-                53,
-                83,
-                34,
+                82,
+                228,
+                185,
+                27,
+                116,
                 131,
-                197,
-                178,
-                252,
-                47,
-                247,
-                24,
-                153,
-                52,
-                83,
-                39,
+                21,
+                224,
+                145,
+                158,
+                233,
+                162,
+                50,
+                128,
+                238,
                 171,
+                38,
+                109,
+                48,
+                247,
+                82,
+                179,
+                3,
                 156,
+                168,
+                119,
+                149,
                 107,
-                91
+                138,
+                240,
+                47,
+                110
               ]
             }
           }
@@ -730,7 +921,7 @@ export type MagicBlockLiquiditypool = {
         },
         {
           "name": "ownerProgram",
-          "address": "8YA9mDpcX8kTrGdcZbFyRnJ2uTLsEn6qTpD8FQmMcBm4"
+          "address": "6aaiUUVLjJaiqcdTRNcJy5Ekb8XQu3AY2nfB3q2KhvzH"
         },
         {
           "name": "delegationProgram",
@@ -1526,8 +1717,7 @@ export type MagicBlockLiquiditypool = {
       "accounts": [
         {
           "name": "provider",
-          "writable": true,
-          "signer": true
+          "writable": true
         },
         {
           "name": "transferAuthority",

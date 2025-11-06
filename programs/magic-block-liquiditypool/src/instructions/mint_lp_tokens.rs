@@ -14,7 +14,7 @@ use crate::error::ErrorCode;
 #[derive(Accounts)]
 pub struct MintLpTokens<'info> {
     #[account(mut)]
-    pub provider: Signer<'info>,
+    pub provider: AccountInfo<'info>,
 
     /// CHECK: Transfer authority PDA
     #[account(
@@ -25,7 +25,6 @@ pub struct MintLpTokens<'info> {
 
     #[account(
         mut,
-        mint::authority = transfer_authority,
         seeds = [b"lp_token_mint"],
         bump
     )]
@@ -40,10 +39,9 @@ pub struct MintLpTokens<'info> {
 
     pub token_program: Program<'info, Token>,
 
-    /// CHECK: Escrow account for magic action
+    /// CHECK: the correct pda - this will be moved to the end in the future, meaning you can omit this unless needed
     pub escrow: UncheckedAccount<'info>,
-    
-    /// CHECK: Escrow authority for magic action
+    /// CHECK: the correct pda - this will be moved to the end in the future, meaning you can omit this unless needed
     pub escrow_auth: UncheckedAccount<'info>,
 }
 

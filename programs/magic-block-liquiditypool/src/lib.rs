@@ -20,7 +20,7 @@ pub use state::*;
 use state::{pool::Pool, liquidity_provider::LiquidityProvider};
 
 
-declare_id!("8YA9mDpcX8kTrGdcZbFyRnJ2uTLsEn6qTpD8FQmMcBm4");
+declare_id!("6aaiUUVLjJaiqcdTRNcJy5Ekb8XQu3AY2nfB3q2KhvzH");
 
 #[program]
 pub mod magic_block_liquiditypool {
@@ -68,8 +68,6 @@ pub mod magic_block_liquiditypool {
     pub fn process_commit_and_mint_lp_tokens(ctx: Context<CommitAndMintLpTokens>) -> Result<()> {
 
         let deposit_recept = &ctx.accounts.deposit_recept;
-        let pool = &mut ctx.accounts.pool;
-        let liquidity_provider = &mut ctx.accounts.liquidity_provider;
 
         let instruction_data = anchor_lang::InstructionData::data(
             &crate::instruction::ProcessMintLpTokens {
@@ -77,6 +75,57 @@ pub mod magic_block_liquiditypool {
             }
         );
 
+        let action_args = ActionArgs {
+            escrow_index: 0,
+            data: instruction_data,
+        };
+
+        let accounts = vec![
+            ShortAccountMeta {
+                pubkey: ctx.accounts.provider.key(),
+                is_writable: true
+            },
+            ShortAccountMeta {
+                pubkey: ctx.accounts.transfer_authority.key(),
+                is_writable: false
+            },
+            ShortAccountMeta {
+                pubkey: ctx.accounts.lp_mint.key(),
+                is_writable: true
+            },
+            ShortAccountMeta {
+                pubkey: ctx.accounts.provider_lp_ata.key(),
+                is_writable: true
+            },
+            ShortAccountMeta {
+                pubkey: ctx.accounts.token_program.key(),
+                is_writable: false
+            },
+        ];
+
+        let call_handler = CallHandler {
+            args: action_args,
+            compute_units: 200_000,
+            escrow_authority: ctx.accounts.provider.to_account_info(),
+            destination_program: crate::ID,
+            accounts
+        };
+
+        let magic_builder = MagicInstructionBuilder {
+            payer: ctx.accounts.provider.to_account_info(),
+            magic_context: ctx.accounts.magic_context.to_account_info(),
+            magic_program: ctx.accounts.magic_program.to_account_info(),
+            magic_action: MagicAction::Commit(CommitType::WithHandler {
+                commited_accounts: vec![
+                    ctx.accounts.pool.to_account_info(),
+                    ctx.accounts.liquidity_provider.to_account_info(),
+                    ctx.accounts.deposit_recept.to_account_info(),
+                ],
+                call_handlers: vec![call_handler]
+            })
+        };
+
+        magic_builder.build_and_invoke()?;
         Ok(())
     }
 
@@ -106,7 +155,6 @@ pub struct CommitAndMintLpTokens<'info> {
         mut,
         seeds = [b"deposit_recept", provider.key().as_ref()],
         bump,
-        close = provider
     )]
     pub deposit_recept: Account<'info, DepositRecept>,
 
@@ -117,15 +165,20 @@ pub struct CommitAndMintLpTokens<'info> {
     pub transfer_authority: UncheckedAccount<'info>,
 
     #[account(
+        mut,
         seeds = [b"lp_token_mint"],
-        bump = pool.lp_mint_bump
+        bump,
     )]
     pub lp_mint: UncheckedAccount<'info>,
 
+    #[account(mut)]
     pub provider_lp_ata: UncheckedAccount<'info>,
 
     pub token_program: UncheckedAccount<'info>,
 
-    /// CHECK: Program ID for magic action
-    pub program_id: AccountInfo<'info>,
+    /// CHECK: Magic context account
+    pub magic_context: UncheckedAccount<'info>,
+    
+    /// CHECK: Magic program
+    pub magic_program: UncheckedAccount<'info>,
 }
