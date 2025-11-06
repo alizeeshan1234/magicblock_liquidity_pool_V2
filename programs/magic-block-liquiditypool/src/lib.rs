@@ -7,7 +7,6 @@ use ephemeral_rollups_sdk::ephem::commit_and_undelegate_accounts;
 use ephemeral_rollups_sdk::ephem::{MagicInstructionBuilder, MagicAction, CallHandler, CommitType};
 use ephemeral_rollups_sdk::{ActionArgs, ShortAccountMeta};
 use anchor_lang::Discriminator;
-// use ephemeral_rollups_sdk::consts::EXTERNAL_CALL_HANDLER_DISCRIMINATOR;
 
 pub mod constants;
 pub mod error;
@@ -73,7 +72,9 @@ pub mod magic_block_liquiditypool {
         let liquidity_provider = &mut ctx.accounts.liquidity_provider;
 
         let instruction_data = anchor_lang::InstructionData::data(
-            &crate::
+            &crate::instruction::ProcessMintLpTokens {
+                mint_amount: deposit_recept.lp_tokens_minted,
+            }
         );
 
         Ok(())
