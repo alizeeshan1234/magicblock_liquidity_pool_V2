@@ -20,7 +20,7 @@ pub use state::*;
 use state::{pool::Pool, liquidity_provider::LiquidityProvider};
 
 
-declare_id!("8jgWaVWkrQzwHwrW3KCpqG6eheADK8LCD7yEEwo5A7P6");
+declare_id!("ExHfGdk5fcYPtyPaUGWJGBH3mFc2QqvTca6sQ8BoYbx1");
 
 #[program]
 pub mod magic_block_liquiditypool {
@@ -65,7 +65,7 @@ pub mod magic_block_liquiditypool {
         instructions::mint_lp_tokens::mint_lp_tokens(ctx, mint_amount)
     }
 
-    pub fn process_commit_and_mint_lp_tokens(ctx: Context<CommitAndMintLpTokens>) -> Result<()> {
+    pub fn process_commit_and_mint_lp_tokens(ctx: Context<CommitAndMintLpTokens>, params: AddPoolParams) -> Result<()> {
 
         let deposit_recept = &ctx.accounts.deposit_recept;
 
@@ -83,7 +83,7 @@ pub mod magic_block_liquiditypool {
         let accounts = vec![
             ShortAccountMeta {
                 pubkey: ctx.accounts.provider.key(),
-                is_writable: true,
+                is_writable: true,  // Handler needs to modify this
             },
             ShortAccountMeta {
                 pubkey: ctx.accounts.transfer_authority.key(),
@@ -91,18 +91,17 @@ pub mod magic_block_liquiditypool {
             },
             ShortAccountMeta {
                 pubkey: ctx.accounts.lp_mint.key(),
-                is_writable: true,
+                is_writable: true,  // Handler needs to mint tokens
             },
             ShortAccountMeta {
                 pubkey: ctx.accounts.provider_lp_ata.key(),
-                is_writable: true,
+                is_writable: true,  // Handler needs to receive tokens
             },
             ShortAccountMeta {
                 pubkey: ctx.accounts.token_program.key(),
                 is_writable: false
             },
         ];
-
         let call_handler = CallHandler {
             args: action_args,
             compute_units: 200_000,
@@ -133,12 +132,17 @@ pub mod magic_block_liquiditypool {
 
 #[commit]
 #[derive(Accounts)]
+#[instruction(params: AddPoolParams)]
 pub struct CommitAndMintLpTokens<'info> {
     #[account(mut)]
     pub provider: Signer<'info>,
 
-    #[account(mut)]
-    pub pool: UncheckedAccount<'info>,
+    #[account(
+        mut,
+        seeds = [b"pool", params.name.as_bytes()],
+        bump
+    )]
+    pub pool: Account<'info, Pool>,
 
     #[account(
         mut,
@@ -160,12 +164,17 @@ pub struct CommitAndMintLpTokens<'info> {
     )]
     pub transfer_authority: UncheckedAccount<'info>,
 
+    // If passed these accounts as mut 
+    //TranswiseError(TransactionIncludeUndelegatedAccountsAsWritable  ERROR
+
     #[account(
+        mut,
         seeds = [b"lp_token_mint"],
         bump,
     )]
     pub lp_mint: UncheckedAccount<'info>,
 
+    #[account(mut)]
     pub provider_lp_ata: UncheckedAccount<'info>,
 
     pub token_program: UncheckedAccount<'info>,

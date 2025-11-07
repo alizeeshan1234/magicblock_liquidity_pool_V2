@@ -349,9 +349,13 @@ describe("magic-block-liquiditypool", () => {
     const depositReceptData = await program.account.depositRecept.fetch(depositReceptAccount);
     console.log("LP Tokens to mint:", depositReceptData.lpTokensMinted.toString());
 
-    const tx = await program.methods.processCommitAndMintLpTokens().accounts({
+    const tx = await program.methods.processCommitAndMintLpTokens(params).accountsPartial({
       provider: provider.wallet.publicKey,
       pool: poolAccount,
+      liquidityProvider: liquidityProviderAccount,
+      depositRecept: depositReceptAccount,
+      transferAuthority: transferAuthorityAccount,
+      lpMint: lpMint,
       providerLpAta: providerLpTokenAccount,
       tokenProgram: TOKEN_PROGRAM_ID,
       magicContext: MAGIC_CONTEXT_ID,
