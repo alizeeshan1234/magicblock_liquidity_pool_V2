@@ -13,7 +13,9 @@ use crate::error::ErrorCode;
 
 #[derive(Accounts)]
 pub struct MintLpTokens<'info> {
-    #[account(mut)]
+    #[account(
+        // mut
+    )]
     pub provider: AccountInfo<'info>,
 
     /// CHECK: Transfer authority PDA

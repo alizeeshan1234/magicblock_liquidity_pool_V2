@@ -169,6 +169,9 @@ describe("magic-block-liquiditypool", () => {
 
     console.log(`Liquiidty Pool: ${poolAccount}`);
     console.log(`Liquidity Provider: ${liquidityProviderAccount}`)
+
+    console.log(`Lp Mint: ${lpMint}`);
+    console.log(`Provider Lp token account: ${providerLpTokenAccount}`);
   })
 
   it("Is initialized!", async () => {
@@ -201,6 +204,7 @@ describe("magic-block-liquiditypool", () => {
       lpMint,
       provider.wallet.publicKey,
     );
+
     providerLpTokenAccount = providerLpTokenAccountAddress.address;
   });
 
@@ -223,8 +227,6 @@ describe("magic-block-liquiditypool", () => {
 
     console.log(`Delegated Pool Account!`);
     console.log(`Delegated Signature: ${signature}`);
-    console.log(`Lp Mint: ${lpMint}`);
-    console.log(`Provider Lp token account: ${providerLpTokenAccount}`);
   });
 
   it("Initialize Liquidity Provider", async () => {
@@ -330,26 +332,34 @@ describe("magic-block-liquiditypool", () => {
     console.log(`Liquidity Provided on ER: ${signature}`);
   });
 
-  it("Process Mint LP Tokens", async () => {
-    let lpTokenToMint = new anchor.BN(50);
-    const tx = await program.methods.processMintLpTokens(lpTokenToMint).accountsPartial({
-      provider: provider.wallet.publicKey,
-      transferAuthority: transferAuthorityAccount,
-      lpMint: lpMint,
-      providerLpAta: providerLpTokenAccount,
-      tokenProgram: TOKEN_PROGRAM_ID,
-      escrow: escrowPda,
-      escrowAuth: escrowAuthPda,
-    }).signers([provider.wallet.payer]).rpc();
+  // it("Process Mint LP Tokens", async () => {
+  //   let lpTokenToMint = new anchor.BN(50);
+  //   const tx = await program.methods.processMintLpTokens(lpTokenToMint).accountsPartial({
+  //     provider: provider.wallet.publicKey,
+  //     transferAuthority: transferAuthorityAccount,
+  //     lpMint: lpMint,
+  //     providerLpAta: providerLpTokenAccount,
+  //     tokenProgram: TOKEN_PROGRAM_ID,
+  //     escrow: escrowPda,
+  //     escrowAuth: escrowAuthPda,
+  //   }).signers([provider.wallet.payer]).rpc();
 
-    console.log(`Processed Mint LP Tokens: ${tx}`);
-  })
+  //   console.log(`Processed Mint LP Tokens: ${tx}`);
+  // })
 
   it("Commit and Mint LP Tokens", async () => {
     const depositReceptData = await program.account.depositRecept.fetch(depositReceptAccount);
     console.log("LP Tokens to mint:", depositReceptData.lpTokensMinted.toString());
 
-    const tx = await program.methods.processCommitAndMintLpTokens(params).accountsPartial({
+    // let commitAndMintLpTokensParams = {
+    //   name: params.name,
+    //   provider: provider.wallet.publicKey,
+    //   transferAuthority: transferAuthorityAccount,
+    //   lpMint: lpMint,
+    //   providerLpAta: providerLpTokenAccount,
+    // }
+
+    const tx = await program.methods.processCommitAndMintLpTokens().accountsPartial({
       provider: provider.wallet.publicKey,
       pool: poolAccount,
       liquidityProvider: liquidityProviderAccount,
