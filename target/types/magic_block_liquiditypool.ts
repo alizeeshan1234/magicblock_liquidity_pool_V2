@@ -5,7 +5,7 @@
  * IDL can be found at `target/idl/magic_block_liquiditypool.json`.
  */
 export type MagicBlockLiquiditypool = {
-  "address": "CzwQU6jk9B3a2aBx5eXS5iJWeECtXYBM3HAYgfQ1bcMA",
+  "address": "7iUftidmqaeXa7TfmcyZ3nhf2GeSCfznQbC1NJEqR4cM",
   "metadata": {
     "name": "magicBlockLiquiditypool",
     "version": "0.1.0",
@@ -343,38 +343,38 @@ export type MagicBlockLiquiditypool = {
             "program": {
               "kind": "const",
               "value": [
-                178,
-                72,
-                45,
-                131,
-                210,
-                253,
-                110,
-                75,
-                186,
+                99,
                 198,
-                221,
-                182,
-                204,
-                82,
-                162,
-                237,
-                202,
-                71,
-                114,
-                224,
-                242,
-                198,
-                1,
-                106,
-                96,
-                3,
-                52,
-                224,
-                247,
-                238,
-                27,
-                45
+                56,
+                207,
+                135,
+                200,
+                118,
+                58,
+                28,
+                44,
+                177,
+                180,
+                140,
+                22,
+                11,
+                8,
+                214,
+                246,
+                19,
+                62,
+                13,
+                100,
+                32,
+                153,
+                93,
+                209,
+                23,
+                252,
+                8,
+                24,
+                100,
+                14
               ]
             }
           }
@@ -483,7 +483,7 @@ export type MagicBlockLiquiditypool = {
         },
         {
           "name": "ownerProgram",
-          "address": "CzwQU6jk9B3a2aBx5eXS5iJWeECtXYBM3HAYgfQ1bcMA"
+          "address": "7iUftidmqaeXa7TfmcyZ3nhf2GeSCfznQbC1NJEqR4cM"
         },
         {
           "name": "delegationProgram",
@@ -547,38 +547,38 @@ export type MagicBlockLiquiditypool = {
             "program": {
               "kind": "const",
               "value": [
-                178,
-                72,
-                45,
-                131,
-                210,
-                253,
-                110,
-                75,
-                186,
+                99,
                 198,
-                221,
-                182,
-                204,
-                82,
-                162,
-                237,
-                202,
-                71,
-                114,
-                224,
-                242,
-                198,
-                1,
-                106,
-                96,
-                3,
-                52,
-                224,
-                247,
-                238,
-                27,
-                45
+                56,
+                207,
+                135,
+                200,
+                118,
+                58,
+                28,
+                44,
+                177,
+                180,
+                140,
+                22,
+                11,
+                8,
+                214,
+                246,
+                19,
+                62,
+                13,
+                100,
+                32,
+                153,
+                93,
+                209,
+                23,
+                252,
+                8,
+                24,
+                100,
+                14
               ]
             }
           }
@@ -704,7 +704,7 @@ export type MagicBlockLiquiditypool = {
         },
         {
           "name": "ownerProgram",
-          "address": "CzwQU6jk9B3a2aBx5eXS5iJWeECtXYBM3HAYgfQ1bcMA"
+          "address": "7iUftidmqaeXa7TfmcyZ3nhf2GeSCfznQbC1NJEqR4cM"
         },
         {
           "name": "delegationProgram",
@@ -768,38 +768,38 @@ export type MagicBlockLiquiditypool = {
             "program": {
               "kind": "const",
               "value": [
-                178,
-                72,
-                45,
-                131,
-                210,
-                253,
-                110,
-                75,
-                186,
+                99,
                 198,
-                221,
-                182,
-                204,
-                82,
-                162,
-                237,
-                202,
-                71,
-                114,
-                224,
-                242,
-                198,
-                1,
-                106,
-                96,
-                3,
-                52,
-                224,
-                247,
-                238,
-                27,
-                45
+                56,
+                207,
+                135,
+                200,
+                118,
+                58,
+                28,
+                44,
+                177,
+                180,
+                140,
+                22,
+                11,
+                8,
+                214,
+                246,
+                19,
+                62,
+                13,
+                100,
+                32,
+                153,
+                93,
+                209,
+                23,
+                252,
+                8,
+                24,
+                100,
+                14
               ]
             }
           }
@@ -899,7 +899,212 @@ export type MagicBlockLiquiditypool = {
         },
         {
           "name": "ownerProgram",
-          "address": "CzwQU6jk9B3a2aBx5eXS5iJWeECtXYBM3HAYgfQ1bcMA"
+          "address": "7iUftidmqaeXa7TfmcyZ3nhf2GeSCfznQbC1NJEqR4cM"
+        },
+        {
+          "name": "delegationProgram",
+          "address": "DELeGGvXpWV2fqJUhqcF5ZSYMS4JTLjteaAMARRSaeSh"
+        },
+        {
+          "name": "systemProgram",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "commitFrequency",
+          "type": "u32"
+        },
+        {
+          "name": "validatorKey",
+          "type": "pubkey"
+        }
+      ]
+    },
+    {
+      "name": "processDelegateRemoveLiquidityReceipt",
+      "discriminator": [
+        114,
+        17,
+        125,
+        50,
+        12,
+        224,
+        117,
+        248
+      ],
+      "accounts": [
+        {
+          "name": "provider",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "bufferWithdrawRecept",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  98,
+                  117,
+                  102,
+                  102,
+                  101,
+                  114
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "withdrawRecept"
+              }
+            ],
+            "program": {
+              "kind": "const",
+              "value": [
+                99,
+                198,
+                56,
+                207,
+                135,
+                200,
+                118,
+                58,
+                28,
+                44,
+                177,
+                180,
+                140,
+                22,
+                11,
+                8,
+                214,
+                246,
+                19,
+                62,
+                13,
+                100,
+                32,
+                153,
+                93,
+                209,
+                23,
+                252,
+                8,
+                24,
+                100,
+                14
+              ]
+            }
+          }
+        },
+        {
+          "name": "delegationRecordWithdrawRecept",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  100,
+                  101,
+                  108,
+                  101,
+                  103,
+                  97,
+                  116,
+                  105,
+                  111,
+                  110
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "withdrawRecept"
+              }
+            ],
+            "program": {
+              "kind": "account",
+              "path": "delegationProgram"
+            }
+          }
+        },
+        {
+          "name": "delegationMetadataWithdrawRecept",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  100,
+                  101,
+                  108,
+                  101,
+                  103,
+                  97,
+                  116,
+                  105,
+                  111,
+                  110,
+                  45,
+                  109,
+                  101,
+                  116,
+                  97,
+                  100,
+                  97,
+                  116,
+                  97
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "withdrawRecept"
+              }
+            ],
+            "program": {
+              "kind": "account",
+              "path": "delegationProgram"
+            }
+          }
+        },
+        {
+          "name": "withdrawRecept",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  119,
+                  105,
+                  116,
+                  104,
+                  100,
+                  114,
+                  97,
+                  119,
+                  95,
+                  114,
+                  101,
+                  99,
+                  101,
+                  112,
+                  116
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "provider"
+              }
+            ]
+          }
+        },
+        {
+          "name": "ownerProgram",
+          "address": "7iUftidmqaeXa7TfmcyZ3nhf2GeSCfznQbC1NJEqR4cM"
         },
         {
           "name": "delegationProgram",
@@ -1859,6 +2064,576 @@ export type MagicBlockLiquiditypool = {
           "type": "u64"
         }
       ]
+    },
+    {
+      "name": "processRemoveLiquidityEr",
+      "discriminator": [
+        81,
+        130,
+        51,
+        101,
+        116,
+        84,
+        219,
+        180
+      ],
+      "accounts": [
+        {
+          "name": "provider",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "liquidityProvider",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  108,
+                  105,
+                  113,
+                  117,
+                  105,
+                  100,
+                  105,
+                  116,
+                  121,
+                  95,
+                  112,
+                  114,
+                  111,
+                  118,
+                  105,
+                  100,
+                  101,
+                  114,
+                  95,
+                  97,
+                  99,
+                  99,
+                  111,
+                  117,
+                  110,
+                  116,
+                  95,
+                  105,
+                  110,
+                  102,
+                  111
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "provider"
+              }
+            ]
+          }
+        },
+        {
+          "name": "pool",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  112,
+                  111,
+                  111,
+                  108
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "pool.name",
+                "account": "pool"
+              }
+            ]
+          }
+        },
+        {
+          "name": "systemProgram",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "params",
+          "type": {
+            "defined": {
+              "name": "removeLiquidityErParams"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "processRemoveLiquidityOnChain",
+      "discriminator": [
+        63,
+        154,
+        146,
+        100,
+        141,
+        61,
+        91,
+        62
+      ],
+      "accounts": [
+        {
+          "name": "provider",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "mintA"
+        },
+        {
+          "name": "mintB"
+        },
+        {
+          "name": "transferAuthority",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  116,
+                  114,
+                  97,
+                  110,
+                  115,
+                  102,
+                  101,
+                  114,
+                  95,
+                  97,
+                  117,
+                  116,
+                  104,
+                  111,
+                  114,
+                  105,
+                  116,
+                  121
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "lpMint",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  108,
+                  112,
+                  95,
+                  116,
+                  111,
+                  107,
+                  101,
+                  110,
+                  95,
+                  109,
+                  105,
+                  110,
+                  116
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "tokenVaultA",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  116,
+                  111,
+                  107,
+                  101,
+                  110,
+                  95,
+                  97,
+                  99,
+                  99,
+                  111,
+                  117,
+                  110,
+                  116,
+                  95,
+                  97
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "mintA"
+              }
+            ]
+          }
+        },
+        {
+          "name": "tokenVaultB",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  116,
+                  111,
+                  107,
+                  101,
+                  110,
+                  95,
+                  97,
+                  99,
+                  99,
+                  111,
+                  117,
+                  110,
+                  116,
+                  95,
+                  98
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "mintB"
+              }
+            ]
+          }
+        },
+        {
+          "name": "providerTokenAAta",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "account",
+                "path": "provider"
+              },
+              {
+                "kind": "const",
+                "value": [
+                  6,
+                  221,
+                  246,
+                  225,
+                  215,
+                  101,
+                  161,
+                  147,
+                  217,
+                  203,
+                  225,
+                  70,
+                  206,
+                  235,
+                  121,
+                  172,
+                  28,
+                  180,
+                  133,
+                  237,
+                  95,
+                  91,
+                  55,
+                  145,
+                  58,
+                  140,
+                  245,
+                  133,
+                  126,
+                  255,
+                  0,
+                  169
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "mintA"
+              }
+            ],
+            "program": {
+              "kind": "const",
+              "value": [
+                140,
+                151,
+                37,
+                143,
+                78,
+                36,
+                137,
+                241,
+                187,
+                61,
+                16,
+                41,
+                20,
+                142,
+                13,
+                131,
+                11,
+                90,
+                19,
+                153,
+                218,
+                255,
+                16,
+                132,
+                4,
+                142,
+                123,
+                216,
+                219,
+                233,
+                248,
+                89
+              ]
+            }
+          }
+        },
+        {
+          "name": "providerTokenBAta",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "account",
+                "path": "provider"
+              },
+              {
+                "kind": "const",
+                "value": [
+                  6,
+                  221,
+                  246,
+                  225,
+                  215,
+                  101,
+                  161,
+                  147,
+                  217,
+                  203,
+                  225,
+                  70,
+                  206,
+                  235,
+                  121,
+                  172,
+                  28,
+                  180,
+                  133,
+                  237,
+                  95,
+                  91,
+                  55,
+                  145,
+                  58,
+                  140,
+                  245,
+                  133,
+                  126,
+                  255,
+                  0,
+                  169
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "mintB"
+              }
+            ],
+            "program": {
+              "kind": "const",
+              "value": [
+                140,
+                151,
+                37,
+                143,
+                78,
+                36,
+                137,
+                241,
+                187,
+                61,
+                16,
+                41,
+                20,
+                142,
+                13,
+                131,
+                11,
+                90,
+                19,
+                153,
+                218,
+                255,
+                16,
+                132,
+                4,
+                142,
+                123,
+                216,
+                219,
+                233,
+                248,
+                89
+              ]
+            }
+          }
+        },
+        {
+          "name": "providerTokenLpAta",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "account",
+                "path": "provider"
+              },
+              {
+                "kind": "const",
+                "value": [
+                  6,
+                  221,
+                  246,
+                  225,
+                  215,
+                  101,
+                  161,
+                  147,
+                  217,
+                  203,
+                  225,
+                  70,
+                  206,
+                  235,
+                  121,
+                  172,
+                  28,
+                  180,
+                  133,
+                  237,
+                  95,
+                  91,
+                  55,
+                  145,
+                  58,
+                  140,
+                  245,
+                  133,
+                  126,
+                  255,
+                  0,
+                  169
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "lpMint"
+              }
+            ],
+            "program": {
+              "kind": "const",
+              "value": [
+                140,
+                151,
+                37,
+                143,
+                78,
+                36,
+                137,
+                241,
+                187,
+                61,
+                16,
+                41,
+                20,
+                142,
+                13,
+                131,
+                11,
+                90,
+                19,
+                153,
+                218,
+                255,
+                16,
+                132,
+                4,
+                142,
+                123,
+                216,
+                219,
+                233,
+                248,
+                89
+              ]
+            }
+          }
+        },
+        {
+          "name": "withdrawRecept",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  119,
+                  105,
+                  116,
+                  104,
+                  100,
+                  114,
+                  97,
+                  119,
+                  95,
+                  114,
+                  101,
+                  99,
+                  101,
+                  112,
+                  116
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "provider"
+              }
+            ]
+          }
+        },
+        {
+          "name": "tokenProgram",
+          "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+        },
+        {
+          "name": "systemProgram",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "params",
+          "type": {
+            "defined": {
+              "name": "removeLiquidityParams"
+            }
+          }
+        }
+      ]
     }
   ],
   "accounts": [
@@ -1899,6 +2674,19 @@ export type MagicBlockLiquiditypool = {
         177,
         109,
         188
+      ]
+    },
+    {
+      "name": "withdrawRecept",
+      "discriminator": [
+        19,
+        242,
+        190,
+        118,
+        68,
+        48,
+        37,
+        220
       ]
     }
   ],
@@ -1951,6 +2739,18 @@ export type MagicBlockLiquiditypool = {
     {
       "code": 6011,
       "name": "invalidPoolState"
+    },
+    {
+      "code": 6012,
+      "name": "insufficientLpTokens"
+    },
+    {
+      "code": 6013,
+      "name": "providerNotFound"
+    },
+    {
+      "code": 6014,
+      "name": "insufficientLiquidity"
     }
   ],
   "types": [
@@ -2271,6 +3071,82 @@ export type MagicBlockLiquiditypool = {
           {
             "name": "isMigrating",
             "type": "bool"
+          }
+        ]
+      }
+    },
+    {
+      "name": "removeLiquidityErParams",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "user",
+            "type": "pubkey"
+          },
+          {
+            "name": "lpTokens",
+            "type": "u64"
+          },
+          {
+            "name": "minAmountA",
+            "type": "u64"
+          },
+          {
+            "name": "minAmountB",
+            "type": "u64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "removeLiquidityParams",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "lpTokensToBurn",
+            "type": "u64"
+          },
+          {
+            "name": "minAmountA",
+            "type": "u64"
+          },
+          {
+            "name": "minAmountB",
+            "type": "u64"
+          },
+          {
+            "name": "pool",
+            "type": "pubkey"
+          }
+        ]
+      }
+    },
+    {
+      "name": "withdrawRecept",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "pool",
+            "type": "pubkey"
+          },
+          {
+            "name": "liquidityProvider",
+            "type": "pubkey"
+          },
+          {
+            "name": "lpTokensToBurn",
+            "type": "u64"
+          },
+          {
+            "name": "amountAWithdrawn",
+            "type": "u64"
+          },
+          {
+            "name": "amountBWithdrawn",
+            "type": "u64"
           }
         ]
       }

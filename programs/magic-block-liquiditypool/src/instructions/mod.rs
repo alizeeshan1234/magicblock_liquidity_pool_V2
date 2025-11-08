@@ -21,3 +21,12 @@ pub use add_liquidity_on_chain::*;
 
 pub mod mint_lp_tokens;
 pub use mint_lp_tokens::*;
+
+pub mod commit_and_undelegate_deposit_receipt;
+pub use commit_and_undelegate_deposit_receipt::*;
+
+pub mod remove_liquidity_on_chain;
+pub use remove_liquidity_on_chain::*;
+
+pub mod remove_liquidity_er;
+pub use remove_liquidity_er::*;

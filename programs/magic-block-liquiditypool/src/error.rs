@@ -14,5 +14,8 @@ pub enum ErrorCode {
     InvalidAmount,
     InsufficientFunds,
     InsufficientBalance,
-    InvalidPoolState
+    InvalidPoolState,
+    InsufficientLpTokens,
+    ProviderNotFound,
+    InsufficientLiquidity,
 }

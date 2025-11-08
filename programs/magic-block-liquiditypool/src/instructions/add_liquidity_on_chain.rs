@@ -178,7 +178,6 @@ pub fn deposit_liquidity_on_chain(ctx: Context<DepositLiquidityOnchain>, params:
     Ok(())
 }
 
-
 #[account]
 #[derive(Debug, InitSpace)]
 pub struct DepositRecept {

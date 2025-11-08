@@ -53,6 +53,7 @@ describe("magic-block-liquiditypool", () => {
   let providerLpTokenAccount: PublicKey;
 
   let depositReceptAccount: PublicKey;
+  let withdrawReceptAccount: PublicKey;
 
   console.log(provider.wallet.publicKey);
 
@@ -164,6 +165,11 @@ describe("magic-block-liquiditypool", () => {
 
     [depositReceptAccount] = PublicKey.findProgramAddressSync(
       [Buffer.from("deposit_recept"), provider.wallet.publicKey.toBuffer()],
+      program.programId
+    );
+
+    [withdrawReceptAccount] = PublicKey.findProgramAddressSync(
+      [Buffer.from("withdraw_recept"), provider.wallet.publicKey.toBuffer()],
       program.programId
     );
 
@@ -380,6 +386,79 @@ describe("magic-block-liquiditypool", () => {
 
     await sleepWithAnimation(10);
     console.log(`Committed and Minted LP Tokens!`);
+    console.log(`Transaction Signature: ${signature}`);
+  });
+
+  it("Process Remove Liquidity OnChain", async () => {
+    let removeLiquidityParams = {
+      lpTokensToBurn: new anchor.BN(5),
+      minAmountA: new anchor.BN(30),
+      minAmountB: new anchor.BN(30),
+      pool: poolAccount
+    };
+
+    let tx = await program.methods.processRemoveLiquidityOnChain(removeLiquidityParams).accountsPartial({
+      provider: provider.wallet.publicKey,
+      mintA: mintA,
+      mintB: mintB,
+      transferAuthority: transferAuthorityAccount,
+      lpMint: lpMint,
+      tokenVaultA: tokenVaultAaccount,
+      tokenVaultB: tokenVaultBaccount,
+      providerTokenAAta: providerTokenAccountA,
+      providerTokenBAta: providerTokenAccountB,
+      providerTokenLpAta: providerLpTokenAccount,
+      withdrawRecept: withdrawReceptAccount,
+      tokenProgram: TOKEN_PROGRAM_ID,
+      systemProgram: SystemProgram.programId
+    }).signers([provider.wallet.payer]).rpc();
+
+    console.log(`Transaction Signature: ${tx}`);
+  });
+
+  it("Process Delegate Remove Liquidity Receipt", async () => {
+    let validatorKey = await getClosestValidator(routerConnection);
+    let commitFrequency = 30000;
+
+    const tx = await program.methods.processDelegateRemoveLiquidityReceipt(commitFrequency, validatorKey).accountsPartial({
+      provider: provider.wallet.publicKey,
+      withdrawRecept: withdrawReceptAccount,
+    }).transaction();
+
+    let signature = await sendMagicTransaction(
+      routerConnection,
+      tx,
+      [provider.wallet.payer]
+    );
+
+    await sleepWithAnimation(10);
+    console.log(`Delegated Remove Liquidity Recipt`);
+    console.log(`Transaction Signature: ${signature}`);
+  });
+
+  it("Process Remove Liquidity ER", async () => {
+    let removeLiquidityParams = {
+      user: provider.wallet.publicKey,
+      lpTokens: new anchor.BN(30),
+      minAmountA: new anchor.BN(30),
+      minAmountB: new anchor.BN(30),
+    };
+
+    const tx = await program.methods.processRemoveLiquidityEr(removeLiquidityParams).accountsPartial({
+      provider: provider.wallet.publicKey,
+      liquidityProvider: liquidityProviderAccount,
+      pool: poolAccount,
+      systemProgram: SystemProgram.programId
+    }).transaction();
+
+    let signature = await sendMagicTransaction(
+      routerConnection,
+      tx,
+      [provider.wallet.payer]
+    );
+
+    await sleepWithAnimation(10);
+    console.log(`Removed Liquidity ER`);
     console.log(`Transaction Signature: ${signature}`);
   })
   

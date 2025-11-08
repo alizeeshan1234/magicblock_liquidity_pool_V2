@@ -1,0 +1,7 @@
+/Users/mohammedzeeshan/Desktop/magicblock_liquidity_pool/magicblock_liquidity_pool/target/debug/deps/magicblock_magic_program_api-1b1f6ee5566545a8.d: /Users/mohammedzeeshan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/magicblock-magic-program-api-0.2.3/src/lib.rs /Users/mohammedzeeshan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/magicblock-magic-program-api-0.2.3/src/args.rs /Users/mohammedzeeshan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/magicblock-magic-program-api-0.2.3/src/instruction.rs
+
+/Users/mohammedzeeshan/Desktop/magicblock_liquidity_pool/magicblock_liquidity_pool/target/debug/deps/libmagicblock_magic_program_api-1b1f6ee5566545a8.rmeta: /Users/mohammedzeeshan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/magicblock-magic-program-api-0.2.3/src/lib.rs /Users/mohammedzeeshan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/magicblock-magic-program-api-0.2.3/src/args.rs /Users/mohammedzeeshan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/magicblock-magic-program-api-0.2.3/src/instruction.rs
+
+/Users/mohammedzeeshan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/magicblock-magic-program-api-0.2.3/src/lib.rs:
+/Users/mohammedzeeshan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/magicblock-magic-program-api-0.2.3/src/args.rs:
+/Users/mohammedzeeshan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/magicblock-magic-program-api-0.2.3/src/instruction.rs:

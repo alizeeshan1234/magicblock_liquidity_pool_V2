@@ -20,7 +20,7 @@ pub use state::*;
 use state::{pool::Pool, liquidity_provider::LiquidityProvider};
 
 
-declare_id!("CzwQU6jk9B3a2aBx5eXS5iJWeECtXYBM3HAYgfQ1bcMA");
+declare_id!("7iUftidmqaeXa7TfmcyZ3nhf2GeSCfznQbC1NJEqR4cM");
 
 #[program]
 pub mod magic_block_liquiditypool {
@@ -126,9 +126,24 @@ pub mod magic_block_liquiditypool {
         };
 
         magic_builder.build_and_invoke()?;
+
         Ok(())
     }
 
+    pub fn process_remove_liquidity_on_chain(
+        ctx: Context<RemoveLiquidityOnChain>, 
+        params: RemoveLiquidityParams
+    ) -> Result<()> {
+        instructions::remove_liquidity_on_chain::remove_liquidity_on_chain(ctx, params)
+    }
+
+    pub fn process_delegate_remove_liquidity_receipt(ctx: Context<DelegateRemoveLiquidityReceipt>, commit_frequency: u32, validator_key: Pubkey) -> Result<()> {
+        instructions::remove_liquidity_on_chain::delegate_remove_liquidity_receipt(ctx, commit_frequency, validator_key)
+    }
+
+    pub fn process_remove_liquidity_er(ctx: Context<RemoveLiquidityER>, params: RemoveLiquidityErParams) -> Result<()> {
+        instructions::remove_liquidity_er(ctx, params)
+    }
 
 }
 
