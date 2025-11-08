@@ -20,7 +20,7 @@ pub use state::*;
 use state::{pool::Pool, liquidity_provider::LiquidityProvider};
 
 
-declare_id!("7iUftidmqaeXa7TfmcyZ3nhf2GeSCfznQbC1NJEqR4cM");
+declare_id!("4KFT732xW9xyieU1r6YcPx1FpDtP2gDWcMqoBGDfbnWH");
 
 #[program]
 pub mod magic_block_liquiditypool {
@@ -145,6 +145,75 @@ pub mod magic_block_liquiditypool {
         instructions::remove_liquidity_er(ctx, params)
     }
 
+    pub fn process_burn_lp_tokens(ctx: Context<BurnLpTokens>, burn_amount: u64) -> Result<()> {
+        instructions::burn_lp_tokens::burn_lp_tokens(ctx, burn_amount)
+    }
+
+    pub fn process_commit_and_burn_lp_tokens(ctx: Context<CommitAndBurnMintLpTokens>) -> Result<()> {
+
+        let withdraw_recept = &ctx.accounts.withdraw_recept;
+
+        let instruction_data = anchor_lang::InstructionData::data(
+            &crate::instruction::ProcessBurnLpTokens {
+                burn_amount: withdraw_recept.lp_tokens_to_burn
+            }
+        );
+
+        let action_args = ActionArgs {
+            escrow_index: 0,
+            data: instruction_data
+        };
+
+        let accounts = vec![
+            ShortAccountMeta {
+                pubkey: ctx.accounts.provider.key(),
+                is_writable: false
+            },
+            ShortAccountMeta {
+                pubkey: ctx.accounts.transfer_authority.key(),
+                is_writable: false,
+            },
+            ShortAccountMeta {
+                pubkey: ctx.accounts.lp_mint.key(),
+                is_writable: true,
+            },
+            ShortAccountMeta {
+                pubkey: ctx.accounts.provider_lp_ata.key(),
+                is_writable: true
+            },
+            ShortAccountMeta {
+                pubkey: ctx.accounts.token_program.key(),
+                is_writable: false
+            }
+        ];
+
+        let call_handler = CallHandler {
+            args: action_args,
+            compute_units: 200_000,
+            escrow_authority: ctx.accounts.provider.to_account_info(),
+            destination_program: crate::ID,
+            accounts
+        };
+
+        let magic_builder = MagicInstructionBuilder {
+            payer: ctx.accounts.provider.to_account_info(),
+            magic_context: ctx.accounts.magic_context.to_account_info(),
+            magic_program: ctx.accounts.magic_program.to_account_info(),
+            magic_action: MagicAction::Commit(CommitType::WithHandler {
+                commited_accounts: vec![
+                    ctx.accounts.pool.to_account_info(),
+                    ctx.accounts.liquidity_provider.to_account_info(),
+                    ctx.accounts.withdraw_recept.to_account_info(),
+                ],
+                call_handlers: vec![call_handler]
+            })
+        };
+
+        magic_builder.build_and_invoke()?;
+
+        Ok(())
+    }
+
 }
 
 #[commit]
@@ -201,6 +270,53 @@ pub struct CommitAndMintLpTokens<'info> {
     pub token_program: Program<'info, Token>,
 
     /// CHECK: Magic context account
+    #[account(mut)]
+    pub magic_context: UncheckedAccount<'info>,
+    
+    /// CHECK: Magic program
+    pub magic_program: UncheckedAccount<'info>,
+}
+
+#[commit]
+#[derive(Accounts)]
+pub struct CommitAndBurnMintLpTokens<'info> {
+    #[account(mut)]
+    pub provider: Signer<'info>,
+
+    #[account(
+        mut,
+        seeds = [b"pool", pool.name.as_bytes()],
+        bump
+    )]
+    pub pool: Account<'info, Pool>,
+
+     #[account(
+        mut,
+        seeds = [b"liquidity_provider_account_info", provider.key().as_ref()],
+        bump,
+    )]
+    pub liquidity_provider: Account<'info, LiquidityProvider>,
+
+    #[account(
+        mut,
+        seeds = [b"withdraw_recept", provider.key().as_ref()],
+        bump,
+    )]
+    pub withdraw_recept: Account<'info, WithdrawRecept>,
+
+    #[account(
+        seeds = [b"transfer_authority"],
+        bump,
+    )]
+    pub transfer_authority: UncheckedAccount<'info>,
+
+    pub lp_mint: UncheckedAccount<'info>,
+
+    pub provider_lp_ata: UncheckedAccount<'info>,
+
+    pub token_program: Program<'info, Token>,
+
+     /// CHECK: Magic context account
     #[account(mut)]
     pub magic_context: UncheckedAccount<'info>,
     

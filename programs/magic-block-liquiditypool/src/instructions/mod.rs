@@ -30,3 +30,6 @@ pub use remove_liquidity_on_chain::*;
 
 pub mod remove_liquidity_er;
 pub use remove_liquidity_er::*;
+
+pub mod burn_lp_tokens;
+pub use burn_lp_tokens::*;
