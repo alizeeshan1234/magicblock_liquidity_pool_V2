@@ -227,3 +227,65 @@ pub fn delegate_deposit_receipt(
 
     Ok(())
 }
+
+pub fn commit_and_undelegate_deposit_receipt(ctx: Context<CommitAndUndelegateDepositReceipt>) -> Result<()> {
+
+    commit_and_undelegate_accounts(
+        &ctx.accounts.provider, 
+        vec![
+            &ctx.accounts.deposit_recept.to_account_info(),
+        ], 
+        &ctx.accounts.magic_context,
+        &ctx.accounts.magic_program
+    )?;
+
+    Ok(())
+
+}
+
+#[commit]
+#[derive(Accounts)]
+pub struct CommitAndUndelegateDepositReceipt<'info> {
+    #[account(mut)]
+    pub provider: Signer<'info>,
+
+    #[account(
+        mut,
+        seeds = [b"deposit_recept", provider.key().as_ref()],
+        bump,
+    )]
+    pub deposit_recept: Account<'info, DepositRecept>,
+
+    /// CHECK: Magic context account
+    #[account(mut)]
+    pub magic_context: UncheckedAccount<'info>,
+    
+    /// CHECK: Magic program
+    pub magic_program: UncheckedAccount<'info>,
+}
+
+pub fn close_deposit_receipt(ctx: Context<CloseDepositReceiptInfo>) -> Result<()> {
+    msg!("Depost Receipt account closed successfully!");
+    Ok(())
+}
+
+#[derive(Accounts)]
+pub struct CloseDepositReceiptInfo<'info> {
+    #[account(mut)]
+    pub provider: Signer<'info>,
+
+    #[account(
+        mut,
+        seeds = [b"deposit_recept", provider.key().as_ref()],
+        bump,
+        close = provider
+    )]
+    pub deposit_recept: Account<'info, DepositRecept>,
+
+    pub system_program: Program<'info, System>,
+
+    /// CHECK: the correct pda - this will be moved to the end in the future, meaning you can omit this unless needed
+    pub escrow: UncheckedAccount<'info>,
+    /// CHECK: the correct pda - this will be moved to the end in the future, meaning you can omit this unless needed
+    pub escrow_auth: UncheckedAccount<'info>,
+}

@@ -374,6 +374,7 @@ describe("magic-block-liquiditypool", () => {
       lpMint: lpMint,
       providerLpAta: providerLpTokenAccount,
       tokenProgram: TOKEN_PROGRAM_ID,
+      systemProgram: SystemProgram.programId,
       magicContext: MAGIC_CONTEXT_ID,
       magicProgram: MAGIC_PROGRAM_ID,
     }).transaction();

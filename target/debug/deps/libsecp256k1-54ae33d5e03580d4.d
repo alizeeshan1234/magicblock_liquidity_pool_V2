@@ -1,0 +1,11 @@
+/Users/mohammedzeeshan/magicblock_liquidity_pool/target/debug/deps/libsecp256k1-54ae33d5e03580d4.d: /Users/mohammedzeeshan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libsecp256k1-0.6.0/src/lib.rs /Users/mohammedzeeshan/magicblock_liquidity_pool/target/debug/build/libsecp256k1-a6bc73747ebec07e/out/const.rs /Users/mohammedzeeshan/magicblock_liquidity_pool/target/debug/build/libsecp256k1-a6bc73747ebec07e/out/const_gen.rs
+
+/Users/mohammedzeeshan/magicblock_liquidity_pool/target/debug/deps/liblibsecp256k1-54ae33d5e03580d4.rlib: /Users/mohammedzeeshan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libsecp256k1-0.6.0/src/lib.rs /Users/mohammedzeeshan/magicblock_liquidity_pool/target/debug/build/libsecp256k1-a6bc73747ebec07e/out/const.rs /Users/mohammedzeeshan/magicblock_liquidity_pool/target/debug/build/libsecp256k1-a6bc73747ebec07e/out/const_gen.rs
+
+/Users/mohammedzeeshan/magicblock_liquidity_pool/target/debug/deps/liblibsecp256k1-54ae33d5e03580d4.rmeta: /Users/mohammedzeeshan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libsecp256k1-0.6.0/src/lib.rs /Users/mohammedzeeshan/magicblock_liquidity_pool/target/debug/build/libsecp256k1-a6bc73747ebec07e/out/const.rs /Users/mohammedzeeshan/magicblock_liquidity_pool/target/debug/build/libsecp256k1-a6bc73747ebec07e/out/const_gen.rs
+
+/Users/mohammedzeeshan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libsecp256k1-0.6.0/src/lib.rs:
+/Users/mohammedzeeshan/magicblock_liquidity_pool/target/debug/build/libsecp256k1-a6bc73747ebec07e/out/const.rs:
+/Users/mohammedzeeshan/magicblock_liquidity_pool/target/debug/build/libsecp256k1-a6bc73747ebec07e/out/const_gen.rs:
+
+# env-dep:OUT_DIR=/Users/mohammedzeeshan/magicblock_liquidity_pool/target/debug/build/libsecp256k1-a6bc73747ebec07e/out

@@ -1,0 +1,10 @@
+/Users/mohammedzeeshan/magicblock_liquidity_pool/target/sbpf-solana-solana/release/deps/libthiserror-f9386e4ccaadb715.rmeta: /Users/mohammedzeeshan/.cargo/registry/src/index.crates.io-6f17d22bba15001f/thiserror-1.0.69/src/lib.rs /Users/mohammedzeeshan/.cargo/registry/src/index.crates.io-6f17d22bba15001f/thiserror-1.0.69/src/aserror.rs /Users/mohammedzeeshan/.cargo/registry/src/index.crates.io-6f17d22bba15001f/thiserror-1.0.69/src/display.rs /Users/mohammedzeeshan/.cargo/registry/src/index.crates.io-6f17d22bba15001f/thiserror-1.0.69/src/provide.rs
+
+/Users/mohammedzeeshan/magicblock_liquidity_pool/target/sbpf-solana-solana/release/deps/libthiserror-f9386e4ccaadb715.rlib: /Users/mohammedzeeshan/.cargo/registry/src/index.crates.io-6f17d22bba15001f/thiserror-1.0.69/src/lib.rs /Users/mohammedzeeshan/.cargo/registry/src/index.crates.io-6f17d22bba15001f/thiserror-1.0.69/src/aserror.rs /Users/mohammedzeeshan/.cargo/registry/src/index.crates.io-6f17d22bba15001f/thiserror-1.0.69/src/display.rs /Users/mohammedzeeshan/.cargo/registry/src/index.crates.io-6f17d22bba15001f/thiserror-1.0.69/src/provide.rs
+
+/Users/mohammedzeeshan/magicblock_liquidity_pool/target/sbpf-solana-solana/release/deps/thiserror-f9386e4ccaadb715.d: /Users/mohammedzeeshan/.cargo/registry/src/index.crates.io-6f17d22bba15001f/thiserror-1.0.69/src/lib.rs /Users/mohammedzeeshan/.cargo/registry/src/index.crates.io-6f17d22bba15001f/thiserror-1.0.69/src/aserror.rs /Users/mohammedzeeshan/.cargo/registry/src/index.crates.io-6f17d22bba15001f/thiserror-1.0.69/src/display.rs /Users/mohammedzeeshan/.cargo/registry/src/index.crates.io-6f17d22bba15001f/thiserror-1.0.69/src/provide.rs
+
+/Users/mohammedzeeshan/.cargo/registry/src/index.crates.io-6f17d22bba15001f/thiserror-1.0.69/src/lib.rs:
+/Users/mohammedzeeshan/.cargo/registry/src/index.crates.io-6f17d22bba15001f/thiserror-1.0.69/src/aserror.rs:
+/Users/mohammedzeeshan/.cargo/registry/src/index.crates.io-6f17d22bba15001f/thiserror-1.0.69/src/display.rs:
+/Users/mohammedzeeshan/.cargo/registry/src/index.crates.io-6f17d22bba15001f/thiserror-1.0.69/src/provide.rs:

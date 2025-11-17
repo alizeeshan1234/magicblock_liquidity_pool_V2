@@ -2,9 +2,7 @@ use anchor_lang::prelude::*;
 use anchor_spl::token::{Mint, TokenAccount, Token};
 
 use ephemeral_rollups_sdk::anchor::{commit, delegate, ephemeral};
-use ephemeral_rollups_sdk::cpi::DelegateConfig;
-use ephemeral_rollups_sdk::ephem::commit_and_undelegate_accounts;
-use ephemeral_rollups_sdk::ephem::{MagicInstructionBuilder, MagicAction, CallHandler, CommitType};
+use ephemeral_rollups_sdk::ephem::{MagicInstructionBuilder, MagicAction, CallHandler, CommitType, CommitAndUndelegate, UndelegateType};
 use ephemeral_rollups_sdk::{ActionArgs, ShortAccountMeta};
 use anchor_lang::Discriminator;
 
@@ -20,10 +18,11 @@ pub use state::*;
 use state::{pool::Pool, liquidity_provider::LiquidityProvider};
 
 
-declare_id!("4KFT732xW9xyieU1r6YcPx1FpDtP2gDWcMqoBGDfbnWH");
+declare_id!("EmJTrTGhFdweLPK2xAwgB1wmcEASaCPqViqRxSXkCdL4");
 
 #[program]
 pub mod magic_block_liquiditypool {
+
     use super::*;
 
     pub fn initialize(ctx: Context<Initialize>) -> Result<()> {
@@ -64,12 +63,16 @@ pub mod magic_block_liquiditypool {
     pub fn process_mint_lp_tokens(ctx: Context<MintLpTokens>, mint_amount: u64) -> Result<()> {
         instructions::mint_lp_tokens::mint_lp_tokens(ctx, mint_amount)
     }
+    
+    pub fn process_close_deposit_receipt(ctx: Context<CloseDepositReceiptInfo>) -> Result<()> {
+        instructions::add_liquidity_on_chain::close_deposit_receipt(ctx)
+    }
 
     pub fn process_commit_and_mint_lp_tokens(ctx: Context<CommitAndMintLpTokens>) -> Result<()> {
 
         let deposit_recept = &ctx.accounts.deposit_recept;
 
-        let instruction_data = anchor_lang::InstructionData::data(
+        let mint_instruction_data = anchor_lang::InstructionData::data(
             &crate::instruction::ProcessMintLpTokens {
                 mint_amount: deposit_recept.lp_tokens_minted,
             }
@@ -77,7 +80,7 @@ pub mod magic_block_liquiditypool {
 
         let action_args = ActionArgs {
             escrow_index: 0,
-            data: instruction_data,
+            data: mint_instruction_data,
         };
 
         let accounts = vec![
@@ -103,7 +106,7 @@ pub mod magic_block_liquiditypool {
             },
         ];
 
-        let call_handler = CallHandler {
+        let mint_handler = CallHandler {
             args: action_args,
             compute_units: 200_000,
             escrow_authority: ctx.accounts.provider.to_account_info(),
@@ -111,21 +114,52 @@ pub mod magic_block_liquiditypool {
             accounts
         };
 
-        let magic_builder = MagicInstructionBuilder {
+        let close_ix_data = anchor_lang::InstructionData::data(
+            &crate::instruction::ProcessCloseDepositReceipt {}
+        );
+
+        let action_args_close = ActionArgs {
+            escrow_index: 0,
+            data: close_ix_data
+        };
+
+        let close_handler_accounts = vec![
+            ShortAccountMeta {
+                pubkey: ctx.accounts.provider.key(),
+                is_writable: true
+            },
+            ShortAccountMeta {
+                pubkey: ctx.accounts.deposit_recept.key(),
+                is_writable: true
+            },
+            ShortAccountMeta {
+                pubkey: ctx.accounts.system_program.key(),
+                is_writable: false
+            }
+        ];
+
+        let close_handler = CallHandler {
+            args: action_args_close,
+            compute_units: 200_000,
+            escrow_authority: ctx.accounts.provider.to_account_info(),
+            destination_program: crate::ID,
+            accounts: close_handler_accounts
+        };
+
+        MagicInstructionBuilder {
             payer: ctx.accounts.provider.to_account_info(),
             magic_context: ctx.accounts.magic_context.to_account_info(),
             magic_program: ctx.accounts.magic_program.to_account_info(),
-            magic_action: MagicAction::Commit(CommitType::WithHandler {
-                commited_accounts: vec![
-                    ctx.accounts.pool.to_account_info(),
-                    ctx.accounts.liquidity_provider.to_account_info(),
-                    ctx.accounts.deposit_recept.to_account_info(),
-                ],
-                call_handlers: vec![call_handler]
-            })
-        };
-
-        magic_builder.build_and_invoke()?;
+            magic_action: MagicAction::CommitAndUndelegate(
+                CommitAndUndelegate {
+                    commit_type: CommitType::WithHandler {
+                        commited_accounts: vec![ctx.accounts.deposit_recept.to_account_info()],
+                        call_handlers: vec![mint_handler, close_handler],
+                    },
+                    undelegate_type: UndelegateType::Standalone
+                }
+            ),
+        }.build_and_invoke()?;
 
         Ok(())
     }
@@ -249,25 +283,13 @@ pub struct CommitAndMintLpTokens<'info> {
     )]
     pub transfer_authority: UncheckedAccount<'info>,
 
-    // #[account(
-    //     mut,
-    //     seeds = [b"lp_token_mint"],
-    //     bump
-    // )]
-    // pub lp_mint: Account<'info, Mint>,
-
-    // #[account(
-    //     mut,
-    //     associated_token::mint = lp_mint,
-    //     associated_token::authority = provider
-    // )]
-    // pub provider_lp_ata: Account<'info, TokenAccount>,
-
     pub lp_mint: UncheckedAccount<'info>,
 
     pub provider_lp_ata: UncheckedAccount<'info>,
 
     pub token_program: Program<'info, Token>,
+
+    pub system_program: Program<'info, System>,
 
     /// CHECK: Magic context account
     #[account(mut)]

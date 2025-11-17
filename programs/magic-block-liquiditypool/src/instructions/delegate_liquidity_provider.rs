@@ -1,6 +1,5 @@
 use anchor_lang::prelude::*;
 use anchor_lang::Discriminator;
-use anchor_lang::solana_program::vote::instruction;
 use anchor_spl::{
     associated_token::AssociatedToken,
     token::{transfer_checked, Mint, Token, TokenAccount, TransferChecked},
