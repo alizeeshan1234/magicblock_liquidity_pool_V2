@@ -17,7 +17,7 @@ pub use state::*;
 
 use state::{pool::Pool, liquidity_provider::LiquidityProvider};
 
-declare_id!("8jL3EsFxdQpSWDQudJiU3XSoaKsDoYSLZB1SFw2PKMVw");
+declare_id!("7Vtwix4ij2F69grbeehzpZCE2qVZQWUAkipXwx24fpJ2");
 
 #[program]
 pub mod magic_block_liquiditypool {
@@ -151,13 +151,12 @@ pub mod magic_block_liquiditypool {
             magic_program: ctx.accounts.magic_program.to_account_info(),
             magic_action: MagicAction::CommitAndUndelegate(
                 CommitAndUndelegate {
-                    commit_type: CommitType::WithHandler {
-                        commited_accounts: vec![ctx.accounts.deposit_recept.to_account_info()],
-                        call_handlers: vec![mint_handler, close_handler],
-                    },
-                    undelegate_type: UndelegateType::Standalone
+                    commit_type: CommitType::Standalone(
+                        vec![ctx.accounts.deposit_recept.to_account_info()]
+                    ),
+                    undelegate_type: UndelegateType::WithHandler(vec![mint_handler, close_handler])
                 }
-            ),
+            )
         }.build_and_invoke()?;
 
         Ok(())

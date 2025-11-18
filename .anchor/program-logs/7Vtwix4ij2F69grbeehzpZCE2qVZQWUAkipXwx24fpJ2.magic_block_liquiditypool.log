@@ -1,0 +1,212 @@
+Streaming transaction logs mentioning 7Vtwix4ij2F69grbeehzpZCE2qVZQWUAkipXwx24fpJ2. Confirmed commitment
+Transaction executed in slot 422392544:
+  Signature: 3eibp8ds2p7DMPJjPSiGa6BVw22Cqkjg2fHx2bmQ2wqxWvozjpkGmQ5Uk2bYZgSVhhaqAsyugP2KmXY7tirPvsEB
+  Status: Ok
+  Log Messages:
+    Program 7Vtwix4ij2F69grbeehzpZCE2qVZQWUAkipXwx24fpJ2 invoke [1]
+    Program log: Instruction: Initialize
+    Program log: Greetings from: 7Vtwix4ij2F69grbeehzpZCE2qVZQWUAkipXwx24fpJ2
+    Program 7Vtwix4ij2F69grbeehzpZCE2qVZQWUAkipXwx24fpJ2 consumed 2943 of 200000 compute units
+    Program 7Vtwix4ij2F69grbeehzpZCE2qVZQWUAkipXwx24fpJ2 success
+Transaction executed in slot 422392546:
+  Signature: 3Y47tLeA1kg8pawN4n93SzE9UfgD5NLAmchcp9xzY4g5a24sJjE2KePRM6k43aWvotSTYRHj1DVFu7sycSpschWY
+  Status: Ok
+  Log Messages:
+    Program 7Vtwix4ij2F69grbeehzpZCE2qVZQWUAkipXwx24fpJ2 invoke [1]
+    Program log: Instruction: ProcessInitializePool
+    Program 11111111111111111111111111111111 invoke [2]
+    Program 11111111111111111111111111111111 success
+    Program TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA invoke [2]
+    Program log: Instruction: InitializeMint2
+    Program TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA consumed 2828 of 187089 compute units
+    Program TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA success
+    Program 11111111111111111111111111111111 invoke [2]
+    Program 11111111111111111111111111111111 success
+    Program TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA invoke [2]
+    Program log: Instruction: InitializeAccount3
+    Program TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA consumed 4241 of 174265 compute units
+    Program TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA success
+    Program 11111111111111111111111111111111 invoke [2]
+    Program 11111111111111111111111111111111 success
+    Program 11111111111111111111111111111111 invoke [2]
+    Program 11111111111111111111111111111111 success
+    Program TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA invoke [2]
+    Program log: Instruction: InitializeAccount3
+    Program TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA consumed 4214 of 155224 compute units
+    Program TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA success
+    Program 11111111111111111111111111111111 invoke [2]
+    Program 11111111111111111111111111111111 success
+    Program TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA invoke [2]
+    Program log: Instruction: InitializeAccount3
+    Program TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA consumed 4214 of 143849 compute units
+    Program TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA success
+    Program log: Initializing Liquidity Pool...
+    Program log: Liquidity Pool Initialized Successfully!
+    Program log: Creating LP Token Metadata...
+    Program metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s invoke [2]
+    Program log: IX: Create Metadata Accounts v3
+    Program 11111111111111111111111111111111 invoke [3]
+    Program 11111111111111111111111111111111 success
+    Program log: Allocate space for the account
+    Program 11111111111111111111111111111111 invoke [3]
+    Program 11111111111111111111111111111111 success
+    Program log: Assign the account to the owning program
+    Program 11111111111111111111111111111111 invoke [3]
+    Program 11111111111111111111111111111111 success
+    Program metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s consumed 43572 of 128064 compute units
+    Program metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s success
+    Program log: LP Token Created!
+    Program 7Vtwix4ij2F69grbeehzpZCE2qVZQWUAkipXwx24fpJ2 consumed 117665 of 200000 compute units
+    Program 7Vtwix4ij2F69grbeehzpZCE2qVZQWUAkipXwx24fpJ2 success
+Transaction executed in slot 422392557:
+  Signature: 3fH8E7iJfST3iuz4EUQHgzkirDibzLG5FovycrTinaxoAiXmzoGGckFdDiJFFqk5eUBmvyv77hZu6y8KdSt8DHBG
+  Status: Ok
+  Log Messages:
+    Program 7Vtwix4ij2F69grbeehzpZCE2qVZQWUAkipXwx24fpJ2 invoke [1]
+    Program log: Instruction: ProcessDelegatePool
+    Program 11111111111111111111111111111111 invoke [2]
+    Program 11111111111111111111111111111111 success
+    Program 11111111111111111111111111111111 invoke [2]
+    Program 11111111111111111111111111111111 success
+    Program DELeGGvXpWV2fqJUhqcF5ZSYMS4JTLjteaAMARRSaeSh invoke [2]
+    Program 11111111111111111111111111111111 invoke [3]
+    Program 11111111111111111111111111111111 success
+    Program 11111111111111111111111111111111 invoke [3]
+    Program 11111111111111111111111111111111 success
+    Program DELeGGvXpWV2fqJUhqcF5ZSYMS4JTLjteaAMARRSaeSh consumed 14442 of 174618 compute units
+    Program DELeGGvXpWV2fqJUhqcF5ZSYMS4JTLjteaAMARRSaeSh success
+    Program log: Pool account delegated successfully!
+    Program 7Vtwix4ij2F69grbeehzpZCE2qVZQWUAkipXwx24fpJ2 consumed 41876 of 200000 compute units
+    Program 7Vtwix4ij2F69grbeehzpZCE2qVZQWUAkipXwx24fpJ2 success
+Transaction executed in slot 422392584:
+  Signature: 5Kvu1jeYbmTGCh7eD8EeKGAtqA5r5zVrCisDuvRXybcv4CwLDJiJky2Ucb4XZ2zngEX8joy2csUPyvnM9PDDogWF
+  Status: Ok
+  Log Messages:
+    Program 7Vtwix4ij2F69grbeehzpZCE2qVZQWUAkipXwx24fpJ2 invoke [1]
+    Program log: Instruction: ProcessInitializeLiquidityProvider
+    Program 11111111111111111111111111111111 invoke [2]
+    Program 11111111111111111111111111111111 success
+    Program log: Initializing Liquidity Provider...
+    Program log: Initialized Liquidity Provider Succesfully!
+    Program log: Liquidity Provider Info: Account { account: LiquidityProvider { provider: 3oLMD8mcD1PGmi9p9Y7qQX3661nyoPBcnPo54n7CWjsi, total_liquidity_provided: 0, total_lp_tokens: 0, liquidity_pools_info: [LiquidityPoolInfo { pool: 11111111111111111111111111111111, token_mint: 11111111111111111111111111111111, liquidity_amount: 0, lp_tokens: 0 }, LiquidityPoolInfo { pool: 11111111111111111111111111111111, token_mint: 11111111111111111111111111111111, liquidity_amount: 0, lp_tokens: 0 }, LiquidityPoolInfo { pool: 11111111111111111111111111111111, token_mint: 11111111111111111111111111111111, liquidity_amount: 0, lp_tokens: 0 }, LiquidityPoolInfo { pool: 11111111111111111111111111111111, token_mint: 11111111111111111111111111111111, liquidity_amount: 0, lp_tokens: 0 }, LiquidityPoolInfo { pool: 11111111111111111111111111111111, token_mint: 11111111111111111111111111111111, liquidity_amount: 0, lp_tokens: 0 }, LiquidityPoolInfo { pool: 11111111111111111111111111111111, token_mint: 11111111111111111111111111111111, liquidity_amount: 0, lp_tokens: 0 }, LiquidityPoolInfo { pool: 11111111111111111111111111111111, token_mint: 11111111111111111111111111111111, liquidity_amount: 0, lp_tokens: 0 }, LiquidityPoolInfo { pool: 11111111111111111111111111111111, token_mint: 11111111111111111111111111111111, liquidity_amount: 0, lp_tokens: 0 }, LiquidityPoolInfo { pool: 11111111111111111111111111111111, token_mint: 11111111111111111111111111111111, liquidity_amount: 0, lp_tokens: 0 }, LiquidityPoolInfo { pool: 11111111111111111111111111111111, token_mint: 11111111111111111111111111111111, liquidity_amount: 0, lp_tokens: 0 }], latest_liquidity_provided_on: 0, bump: 255 }, info: AccountInfo { key: DNWn44feQn1zrdD3EAneLdBWcJt3Ky45a8CgCVtFtKu1, owner: 7Vtwix4ij2F69grbeehzpZCE2qVZQWUAkipXwx24fpJ2, is_signer: false, is_writable: true, executable: false, rent_epoch: 18446744073709551615, lamports: 6911280, data.len: 865, data: 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000, .. } }
+    Program 7Vtwix4ij2F69grbeehzpZCE2qVZQWUAkipXwx24fpJ2 consumed 97233 of 200000 compute units
+    Program 7Vtwix4ij2F69grbeehzpZCE2qVZQWUAkipXwx24fpJ2 success
+Transaction executed in slot 422392591:
+  Signature: 41YjBtF8wbzx6k8YKJZs3BaNZDnQV8hop3ZECqNTj6U4X2ydxz3Xj4er2anznu6ANhBiSiXKmsbVh5cRXTVNGRcP
+  Status: Ok
+  Log Messages:
+    Program 7Vtwix4ij2F69grbeehzpZCE2qVZQWUAkipXwx24fpJ2 invoke [1]
+    Program log: Instruction: ProcessDelegateLiquidityProvider
+    Program 11111111111111111111111111111111 invoke [2]
+    Program 11111111111111111111111111111111 success
+    Program 11111111111111111111111111111111 invoke [2]
+    Program 11111111111111111111111111111111 success
+    Program DELeGGvXpWV2fqJUhqcF5ZSYMS4JTLjteaAMARRSaeSh invoke [2]
+    Program 11111111111111111111111111111111 invoke [3]
+    Program 11111111111111111111111111111111 success
+    Program 11111111111111111111111111111111 invoke [3]
+    Program 11111111111111111111111111111111 success
+    Program DELeGGvXpWV2fqJUhqcF5ZSYMS4JTLjteaAMARRSaeSh consumed 17442 of 172667 compute units
+    Program DELeGGvXpWV2fqJUhqcF5ZSYMS4JTLjteaAMARRSaeSh success
+    Program log: Liquidity Provider account delegated successfully!
+    Program 7Vtwix4ij2F69grbeehzpZCE2qVZQWUAkipXwx24fpJ2 consumed 47911 of 200000 compute units
+    Program 7Vtwix4ij2F69grbeehzpZCE2qVZQWUAkipXwx24fpJ2 success
+Transaction executed in slot 422392617:
+  Signature: 4GfSDfsfXtjbDJCPUJ55xBs4rnd8Brw2iVKXCn4UFWTrx84TUMdH1Eb9ivsaaP5G4nyRnwYQHvcfvWFaqtL27DMm
+  Status: Ok
+  Log Messages:
+    Program 7Vtwix4ij2F69grbeehzpZCE2qVZQWUAkipXwx24fpJ2 invoke [1]
+    Program log: Instruction: ProcessDepositAddLiquidityOnChain
+    Program 11111111111111111111111111111111 invoke [2]
+    Program 11111111111111111111111111111111 success
+    Program TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA invoke [2]
+    Program log: Instruction: Transfer
+    Program TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA consumed 4645 of 166929 compute units
+    Program TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA success
+    Program log: Transferred 100 of Token A to Vault
+    Program TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA invoke [2]
+    Program log: Instruction: Transfer
+    Program TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA consumed 4645 of 159986 compute units
+    Program TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA success
+    Program log: Transferred 100 of Token B to Vault
+    Program log: Deposit Recept created successfully!
+    Program 7Vtwix4ij2F69grbeehzpZCE2qVZQWUAkipXwx24fpJ2 consumed 48007 of 200000 compute units
+    Program 7Vtwix4ij2F69grbeehzpZCE2qVZQWUAkipXwx24fpJ2 success
+Transaction executed in slot 422392619:
+  Signature: 4GfSDfsfXtjbDJCPUJ55xBs4rnd8Brw2iVKXCn4UFWTrx84TUMdH1Eb9ivsaaP5G4nyRnwYQHvcfvWFaqtL27DMm
+  Status: Ok
+  Log Messages:
+    Program 7Vtwix4ij2F69grbeehzpZCE2qVZQWUAkipXwx24fpJ2 invoke [1]
+    Program log: Instruction: ProcessDepositAddLiquidityOnChain
+    Program 11111111111111111111111111111111 invoke [2]
+    Program 11111111111111111111111111111111 success
+    Program TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA invoke [2]
+    Program log: Instruction: Transfer
+    Program TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA consumed 4645 of 166929 compute units
+    Program TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA success
+    Program log: Transferred 100 of Token A to Vault
+    Program TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA invoke [2]
+    Program log: Instruction: Transfer
+    Program TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA consumed 4645 of 159986 compute units
+    Program TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA success
+    Program log: Transferred 100 of Token B to Vault
+    Program log: Deposit Recept created successfully!
+    Program 7Vtwix4ij2F69grbeehzpZCE2qVZQWUAkipXwx24fpJ2 consumed 48007 of 200000 compute units
+    Program 7Vtwix4ij2F69grbeehzpZCE2qVZQWUAkipXwx24fpJ2 success
+Transaction executed in slot 422392625:
+  Signature: 5fDPdwQbSAXc4UiB5Yv1adeM78VepYadCJqNN2aQUqeYqAjvv6jdEGqkzJoPn68z9bqCaA42UxFnZzxuV9jeKmLo
+  Status: Ok
+  Log Messages:
+    Program 7Vtwix4ij2F69grbeehzpZCE2qVZQWUAkipXwx24fpJ2 invoke [1]
+    Program log: Instruction: ProcessDelegateAddLiquidityReceipt
+    Program 11111111111111111111111111111111 invoke [2]
+    Program 11111111111111111111111111111111 success
+    Program 11111111111111111111111111111111 invoke [2]
+    Program 11111111111111111111111111111111 success
+    Program DELeGGvXpWV2fqJUhqcF5ZSYMS4JTLjteaAMARRSaeSh invoke [2]
+    Program 11111111111111111111111111111111 invoke [3]
+    Program 11111111111111111111111111111111 success
+    Program 11111111111111111111111111111111 invoke [3]
+    Program 11111111111111111111111111111111 success
+    Program DELeGGvXpWV2fqJUhqcF5ZSYMS4JTLjteaAMARRSaeSh consumed 21942 of 167809 compute units
+    Program DELeGGvXpWV2fqJUhqcF5ZSYMS4JTLjteaAMARRSaeSh success
+    Program log: Deposit receipt delegated successfully!
+    Program log: Receipt : Account { account: DepositRecept { pool: Edkg7QFQahpLrQNvWTtqgwzd199fYbfGkCqW1FwradLT, liquidity_provider: 3oLMD8mcD1PGmi9p9Y7qQX3661nyoPBcnPo54n7CWjsi, amount_a: 100, amount_b: 100, lp_tokens_minted: 100 }, info: AccountInfo { key: CAivifWZjqsZkwjY2wMZA6dJLCoNwZksPahk3tDwN4Xq, owner: DELeGGvXpWV2fqJUhqcF5ZSYMS4JTLjteaAMARRSaeSh, is_signer: false, is_writable: true, executable: false, rent_epoch: 18446744073709551615, lamports: 1559040, data.len: 96, data: 18c27466c6ffe9bfca9238cce4bc5965e7a3a7cf157873ae61cf3f89b8f8eb5818a9ddaa250334f02995f7ea09c9626110796e05bcfee0988df63805361f9284, .. } }
+    Program 7Vtwix4ij2F69grbeehzpZCE2qVZQWUAkipXwx24fpJ2 consumed 85223 of 200000 compute units
+    Program 7Vtwix4ij2F69grbeehzpZCE2qVZQWUAkipXwx24fpJ2 success
+Transaction executed in slot 422392678:
+  Signature: 57rRqwE1MCyu6veLikf4VeKvq2bXZH8Qi7w58v8tjeH744zug9HVntzWtGdFQK2Y35vUfuZsV472jEWXr9N4y6Sa
+  Status: Error processing Instruction 4: custom program error: 0x65
+  Log Messages:
+    Program ComputeBudget111111111111111111111111111111 invoke [1]
+    Program ComputeBudget111111111111111111111111111111 success
+    Program ComputeBudget111111111111111111111111111111 invoke [1]
+    Program ComputeBudget111111111111111111111111111111 success
+    Program DELeGGvXpWV2fqJUhqcF5ZSYMS4JTLjteaAMARRSaeSh invoke [1]
+    Program 11111111111111111111111111111111 invoke [2]
+    Program 11111111111111111111111111111111 success
+    Program 11111111111111111111111111111111 invoke [2]
+    Program 11111111111111111111111111111111 success
+    Program DELeGGvXpWV2fqJUhqcF5ZSYMS4JTLjteaAMARRSaeSh consumed 54383 of 609700 compute units
+    Program DELeGGvXpWV2fqJUhqcF5ZSYMS4JTLjteaAMARRSaeSh success
+    Program DELeGGvXpWV2fqJUhqcF5ZSYMS4JTLjteaAMARRSaeSh invoke [1]
+    Program DELeGGvXpWV2fqJUhqcF5ZSYMS4JTLjteaAMARRSaeSh consumed 40931 of 555317 compute units
+    Program DELeGGvXpWV2fqJUhqcF5ZSYMS4JTLjteaAMARRSaeSh success
+    Program DELeGGvXpWV2fqJUhqcF5ZSYMS4JTLjteaAMARRSaeSh invoke [1]
+    Program 11111111111111111111111111111111 invoke [2]
+    Program 11111111111111111111111111111111 success
+    Program 7Vtwix4ij2F69grbeehzpZCE2qVZQWUAkipXwx24fpJ2 invoke [2]
+    Program log: AnchorError occurred. Error Code: InstructionFallbackNotFound. Error Number: 101. Error Message: Fallback functions are not supported.
+    Program 7Vtwix4ij2F69grbeehzpZCE2qVZQWUAkipXwx24fpJ2 consumed 2547 of 457740 compute units
+    Program 7Vtwix4ij2F69grbeehzpZCE2qVZQWUAkipXwx24fpJ2 failed: custom program error: 0x65
+    Program DELeGGvXpWV2fqJUhqcF5ZSYMS4JTLjteaAMARRSaeSh consumed 59193 of 514386 compute units
+    Program DELeGGvXpWV2fqJUhqcF5ZSYMS4JTLjteaAMARRSaeSh failed: custom program error: 0x65
+Transaction executed in slot 422392707:
+  Signature: 7mfh5EsRzpB9NKZs88rVsuM1573vyjm4QMjysa1Q2tiGzdQrEevT1wLdEhNW3UaQKp9EAkwvBmSSHN1GggoBHjx
+  Status: Error processing Instruction 0: custom program error: 0xbc4
+  Log Messages:
+    Program 7Vtwix4ij2F69grbeehzpZCE2qVZQWUAkipXwx24fpJ2 invoke [1]
+    Program log: Instruction: ProcessDelegateRemoveLiquidityReceipt
+    Program log: AnchorError caused by account: withdraw_recept. Error Code: AccountNotInitialized. Error Number: 3012. Error Message: The program expected this account to be already initialized.
+    Program 7Vtwix4ij2F69grbeehzpZCE2qVZQWUAkipXwx24fpJ2 consumed 4459 of 200000 compute units
+    Program 7Vtwix4ij2F69grbeehzpZCE2qVZQWUAkipXwx24fpJ2 failed: custom program error: 0xbc4
