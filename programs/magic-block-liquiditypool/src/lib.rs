@@ -17,8 +17,7 @@ pub use state::*;
 
 use state::{pool::Pool, liquidity_provider::LiquidityProvider};
 
-
-declare_id!("EmJTrTGhFdweLPK2xAwgB1wmcEASaCPqViqRxSXkCdL4");
+declare_id!("8jL3EsFxdQpSWDQudJiU3XSoaKsDoYSLZB1SFw2PKMVw");
 
 #[program]
 pub mod magic_block_liquiditypool {
