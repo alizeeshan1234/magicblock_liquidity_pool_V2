@@ -5,7 +5,7 @@
  * IDL can be found at `target/idl/magic_block_liquiditypool.json`.
  */
 export type MagicBlockLiquiditypool = {
-  "address": "7Vtwix4ij2F69grbeehzpZCE2qVZQWUAkipXwx24fpJ2",
+  "address": "2KAKX9Q4un6QmwFbvC54XePckpAEpb6iX8F5iLpGqYUi",
   "metadata": {
     "name": "magicBlockLiquiditypool",
     "version": "0.1.0",
@@ -759,38 +759,38 @@ export type MagicBlockLiquiditypool = {
             "program": {
               "kind": "const",
               "value": [
-                96,
-                141,
-                29,
-                238,
-                121,
-                104,
-                179,
-                117,
-                2,
-                211,
-                66,
-                114,
-                120,
-                194,
-                192,
-                8,
-                249,
-                77,
+                19,
+                130,
+                173,
+                201,
+                236,
+                246,
                 181,
-                37,
-                105,
-                60,
-                114,
-                114,
-                230,
-                48,
-                38,
-                2,
+                116,
+                118,
                 164,
-                207,
-                106,
-                247
+                121,
+                157,
+                181,
+                69,
+                86,
+                186,
+                62,
+                108,
+                109,
+                163,
+                184,
+                245,
+                102,
+                226,
+                33,
+                95,
+                67,
+                59,
+                102,
+                233,
+                178,
+                179
               ]
             }
           }
@@ -899,7 +899,7 @@ export type MagicBlockLiquiditypool = {
         },
         {
           "name": "ownerProgram",
-          "address": "7Vtwix4ij2F69grbeehzpZCE2qVZQWUAkipXwx24fpJ2"
+          "address": "2KAKX9Q4un6QmwFbvC54XePckpAEpb6iX8F5iLpGqYUi"
         },
         {
           "name": "delegationProgram",
@@ -963,38 +963,38 @@ export type MagicBlockLiquiditypool = {
             "program": {
               "kind": "const",
               "value": [
-                96,
-                141,
-                29,
-                238,
-                121,
-                104,
-                179,
-                117,
-                2,
-                211,
-                66,
-                114,
-                120,
-                194,
-                192,
-                8,
-                249,
-                77,
+                19,
+                130,
+                173,
+                201,
+                236,
+                246,
                 181,
-                37,
-                105,
-                60,
-                114,
-                114,
-                230,
-                48,
-                38,
-                2,
+                116,
+                118,
                 164,
-                207,
-                106,
-                247
+                121,
+                157,
+                181,
+                69,
+                86,
+                186,
+                62,
+                108,
+                109,
+                163,
+                184,
+                245,
+                102,
+                226,
+                33,
+                95,
+                67,
+                59,
+                102,
+                233,
+                178,
+                179
               ]
             }
           }
@@ -1120,7 +1120,7 @@ export type MagicBlockLiquiditypool = {
         },
         {
           "name": "ownerProgram",
-          "address": "7Vtwix4ij2F69grbeehzpZCE2qVZQWUAkipXwx24fpJ2"
+          "address": "2KAKX9Q4un6QmwFbvC54XePckpAEpb6iX8F5iLpGqYUi"
         },
         {
           "name": "delegationProgram",
@@ -1184,38 +1184,38 @@ export type MagicBlockLiquiditypool = {
             "program": {
               "kind": "const",
               "value": [
-                96,
-                141,
-                29,
-                238,
-                121,
-                104,
-                179,
-                117,
-                2,
-                211,
-                66,
-                114,
-                120,
-                194,
-                192,
-                8,
-                249,
-                77,
+                19,
+                130,
+                173,
+                201,
+                236,
+                246,
                 181,
-                37,
-                105,
-                60,
-                114,
-                114,
-                230,
-                48,
-                38,
-                2,
+                116,
+                118,
                 164,
-                207,
-                106,
-                247
+                121,
+                157,
+                181,
+                69,
+                86,
+                186,
+                62,
+                108,
+                109,
+                163,
+                184,
+                245,
+                102,
+                226,
+                33,
+                95,
+                67,
+                59,
+                102,
+                233,
+                178,
+                179
               ]
             }
           }
@@ -1315,7 +1315,7 @@ export type MagicBlockLiquiditypool = {
         },
         {
           "name": "ownerProgram",
-          "address": "7Vtwix4ij2F69grbeehzpZCE2qVZQWUAkipXwx24fpJ2"
+          "address": "2KAKX9Q4un6QmwFbvC54XePckpAEpb6iX8F5iLpGqYUi"
         },
         {
           "name": "delegationProgram",
@@ -1379,38 +1379,38 @@ export type MagicBlockLiquiditypool = {
             "program": {
               "kind": "const",
               "value": [
-                96,
-                141,
-                29,
-                238,
-                121,
-                104,
-                179,
-                117,
-                2,
-                211,
-                66,
-                114,
-                120,
-                194,
-                192,
-                8,
-                249,
-                77,
+                19,
+                130,
+                173,
+                201,
+                236,
+                246,
                 181,
-                37,
-                105,
-                60,
-                114,
-                114,
-                230,
-                48,
-                38,
-                2,
+                116,
+                118,
                 164,
-                207,
-                106,
-                247
+                121,
+                157,
+                181,
+                69,
+                86,
+                186,
+                62,
+                108,
+                109,
+                163,
+                184,
+                245,
+                102,
+                226,
+                33,
+                95,
+                67,
+                59,
+                102,
+                233,
+                178,
+                179
               ]
             }
           }
@@ -1520,7 +1520,7 @@ export type MagicBlockLiquiditypool = {
         },
         {
           "name": "ownerProgram",
-          "address": "7Vtwix4ij2F69grbeehzpZCE2qVZQWUAkipXwx24fpJ2"
+          "address": "2KAKX9Q4un6QmwFbvC54XePckpAEpb6iX8F5iLpGqYUi"
         },
         {
           "name": "delegationProgram",
@@ -3047,6 +3047,43 @@ export type MagicBlockLiquiditypool = {
             "defined": {
               "name": "removeLiquidityParams"
             }
+          }
+        }
+      ]
+    },
+    {
+      "name": "processUndelegation",
+      "discriminator": [
+        196,
+        28,
+        41,
+        206,
+        48,
+        37,
+        51,
+        167
+      ],
+      "accounts": [
+        {
+          "name": "baseAccount",
+          "writable": true
+        },
+        {
+          "name": "buffer"
+        },
+        {
+          "name": "payer",
+          "writable": true
+        },
+        {
+          "name": "systemProgram"
+        }
+      ],
+      "args": [
+        {
+          "name": "accountSeeds",
+          "type": {
+            "vec": "bytes"
           }
         }
       ]

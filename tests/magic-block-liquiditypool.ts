@@ -19,7 +19,7 @@ describe("magic-block-liquiditypool", () => {
   const program = anchor.workspace.magicBlockLiquiditypool as Program<MagicBlockLiquiditypool>;
 
   const routerConnection = new web3.Connection(
-    process.env.ROUTER_ENDPOINT || "https://testnet-router.magicblock.app",
+    process.env.ROUTER_ENDPOINT || "https://devnet-router.magicblock.app",
     {
       wsEndpoint: process.env.ROUTER_WS_ENDPOINT || "wss://devnet-router.magicblock.app",
     }
