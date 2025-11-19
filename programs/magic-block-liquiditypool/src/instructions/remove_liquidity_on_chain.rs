@@ -146,15 +146,15 @@ pub fn remove_liquidity_on_chain(
         .checked_div(total_lp_supply as u128)
         .ok_or(ErrorCode::MathOverflow)? as u64;
 
-    // Check slippage protection
-    require!(
-        amount_a_to_withdraw >= params.min_amount_a,
-        ErrorCode::SlippageExceeded
-    );
-    require!(
-        amount_b_to_withdraw >= params.min_amount_b,
-        ErrorCode::SlippageExceeded
-    );
+    // // Check slippage protection
+    // require!(
+    //     amount_a_to_withdraw >= params.min_amount_a,
+    //     ErrorCode::SlippageExceeded
+    // );
+    // require!(
+    //     amount_b_to_withdraw >= params.min_amount_b,
+    //     ErrorCode::SlippageExceeded
+    // );
 
     // Verify vaults have enough tokens
     require!(
