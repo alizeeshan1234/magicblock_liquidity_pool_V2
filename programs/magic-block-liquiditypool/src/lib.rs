@@ -17,7 +17,7 @@ pub use state::*;
 
 use state::{pool::Pool, liquidity_provider::LiquidityProvider};
 
-declare_id!("92vqPKfRaAwxzA5Z8Ct3J3MdvB6H4fQnRoAxvDXUBUoC");
+declare_id!("4kfv6eEAny1E5eqrhsDop9L4B6DUwEcKCCM88UeMKmPn");
 
 #[ephemeral]
 #[program]
