@@ -17,7 +17,7 @@ pub use state::*;
 
 use state::{pool::Pool, liquidity_provider::LiquidityProvider};
 
-declare_id!("2KAKX9Q4un6QmwFbvC54XePckpAEpb6iX8F5iLpGqYUi");
+declare_id!("92vqPKfRaAwxzA5Z8Ct3J3MdvB6H4fQnRoAxvDXUBUoC");
 
 #[ephemeral]
 #[program]
@@ -56,8 +56,8 @@ pub mod magic_block_liquiditypool {
         instructions::add_liquidity_on_chain::delegate_deposit_receipt(ctx, commit_frequency, validator_key)
     }
 
-    pub fn process_add_liquidity_er(ctx: Context<AddLiquidityER>, params: AddLiquidityErParams) -> Result<()> {
-        instructions::add_liquidity_er::add_liquidity_er(ctx, params)
+    pub fn process_add_liquidity_er(ctx: Context<AddLiquidityER>) -> Result<()> {
+        instructions::add_liquidity_er::add_liquidity_er(ctx)
     }
 
     pub fn process_mint_lp_tokens(ctx: Context<MintLpTokens>, mint_amount: u64) -> Result<()> {

@@ -6,6 +6,8 @@ use crate::state::liquidity_provider::{LiquidityPoolInfo, LiquidityProvider};
 use crate::state::pool::Pool;
 use crate::error::ErrorCode;
 
+use crate::add_liquidity_on_chain::DepositRecept;
+
 #[derive(Accounts)]
 pub struct AddLiquidityER<'info> {
     #[account(mut)]
@@ -25,19 +27,17 @@ pub struct AddLiquidityER<'info> {
     )]
     pub pool: Account<'info, Pool>,
 
+    #[account(
+        mut,
+        seeds = [b"deposit_recept", provider.key().as_ref()],
+        bump,
+    )]
+    pub deposit_receipt: Account<'info, DepositRecept>,
+
     pub system_program: Program<'info, System>,
 }
 
-
-#[derive(AnchorSerialize, AnchorDeserialize, Clone)]
-pub struct AddLiquidityErParams {
-    pub user: Pubkey,
-    pub amount_a: u64,
-    pub amount_b: u64,
-    pub min_lp_tokens: u64,
-}
-
-pub fn add_liquidity_er(ctx: Context<AddLiquidityER>, params: AddLiquidityErParams) -> Result<()> {
+pub fn add_liquidity_er(ctx: Context<AddLiquidityER>) -> Result<()> {
 
     let pool = &mut ctx.accounts.pool;
     let liquidity_provider = &mut ctx.accounts.liquidity_provider;
@@ -52,20 +52,20 @@ pub fn add_liquidity_er(ctx: Context<AddLiquidityER>, params: AddLiquidityErPara
     let total_lp_supply = pool.total_lp_supply;
 
     let lp_tokens_to_mint = if total_lp_supply == 0 {
-        let product = (params.amount_a as u128)
-            .checked_mul(params.amount_b as u128)
+        let product = (ctx.accounts.deposit_receipt.amount_a as u128)
+            .checked_mul(ctx.accounts.deposit_receipt.amount_b as u128)
             .ok_or(ErrorCode::MathOverflow)?;
         (product as f64).sqrt() as u64
     } else {
         require!(reserve_a > 0 && reserve_b > 0, ErrorCode::InsufficientReserves);
         
-        let share_a = (params.amount_a as u128)
+        let share_a = (ctx.accounts.deposit_receipt.amount_a as u128)
             .checked_mul(total_lp_supply as u128)
             .ok_or(ErrorCode::MathOverflow)?
             .checked_div(reserve_a as u128)
             .ok_or(ErrorCode::MathOverflow)? as u64;
             
-        let share_b = (params.amount_b as u128)
+        let share_b = (ctx.accounts.deposit_receipt.amount_b as u128)
             .checked_mul(total_lp_supply as u128)
             .ok_or(ErrorCode::MathOverflow)?
             .checked_div(reserve_b as u128)
@@ -74,14 +74,14 @@ pub fn add_liquidity_er(ctx: Context<AddLiquidityER>, params: AddLiquidityErPara
         std::cmp::min(share_a, share_b)
     };
 
-    require!(lp_tokens_to_mint >= params.min_lp_tokens, ErrorCode::SlippageExceeded);
+    require!(lp_tokens_to_mint >= ctx.accounts.deposit_receipt.lp_tokens_minted, ErrorCode::SlippageExceeded);
 
     pool.reserve_a = pool.reserve_a
-        .checked_add(params.amount_a)
+        .checked_add(ctx.accounts.deposit_receipt.amount_a)
         .ok_or(ErrorCode::MathOverflow)?;
     
     pool.reserve_b = pool.reserve_b
-        .checked_add(params.amount_b)
+        .checked_add(ctx.accounts.deposit_receipt.amount_b)
         .ok_or(ErrorCode::MathOverflow)?;
     
     pool.total_lp_supply = pool.total_lp_supply
@@ -92,7 +92,7 @@ pub fn add_liquidity_er(ctx: Context<AddLiquidityER>, params: AddLiquidityErPara
         liquidity_provider,
         pool.key(),
         pool.lp_mint,
-        params.amount_a + params.amount_b,
+        ctx.accounts.deposit_receipt.amount_a + ctx.accounts.deposit_receipt.amount_b,
         lp_tokens_to_mint,
     )?;
 

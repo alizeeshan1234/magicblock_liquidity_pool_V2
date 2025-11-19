@@ -5,7 +5,7 @@
  * IDL can be found at `target/idl/magic_block_liquiditypool.json`.
  */
 export type MagicBlockLiquiditypool = {
-  "address": "2KAKX9Q4un6QmwFbvC54XePckpAEpb6iX8F5iLpGqYUi",
+  "address": "92vqPKfRaAwxzA5Z8Ct3J3MdvB6H4fQnRoAxvDXUBUoC",
   "metadata": {
     "name": "magicBlockLiquiditypool",
     "version": "0.1.0",
@@ -117,20 +117,42 @@ export type MagicBlockLiquiditypool = {
           }
         },
         {
+          "name": "depositReceipt",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  100,
+                  101,
+                  112,
+                  111,
+                  115,
+                  105,
+                  116,
+                  95,
+                  114,
+                  101,
+                  99,
+                  101,
+                  112,
+                  116
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "provider"
+              }
+            ]
+          }
+        },
+        {
           "name": "systemProgram",
           "address": "11111111111111111111111111111111"
         }
       ],
-      "args": [
-        {
-          "name": "params",
-          "type": {
-            "defined": {
-              "name": "addLiquidityErParams"
-            }
-          }
-        }
-      ]
+      "args": []
     },
     {
       "name": "processBurnLpTokens",
@@ -759,38 +781,38 @@ export type MagicBlockLiquiditypool = {
             "program": {
               "kind": "const",
               "value": [
-                19,
-                130,
-                173,
-                201,
-                236,
-                246,
-                181,
-                116,
-                118,
-                164,
-                121,
-                157,
-                181,
-                69,
-                86,
-                186,
-                62,
-                108,
-                109,
-                163,
-                184,
-                245,
-                102,
-                226,
-                33,
+                119,
+                91,
+                242,
                 95,
-                67,
-                59,
-                102,
-                233,
-                178,
-                179
+                106,
+                64,
+                29,
+                82,
+                109,
+                181,
+                106,
+                186,
+                68,
+                44,
+                135,
+                180,
+                198,
+                62,
+                172,
+                78,
+                88,
+                160,
+                104,
+                110,
+                70,
+                243,
+                22,
+                253,
+                72,
+                189,
+                28,
+                195
               ]
             }
           }
@@ -899,7 +921,7 @@ export type MagicBlockLiquiditypool = {
         },
         {
           "name": "ownerProgram",
-          "address": "2KAKX9Q4un6QmwFbvC54XePckpAEpb6iX8F5iLpGqYUi"
+          "address": "92vqPKfRaAwxzA5Z8Ct3J3MdvB6H4fQnRoAxvDXUBUoC"
         },
         {
           "name": "delegationProgram",
@@ -963,38 +985,38 @@ export type MagicBlockLiquiditypool = {
             "program": {
               "kind": "const",
               "value": [
-                19,
-                130,
-                173,
-                201,
-                236,
-                246,
-                181,
-                116,
-                118,
-                164,
-                121,
-                157,
-                181,
-                69,
-                86,
-                186,
-                62,
-                108,
-                109,
-                163,
-                184,
-                245,
-                102,
-                226,
-                33,
+                119,
+                91,
+                242,
                 95,
-                67,
-                59,
-                102,
-                233,
-                178,
-                179
+                106,
+                64,
+                29,
+                82,
+                109,
+                181,
+                106,
+                186,
+                68,
+                44,
+                135,
+                180,
+                198,
+                62,
+                172,
+                78,
+                88,
+                160,
+                104,
+                110,
+                70,
+                243,
+                22,
+                253,
+                72,
+                189,
+                28,
+                195
               ]
             }
           }
@@ -1120,7 +1142,7 @@ export type MagicBlockLiquiditypool = {
         },
         {
           "name": "ownerProgram",
-          "address": "2KAKX9Q4un6QmwFbvC54XePckpAEpb6iX8F5iLpGqYUi"
+          "address": "92vqPKfRaAwxzA5Z8Ct3J3MdvB6H4fQnRoAxvDXUBUoC"
         },
         {
           "name": "delegationProgram",
@@ -1184,38 +1206,38 @@ export type MagicBlockLiquiditypool = {
             "program": {
               "kind": "const",
               "value": [
-                19,
-                130,
-                173,
-                201,
-                236,
-                246,
-                181,
-                116,
-                118,
-                164,
-                121,
-                157,
-                181,
-                69,
-                86,
-                186,
-                62,
-                108,
-                109,
-                163,
-                184,
-                245,
-                102,
-                226,
-                33,
+                119,
+                91,
+                242,
                 95,
-                67,
-                59,
-                102,
-                233,
-                178,
-                179
+                106,
+                64,
+                29,
+                82,
+                109,
+                181,
+                106,
+                186,
+                68,
+                44,
+                135,
+                180,
+                198,
+                62,
+                172,
+                78,
+                88,
+                160,
+                104,
+                110,
+                70,
+                243,
+                22,
+                253,
+                72,
+                189,
+                28,
+                195
               ]
             }
           }
@@ -1315,7 +1337,7 @@ export type MagicBlockLiquiditypool = {
         },
         {
           "name": "ownerProgram",
-          "address": "2KAKX9Q4un6QmwFbvC54XePckpAEpb6iX8F5iLpGqYUi"
+          "address": "92vqPKfRaAwxzA5Z8Ct3J3MdvB6H4fQnRoAxvDXUBUoC"
         },
         {
           "name": "delegationProgram",
@@ -1379,38 +1401,38 @@ export type MagicBlockLiquiditypool = {
             "program": {
               "kind": "const",
               "value": [
-                19,
-                130,
-                173,
-                201,
-                236,
-                246,
-                181,
-                116,
-                118,
-                164,
-                121,
-                157,
-                181,
-                69,
-                86,
-                186,
-                62,
-                108,
-                109,
-                163,
-                184,
-                245,
-                102,
-                226,
-                33,
+                119,
+                91,
+                242,
                 95,
-                67,
-                59,
-                102,
-                233,
-                178,
-                179
+                106,
+                64,
+                29,
+                82,
+                109,
+                181,
+                106,
+                186,
+                68,
+                44,
+                135,
+                180,
+                198,
+                62,
+                172,
+                78,
+                88,
+                160,
+                104,
+                110,
+                70,
+                243,
+                22,
+                253,
+                72,
+                189,
+                28,
+                195
               ]
             }
           }
@@ -1520,7 +1542,7 @@ export type MagicBlockLiquiditypool = {
         },
         {
           "name": "ownerProgram",
-          "address": "2KAKX9Q4un6QmwFbvC54XePckpAEpb6iX8F5iLpGqYUi"
+          "address": "92vqPKfRaAwxzA5Z8Ct3J3MdvB6H4fQnRoAxvDXUBUoC"
         },
         {
           "name": "delegationProgram",
@@ -3207,30 +3229,6 @@ export type MagicBlockLiquiditypool = {
     }
   ],
   "types": [
-    {
-      "name": "addLiquidityErParams",
-      "type": {
-        "kind": "struct",
-        "fields": [
-          {
-            "name": "user",
-            "type": "pubkey"
-          },
-          {
-            "name": "amountA",
-            "type": "u64"
-          },
-          {
-            "name": "amountB",
-            "type": "u64"
-          },
-          {
-            "name": "minLpTokens",
-            "type": "u64"
-          }
-        ]
-      }
-    },
     {
       "name": "addPoolParams",
       "type": {

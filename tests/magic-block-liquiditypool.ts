@@ -315,17 +315,11 @@ describe("magic-block-liquiditypool", () => {
   })
 
   it("Add Liquidity ER", async () => {
-    const addLiquidityParams = {
-      user: provider.wallet.publicKey,
-      amountA: new anchor.BN(50),
-      amountB: new anchor.BN(50),
-      minLpTokens: new anchor.BN(50),
-    };
-
-    const tx = await program.methods.processAddLiquidityEr(addLiquidityParams).accountsPartial({
+    const tx = await program.methods.processAddLiquidityEr().accountsPartial({
       provider: provider.wallet.publicKey,
       liquidityProvider: liquidityProviderAccount,
       pool: poolAccount,
+      depositReceipt: depositReceptAccount,
       systemProgram: SystemProgram.programId
     }).transaction();
 
