@@ -455,6 +455,30 @@ describe("magic-block-liquiditypool", () => {
     await sleepWithAnimation(10);
     console.log(`Removed Liquidity ER`);
     console.log(`Transaction Signature: ${signature}`);
+  });
+
+  it("Commit and burn LP tokens", async () => {
+    const tx = await program.methods.processCommitAndBurnLpTokens().accountsPartial({
+      provider: provider.wallet.publicKey,
+      pool: poolAccount,
+      liquidityProvider: liquidityProviderAccount,
+      withdrawRecept: withdrawReceptAccount,
+      lpMint: lpMint,
+      providerLpAta: providerLpTokenAccount,
+      tokenProgram: TOKEN_PROGRAM_ID,
+      magicContext: MAGIC_CONTEXT_ID,
+      magicProgram: MAGIC_PROGRAM_ID
+    }).transaction();
+
+    let signature = await sendMagicTransaction(
+      routerConnection,
+      tx,
+      [provider.wallet.payer]
+    );
+
+    await sleepWithAnimation(10);
+    console.log(`Committed and Burned LP Tokens!`);
+    console.log(`Transaction Signature: ${signature}`);
   })
   
 });
