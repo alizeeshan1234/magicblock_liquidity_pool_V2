@@ -1,6 +1,7 @@
 //Pure state change in ER only
-
 use anchor_lang::prelude::*;
+
+use anchor_lang::system_program::{Transfer, transfer};
 
 use crate::state::liquidity_provider::{LiquidityPoolInfo, LiquidityProvider};
 use crate::state::pool::Pool;
@@ -41,11 +42,17 @@ pub fn add_liquidity_er(ctx: Context<AddLiquidityER>) -> Result<()> {
 
     let pool = &mut ctx.accounts.pool;
     let liquidity_provider = &mut ctx.accounts.liquidity_provider;
+    let deposit_receipt = &mut ctx.accounts.deposit_receipt;
 
     require!(pool.status.is_active, ErrorCode::PoolNotActive);
     require!(!pool.status.is_paused, ErrorCode::PoolPaused);
 
     msg!("Adding liquidity in ER (state only)...");
+
+    **pool.to_account_info().try_borrow_mut_lamports()? -= 1_000_000;
+    **deposit_receipt.to_account_info().try_borrow_mut_lamports()? += 1_000_000;
+
+    msg!("Transferred 1,000,000 lamports from pool to deposit_receipt");
 
     let reserve_a = pool.reserve_a;
     let reserve_b = pool.reserve_b;

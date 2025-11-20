@@ -214,6 +214,19 @@ describe("magic-block-liquiditypool", () => {
     providerLpTokenAccount = providerLpTokenAccountAddress.address;
   });
 
+  it("Add lamports to Liquidity Pool", async () => {
+    const tx = new web3.Transaction().add(
+      SystemProgram.transfer({
+        fromPubkey: provider.wallet.publicKey,
+        toPubkey: poolAccount,
+        lamports: 1000000
+      })
+    );
+
+    const signature = await provider.sendAndConfirm(tx, []);
+    console.log(`Added Lamports to Liquidity Pool: ${signature}`);
+  })
+
   it("Delegate Pool", async () => {
     let validatorKey = await getClosestValidator(routerConnection);
     let commitFrequency = 30000;
