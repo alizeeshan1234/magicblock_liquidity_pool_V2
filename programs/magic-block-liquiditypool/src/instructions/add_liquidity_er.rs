@@ -1,7 +1,6 @@
 //Pure state change in ER only
-use anchor_lang::prelude::*;
 
-use anchor_lang::system_program::{Transfer, transfer};
+use anchor_lang::prelude::*;
 
 use crate::state::liquidity_provider::{LiquidityPoolInfo, LiquidityProvider};
 use crate::state::pool::Pool;

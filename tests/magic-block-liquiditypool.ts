@@ -225,7 +225,7 @@ describe("magic-block-liquiditypool", () => {
 
     const signature = await provider.sendAndConfirm(tx, []);
     console.log(`Added Lamports to Liquidity Pool: ${signature}`);
-  })
+  });
 
   it("Delegate Pool", async () => {
     let validatorKey = await getClosestValidator(routerConnection);
