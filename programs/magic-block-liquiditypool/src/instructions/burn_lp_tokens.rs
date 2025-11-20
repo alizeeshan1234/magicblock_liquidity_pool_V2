@@ -1,15 +1,6 @@
 use anchor_lang::prelude::*;
 use anchor_spl::token::{Mint, Token, TokenAccount, Burn};
 
-use ephemeral_rollups_sdk::anchor::commit;
-use ephemeral_rollups_sdk::ephem::{MagicInstructionBuilder, MagicAction, CallHandler, CommitType};
-use ephemeral_rollups_sdk::{ActionArgs, ShortAccountMeta};
-
-use crate::state::pool::Pool;
-use crate::state::liquidity_provider::{LiquidityProvider, LiquidityPoolInfo};
-use crate::add_liquidity_on_chain::DepositRecept;
-use crate::error::ErrorCode;
-
 #[derive(Accounts)]
 pub struct BurnLpTokens<'info> {
     #[account()]

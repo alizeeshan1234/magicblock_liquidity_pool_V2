@@ -1,5 +1,4 @@
 use anchor_lang::prelude::*;
-use anchor_spl::{token::Mint, *};
 
 use crate::{liquidity_provider::LiquidityPoolInfo, state::liquidity_provider::LiquidityProvider};
 

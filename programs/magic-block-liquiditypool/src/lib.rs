@@ -1,7 +1,7 @@
 use anchor_lang::prelude::*;
-use anchor_spl::token::{Mint, TokenAccount, Token};
+use anchor_spl::token::Token;
 
-use ephemeral_rollups_sdk::anchor::{commit, delegate, ephemeral};
+use ephemeral_rollups_sdk::anchor::{commit, ephemeral};
 use ephemeral_rollups_sdk::ephem::{MagicInstructionBuilder, MagicAction, CallHandler, CommitType, CommitAndUndelegate, UndelegateType};
 use ephemeral_rollups_sdk::{ActionArgs, ShortAccountMeta};
 use anchor_lang::Discriminator;

@@ -1,10 +1,4 @@
 use anchor_lang::prelude::*;
-use anchor_lang::Discriminator;
-use anchor_spl::{
-    associated_token::AssociatedToken,
-    token::{transfer_checked, Mint, Token, TokenAccount, TransferChecked},
-    *,
-};
 
 use ephemeral_rollups_sdk::anchor::delegate;
 use ephemeral_rollups_sdk::cpi::DelegateConfig;

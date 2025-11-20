@@ -1,16 +1,12 @@
 use anchor_lang::prelude::*;
-use anchor_lang::solana_program::program::invoke;
-use anchor_spl::token::{Mint, Token, TokenAccount, Transfer, spl_token};
+use anchor_spl::token::{Mint, Token, TokenAccount, Transfer};
 
-use ephemeral_rollups_sdk::anchor::{commit, delegate, ephemeral};
+use ephemeral_rollups_sdk::anchor::{commit, delegate};
 use ephemeral_rollups_sdk::cpi::DelegateConfig;
 use ephemeral_rollups_sdk::ephem::commit_and_undelegate_accounts;
-use ephemeral_rollups_sdk::ephem::{MagicInstructionBuilder, MagicAction, CallHandler, CommitType};
-use ephemeral_rollups_sdk::{ActionArgs, ShortAccountMeta};
+
 use anchor_lang::Discriminator;
 
-use crate::liquidity_provider::LiquidityProvider;
-use crate::pool::Pool;
 
 use crate::error::ErrorCode;
 
@@ -264,7 +260,7 @@ pub struct CommitAndUndelegateDepositReceipt<'info> {
     pub magic_program: UncheckedAccount<'info>,
 }
 
-pub fn close_deposit_receipt(ctx: Context<CloseDepositReceiptInfo>) -> Result<()> {
+pub fn close_deposit_receipt(_ctx: Context<CloseDepositReceiptInfo>) -> Result<()> {
     msg!("Depost Receipt account closed successfully!");
     Ok(())
 }
