@@ -1,9 +1,0 @@
-/Users/mohammedzeeshan/Desktop/magicblock_liquiditypool_V2_backup/magicblock_liquidity_pool_V2/target/debug/deps/spl_discriminator_syn-b4fcc18d4fe3665a.d: /Users/mohammedzeeshan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/spl-discriminator-syn-0.2.1/src/lib.rs /Users/mohammedzeeshan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/spl-discriminator-syn-0.2.1/src/error.rs /Users/mohammedzeeshan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/spl-discriminator-syn-0.2.1/src/parser.rs
-
-/Users/mohammedzeeshan/Desktop/magicblock_liquiditypool_V2_backup/magicblock_liquidity_pool_V2/target/debug/deps/libspl_discriminator_syn-b4fcc18d4fe3665a.rlib: /Users/mohammedzeeshan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/spl-discriminator-syn-0.2.1/src/lib.rs /Users/mohammedzeeshan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/spl-discriminator-syn-0.2.1/src/error.rs /Users/mohammedzeeshan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/spl-discriminator-syn-0.2.1/src/parser.rs
-
-/Users/mohammedzeeshan/Desktop/magicblock_liquiditypool_V2_backup/magicblock_liquidity_pool_V2/target/debug/deps/libspl_discriminator_syn-b4fcc18d4fe3665a.rmeta: /Users/mohammedzeeshan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/spl-discriminator-syn-0.2.1/src/lib.rs /Users/mohammedzeeshan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/spl-discriminator-syn-0.2.1/src/error.rs /Users/mohammedzeeshan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/spl-discriminator-syn-0.2.1/src/parser.rs
-
-/Users/mohammedzeeshan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/spl-discriminator-syn-0.2.1/src/lib.rs:
-/Users/mohammedzeeshan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/spl-discriminator-syn-0.2.1/src/error.rs:
-/Users/mohammedzeeshan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/spl-discriminator-syn-0.2.1/src/parser.rs:
