@@ -1,1 +1,39 @@
-404: Not Found
+# Step 1: Create the .gitignore file
+cat > .gitignore << 'EOF'
+# Anchor / Solana build artifacts
+.target/
+.anchor/
+target/
+*.so
+program-keypair.json
+*.keypair
+
+# Anchor test artifacts
+test-ledger/
+.anchor/program-logs/
+
+# Node / TypeScript
+node_modules/
+dist/
+.env
+.yarn/
+
+# Rust / Cargo
+Cargo.lock
+**/.cargo/
+**/target/
+
+# IDE / Editor
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Solana CLI
+solana-keypair.json
+EOF
